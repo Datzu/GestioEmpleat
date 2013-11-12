@@ -8,6 +8,7 @@ public class Start {
 		System.out.println("Start3");
 		System.out.println("Start4");
 		System.out.println("Start6");
+		System.out.println("Start7");
 	}
 
 }
