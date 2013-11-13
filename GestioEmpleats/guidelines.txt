@@ -1,0 +1,43 @@
+Una empresa em demana un programa que gestioni el personal. Els punts que s'han de resoldre són:
+
+Alta/baixa d'empleats.
+Assignació de sous.
+Assignació/consulta de tasques.
+Anotació d'incidències.
+Històric d'incidències.
+Els empleats poden ser Administradors, Secretaris, Programadors, Comercials i Becaris.
+
+Els Administradors poden ser Executius.
+Els Programadors poden ser Junior, Semi Senior, Senior.
+Els Becaris poden ser Universitaris o Cicles.
+Tot treballador té una fitxa que conté:
+
+Nom
+Cognoms
+Data de naixement
+Data de contracte
+Sou
+Incentius
+Els Administradors tenen un camp anomenat "rol" que explica quines són les seves obligacions.
+
+Els Secretaris tenen un camp anomenat torn que pot ser "matí" o "tarda".
+
+Els Programadors tenen un camp anomenat ""llenguatges" que indica els llenguatges en què són experts.
+
+Els Becaris tenen un camp anomenat "procedència" que indica el centre on realitzen estudis.
+
+El sou només ho poden conèixer el propi treballador i els Administradors. El sou només el poden assignar els Administradors. Els incentius només els poden tenir els Programadors.
+
+Com es valorarà la pràctica:
+
+Puntualitat
+Distribució del treball
+Planificació
+Documentació
+Estructuració del codi
+Claredat del codi
+Eficiència
+Sencillesa de l'ús
+Escalabilitat del programa
+Gestió d'errors
+AQUESTA PRÀCTICA ES REALITZA EN GRUP: A la documentació heu d'indicar les persones que conformeu l'equip de treball!!!
