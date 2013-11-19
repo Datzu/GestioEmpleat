@@ -13,29 +13,31 @@ public class MainFrame extends JFrame {
 
 	private JPanel contentPane;
 	
-	public pathToExe = "";
+	static Paths pathToExe = new Paths();
 	
-	// System.out.println(System.getenv("SystemDrive"));
-	if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
-		pathToExe = System.getenv("SystemDrive") + File.separator
-				+ "mongoDB" + File.separator + "bin" + "\\mongod.exe";
-		File checkPathToExe = new File(pathToExe);
-		try {
-			if (checkPathToExe.exists()) {
-				MongoDBUtils.startMongoDExe();
-			} else {
-				MongoDBUtils.installMongoDExe();
-			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		// System.out.println();
+		// System.out.println(System.getenv("SystemDrive"));
+		if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
+			pathToExe.setPathToExe(System.getenv("SystemDrive") + File.separator
+					+ "mongoDB" + File.separator + "bin" + "\\mongod.exe");
+			File checkPathToExe = new File(pathToExe.getPathToExe());
+			try {
+				if (checkPathToExe.exists()) {
+					MongoDBUtils.startMongoDExe();
+				} else {
+					MongoDBUtils.installMongoDExe();
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -47,7 +49,6 @@ public class MainFrame extends JFrame {
 			}
 		});
 		
-		System.out.println(FirstFrame.getDades());
 	}
 
 	/**

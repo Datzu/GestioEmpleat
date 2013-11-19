@@ -64,21 +64,18 @@ public class FirstFrame extends JPanel {
 		JButton btnCreate = new JButton("Crear");
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				System.out.println("ok");
+				String[] data = new String[2];
+				if (passwordFieldPassword.equals(passwordFieldValidatePassword)) {
+					data[0] = textFieldUser.getText().toString();
+					data[1] = passwordFieldPassword.getText().toString();
+				}
+				System.out.println(data[0]);
+				System.out.println(data[1]);
 			}
 
 		});
 		add(btnCreate, "4, 10");
 	}
-	
-	public static String[] getDades() {
-		String[] data = new String[2];
-		if (passwordFieldPassword.equals(passwordFieldValidatePassword)) {
-			data[0] = textFieldUser.getText().toString();
-			data[1] = passwordFieldPassword.getText().toString();
-		}
-		return data;
-	}
-
 
 }
