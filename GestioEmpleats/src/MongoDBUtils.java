@@ -8,8 +8,8 @@ public class MongoDBUtils {
 		
 		try {
 			ProcessBuilder pb = new ProcessBuilder();
-			Process p = Runtime.getRuntime().exec(Start.pathToExe);
-			System.out.println("Starting Windows mongoDB server on "+Start.pathToExe);
+			Process p = Runtime.getRuntime().exec(MainFrame.pathToExe.getPathToExe());
+			System.out.println("Starting Windows mongoDB server on " + MainFrame.pathToExe.getPathToExe());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -18,7 +18,7 @@ public class MongoDBUtils {
 	public static void installMongoDExe() {
 		
 		try {
-			System.out.println("Starting install of mongoDB on " + Start.pathToExe);
+			System.out.println("Starting install of mongoDB on " + MainFrame.pathToExe.getPathToExe());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
