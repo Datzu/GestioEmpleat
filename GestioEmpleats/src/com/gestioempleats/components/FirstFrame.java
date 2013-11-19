@@ -15,23 +15,29 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 public class FirstFrame extends JPanel {
-	private JTextField textFieldUser;
-	private JPasswordField passwordFieldPassword;
-	private JPasswordField passwordFieldValidatePassword;
+	private static JTextField textFieldUser;
+	private static JPasswordField passwordFieldPassword;
+	private static JPasswordField passwordFieldValidatePassword;
 
 	public FirstFrame() {
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(73dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(70dlu;default):grow"),
+				ColumnSpec.decode("max(108dlu;default):grow"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(69dlu;default)"), }, new RowSpec[] {
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC, }));
+				ColumnSpec.decode("max(69dlu;default)"),},
+			new RowSpec[] {
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,}));
 
 		JLabel lblFirstFrame = new JLabel("Crea un compte d'administrador.");
 		add(lblFirstFrame, "2, 2");
@@ -58,20 +64,20 @@ public class FirstFrame extends JPanel {
 		JButton btnCreate = new JButton("Crear");
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String[] data = new String[2];
-				if (passwordFieldPassword.equals(passwordFieldValidatePassword)) {
-					data[0] = textFieldUser.getText().toString();
-					data[1] = passwordFieldPassword.getText().toString();
-					this.getDades(data);
-				}
-
+				
 			}
 
-			private String[] getDades(String[] dades) {
-				return dades;
-			}
 		});
 		add(btnCreate, "4, 10");
+	}
+	
+	public static String[] getDades() {
+		String[] data = new String[2];
+		if (passwordFieldPassword.equals(passwordFieldValidatePassword)) {
+			data[0] = textFieldUser.getText().toString();
+			data[1] = passwordFieldPassword.getText().toString();
+		}
+		return data;
 	}
 
 
