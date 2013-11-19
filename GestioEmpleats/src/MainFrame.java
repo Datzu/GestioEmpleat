@@ -15,8 +15,6 @@ public class MainFrame extends JFrame {
 	
 	static Paths pathToExe = new Paths();
 	
-
-
 	/**
 	 * Launch the application.
 	 */

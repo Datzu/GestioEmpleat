@@ -18,10 +18,16 @@ public class MongoDBUtils {
 	public static void installMongoDExe() {
 		
 		try {
+			File makeDir = new File();
+			dir.mkdir();
 			System.out.println("Starting install of mongoDB on " + MainFrame.pathToExe.getPathToExe());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void saveDataToDB() {
+		
 	}
 	
 }
