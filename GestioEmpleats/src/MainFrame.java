@@ -13,7 +13,7 @@ public class MainFrame extends JFrame {
 
 	private JPanel contentPane;
 	
-	static Paths pathToExe = new Paths();
+	static Paths path = new Paths();
 	
 	/**
 	 * Launch the application.
@@ -22,9 +22,11 @@ public class MainFrame extends JFrame {
 		// System.out.println();
 		// System.out.println(System.getenv("SystemDrive"));
 		if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
-			pathToExe.setPathToExe(System.getenv("SystemDrive") + File.separator
+			path.setPathToMongoDB(System.getenv("SystemDrive") + File.separator
+					+ "mongoDB");
+			path.setPathToExe(System.getenv("SystemDrive") + File.separator
 					+ "mongoDB" + File.separator + "bin" + "\\mongod.exe");
-			File checkPathToExe = new File(pathToExe.getPathToExe());
+			File checkPathToExe = new File(path.getPathToExe());
 			try {
 				if (checkPathToExe.exists()) {
 					MongoDBUtils.startMongoDExe();

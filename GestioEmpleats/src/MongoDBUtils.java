@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 
 
 public class MongoDBUtils {
@@ -8,22 +9,18 @@ public class MongoDBUtils {
 		
 		try {
 			ProcessBuilder pb = new ProcessBuilder();
-			Process p = Runtime.getRuntime().exec(MainFrame.pathToExe.getPathToExe());
-			System.out.println("Starting Windows mongoDB server on " + MainFrame.pathToExe.getPathToExe());
+			Process p = Runtime.getRuntime().exec(MainFrame.path.getPathToExe());
+			System.out.println("Starting Windows mongoDB server on " + MainFrame.path.getPathToExe());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public static void installMongoDExe() {
+		System.out.println("Starting install of mongoDB on " + MainFrame.path.getPathToMongoDB());
+		File makeDirMongoDB = new File(MainFrame.path.getPathToMongoDB());
+		makeDirMongoDB.mkdir();
 		
-		try {
-			File makeDir = new File();
-			dir.mkdir();
-			System.out.println("Starting install of mongoDB on " + MainFrame.pathToExe.getPathToExe());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public static void saveDataToDB() {
