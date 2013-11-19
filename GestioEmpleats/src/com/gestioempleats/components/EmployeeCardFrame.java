@@ -15,7 +15,7 @@ public class EmployeeCardFrame extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public EmployeeCardFrame() {
+	public EmployeeCardFrame(String titleFrame) {
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(87dlu;default)"),
@@ -65,7 +65,7 @@ public class EmployeeCardFrame extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		JLabel lblTitleFrame = new JLabel("Titol");
+		JLabel lblTitleFrame = new JLabel(titleFrame);
 		lblTitleFrame.setFont(new Font("Tahoma", Font.BOLD, 11));
 		add(lblTitleFrame, "2, 2, center, default");
 		
