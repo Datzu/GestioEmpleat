@@ -33,6 +33,7 @@ public class MainFrame extends JFrame {
 				if (checkPathToExe.exists()) {
 					MongoDBUtils.startMongoDExe();
 				} else {
+					MongoDBUtils.startDownloadMongoDB();
 					MongoDBUtils.installMongoDExe();
 				}
 

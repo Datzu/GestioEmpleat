@@ -1,5 +1,9 @@
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
+
+import org.apache.commons.io.FileUtils;
 
 public class MongoDBUtils {
 	
@@ -20,6 +24,19 @@ public class MongoDBUtils {
 		File makeDirMongoDB = new File(MainFrame.path.getPathToMongoDB());
 		makeDirMongoDB.mkdir();
 		// copy to :systemdrive:\mongodb files from resource mongodb
+		
+	}
+	
+	public static void startDownloadMongoDB() {
+		System.out.println("Starting download of mongoDB...");
+		try {
+			if (System.getProperty("os.arch").contains("86") || System.getProperty("os.arch").contains("i386")) {
+				System.out.println(new File(MainFrame.path.getPathToMongoDB().toString()));
+				FileUtils.copyURLToFile(new URL("http://fastdl.mongodb.org/win32/mongodb-win-i386-2.4.8.zip"), new File(MainFrame.path.getPathToMongoDB()));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
