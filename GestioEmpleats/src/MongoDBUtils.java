@@ -29,10 +29,14 @@ public class MongoDBUtils {
 	
 	public static void startDownloadMongoDB() {
 		System.out.println("Starting download of mongoDB...");
+		System.setProperty("http.agent", "Mozilla/5.0 (X11; Linux i686; rv:21.0) Gecko/20100101 Firefox/21.0");
 		try {
 			if (System.getProperty("os.arch").contains("86") || System.getProperty("os.arch").contains("i386")) {
-				System.out.println(new File(MainFrame.path.getPathToMongoDB().toString()));
 				FileUtils.copyURLToFile(new URL("http://fastdl.mongodb.org/win32/mongodb-win-i386-2.4.8.zip"), new File(MainFrame.path.getPathToMongoDB()));
+			} else if (System.getProperty("os.arch").contains("64")) {
+				FileUtils.copyURLToFile(new URL("http://fastdl.mongodb.org/win32/mongodb-win-i386-2.4.8.zip"), new File(MainFrame.path.getPathToMongoDB()));
+			} else {
+				System.out.println("Unknow architecture.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
