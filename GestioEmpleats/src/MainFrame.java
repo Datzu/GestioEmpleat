@@ -19,8 +19,10 @@ public class MainFrame extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		// System.out.println();
-		// System.out.println(System.getenv("SystemDrive"));
+		Permissions.createPermissionArray();
+		//System.out.println();
+		//System.out.println(System.getenv("SystemDrive"));
+		//Permissions.showPermissions();
 		if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
 			path.setPathToMongoDB(System.getenv("SystemDrive") + File.separator
 					+ "mongoDB");

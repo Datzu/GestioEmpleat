@@ -19,7 +19,16 @@ public final class Permissions {
 
 	public final static int hasPermission(int level, int permissionID) {
 		return permissionArray[level][permissionID];
-	}	
+	}
+	
+	public static void showPermissions() {
+		for (int i=0; i<permissionArray.length; i++) {
+			for (int j=0; j<permissionArray[i].length; j++) {
+				System.out.print(permissionArray[i][j]);
+			}
+			System.out.println();
+		}
+	}
 	
 	// 0 - 
 	// 1 - 
