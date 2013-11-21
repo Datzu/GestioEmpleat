@@ -53,7 +53,7 @@ public class MainFrame extends JFrame {
 				}
 			}
 		});
-		
+		System.exit(0);
 	}
 
 	/**
@@ -67,8 +67,8 @@ public class MainFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		FirstFrame firstFrame = new FirstFrame();
-		contentPane.add(firstFrame, BorderLayout.CENTER);
+//		FirstFrame firstFrame = new FirstFrame();
+//		contentPane.add(firstFrame, BorderLayout.CENTER);
 	}
 
 }
