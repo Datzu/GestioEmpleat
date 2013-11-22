@@ -5,11 +5,11 @@ public final class Permissions {
 	
 	public final static void createPermissionArray() {
 		// permissions array sets
-		final int administratorArray[] = {1,1,1,1,1,1,1,1,1,1,1,1,1};
-		final int programmerArray[] =	 {0,0,0,0,0,0,0,0,0,0,0,0,0};
-		final int secretaryArray[] =	 {0,0,0,0,0,0,0,0,0,0,0,0,0};
-		final int internArray[] =		 {0,0,0,0,0,0,0,0,0,0,0,0,0};
-		final int commercialArray[] =	 {0,0,0,0,0,0,0,0,0,0,0,0,0};
+		final int administratorArray[] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+		final int programmerArray[] =	 {0,1,0,0,1,0,0,1,1,0,1,0,1,1,1,1};
+		final int secretaryArray[] =	 {1,0,1,1,0,0,1,0,1,1,0,0,1,1,1,1};
+		final int internArray[] =		 {0,1,0,0,0,0,0,0,1,0,0,0,1,1,1,1};
+		final int commercialArray[] =	 {0,0,0,0,0,0,0,0,1,0,0,0,1,1,1,1};
 		permissionArray[0] = administratorArray;
 		permissionArray[1] = programmerArray;
 		permissionArray[2] = secretaryArray;
@@ -34,19 +34,21 @@ public final class Permissions {
 		}
 	}
 	
-	// 0 - ID0
-	// 1 - ID1
-	// 2 - ID2
-	// 3 - ID3
-	// 4 - ID4
-	// 5 - ID5
-	// 6 - ID6
-	// 7 - ID7
-	// 8 - ID8
-	// 9 - ID9
-	// 10 - ID10
-	// 11 - ID11
-	// 12 - ID12
-	// 13 - ID13
+	// 0 - mostart empleat
+	// 1 - mostart tasca
+	// 2 - mostrar incidencia
+	// 3 - modificar empleat
+	// 4 - modificar tasca
+	// 5 - modificar indicencia
+	// 6 - nou empleat
+	// 7 - nova tasca
+	// 8 - nova incidencia
+	// 9 - borrar empleat
+	// 10 - borrar tasca
+	// 11 - borrar incidencia
+	// 12 - mostrar mateix empleat
+	// 13 - entrar a settings
+	// 14 - modificar perfil d'un mateix
+	// 15 - sortir del programa
 	
 }
