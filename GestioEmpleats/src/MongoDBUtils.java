@@ -35,7 +35,6 @@ public class MongoDBUtils {
 	public static void startDownloadMongoDB() {
 		System.out.println("Starting download of mongoDB...");
 		System.setProperty("http.agent", "Mozilla/5.0 (X11; Linux i686; rv:21.0) Gecko/20100101 Firefox/21.0");
-		
 		try {
 			if (System.getProperty("os.arch").contains("86") || System.getProperty("os.arch").contains("i386")) {
 				FileUtils.copyURLToFile(new URL("http://fastdl.mongodb.org/win32/mongodb-win32-i386-2.4.8.zip"), new File(MainFrame.path.getPathToMongoDB()+File.separator+"mongoDB.zip"));
