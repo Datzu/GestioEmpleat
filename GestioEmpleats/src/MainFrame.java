@@ -14,10 +14,7 @@ public class MainFrame extends JFrame {
 	private JPanel contentPane;
 	
 	static Paths path = new Paths();
-	
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		Permissions.createPermissionArray();
 		//System.out.println();
@@ -30,14 +27,11 @@ public class MainFrame extends JFrame {
 					+ "mongoDB" + File.separator + "bin" + "\\mongod.exe");
 			File checkPathToExe = new File(path.getPathToExe());
 			try {
-				if (checkPathToExe.exists()) {
-					MongoDBUtils.startMongoDExe();
-				} else {
+				if (!checkPathToExe.exists()) {
 					MongoDBUtils.startDownloadMongoDB();
 					MongoDBUtils.installMongoDExe();
-					MongoDBUtils.startMongoDExe();
 				}
-
+				MongoDBUtils.startMongoDExe();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -52,22 +46,18 @@ public class MainFrame extends JFrame {
 				}
 			}
 		});
-		System.exit(0);
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 384, 191);
+		setBounds(100, 100, 450, 187);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-//		FirstFrame firstFrame = new FirstFrame();
-//		contentPane.add(firstFrame, BorderLayout.CENTER);
+		FirstFrame firstFrame = new FirstFrame();
+		contentPane.add(firstFrame, BorderLayout.CENTER);
 	}
 
 }
