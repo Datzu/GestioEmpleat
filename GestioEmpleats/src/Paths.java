@@ -2,7 +2,6 @@ public class Paths {
 
 	private String pathToExe;
 	private String pathToMongoDB;
-	private String pathToMongoDBBin;
 
 	public Paths() {
 		
@@ -22,14 +21,6 @@ public class Paths {
 
 	public void setPathToMongoDB(String path) {
 		this.pathToMongoDB = path;
-	}
-	
-	public String getPathToMongoDBBin() {
-		return pathToMongoDBBin;
-	}
-
-	public void setPathToMongoDBBin(String path) {
-		this.pathToMongoDBBin = path;
 	}
 
 }

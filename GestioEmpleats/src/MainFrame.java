@@ -28,8 +28,6 @@ public class MainFrame extends JFrame {
 					+ "mongoDB");
 			path.setPathToExe(System.getenv("SystemDrive") + File.separator
 					+ "mongoDB" + File.separator + "bin" + "\\mongod.exe");
-			path.setPathToMongoDBBin(System.getenv("SystemDrive") + File.separator
-					+ "mongoDB" + File.separator + "bin");
 			File checkPathToExe = new File(path.getPathToExe());
 			try {
 				if (checkPathToExe.exists()) {
@@ -37,6 +35,7 @@ public class MainFrame extends JFrame {
 				} else {
 					MongoDBUtils.startDownloadMongoDB();
 					MongoDBUtils.installMongoDExe();
+					MongoDBUtils.startMongoDExe();
 				}
 
 			} catch (Exception e) {
