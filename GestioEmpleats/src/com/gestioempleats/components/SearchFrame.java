@@ -19,7 +19,7 @@ public class SearchFrame extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public SearchFrame() {
+	public SearchFrame(String titleFrame) {
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(87dlu;default)"),
