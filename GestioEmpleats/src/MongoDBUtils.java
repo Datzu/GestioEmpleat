@@ -35,7 +35,7 @@ public class MongoDBUtils {
 				File srcDir = new File(MainFrame.path.getPathToMongoDB()+File.separator+name86MongoDB);
 				try {
 					FileUtils.copyDirectory(srcDir, destDir);
-					srcDir.delete();
+					MongoDBUtils.rmdir(srcDir);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -43,7 +43,7 @@ public class MongoDBUtils {
 				File srcDir = new File(MainFrame.path.getPathToMongoDB()+File.separator+name64MongoDB);
 				try {
 					FileUtils.copyDirectory(srcDir, destDir);
-					srcDir.delete();
+					MongoDBUtils.rmdir(srcDir);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -60,9 +60,9 @@ public class MongoDBUtils {
 		System.setProperty("http.agent", "Mozilla/5.0 (X11; Linux i686; rv:21.0) Gecko/20100101 Firefox/21.0");
 		try {
 			if (System.getProperty("os.arch").contains("86") || System.getProperty("os.arch").contains("i386")) {
-				FileUtils.copyURLToFile(new URL("http://fastdl.mongodb.org/win32/"+MongoDBUtils.name86MongoDB+MongoDBUtils.fileRoot), new File(MainFrame.path.getPathToMongoDB()+File.separator+"mongoDB.zip"));
+				//FileUtils.copyURLToFile(new URL("http://fastdl.mongodb.org/win32/"+MongoDBUtils.name86MongoDB+MongoDBUtils.fileRoot), new File(MainFrame.path.getPathToMongoDB()+File.separator+"mongoDB.zip"));
 			} else if (System.getProperty("os.arch").contains("64")) {
-				FileUtils.copyURLToFile(new URL("http://fastdl.mongodb.org/win32/"+MongoDBUtils.name64MongoDB+MongoDBUtils.fileRoot), new File(MainFrame.path.getPathToMongoDB()+File.separator+"mongoDB.zip"));
+				//FileUtils.copyURLToFile(new URL("http://fastdl.mongodb.org/win32/"+MongoDBUtils.name64MongoDB+MongoDBUtils.fileRoot), new File(MainFrame.path.getPathToMongoDB()+File.separator+"mongoDB.zip"));
 			} else {
 				System.out.println("Unknow architecture.");
 			}
@@ -74,5 +74,23 @@ public class MongoDBUtils {
 	public static void saveDataToDB() {
 		
 	}
+	
+	public static void rmdir(final File folder) {
+	      if (folder.isDirectory()) {
+	          File[] list = folder.listFiles();
+	          if (list != null) {
+	              for (int i = 0; i < list.length; i++) {
+	                  File tmpF = list[i];
+	                  if (tmpF.isDirectory()) {
+	                      rmdir(tmpF);
+	                  }
+	                  tmpF.delete();
+	              }
+	          }
+	          if (!folder.delete()) {
+	            System.out.println("can't delete folder : " + folder);
+	          }
+	      }
+	  }
 	
 }
