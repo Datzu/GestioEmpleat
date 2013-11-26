@@ -1,14 +1,18 @@
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.net.UnknownHostException;
 
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 
 import org.apache.commons.io.FileUtils;
 
+import com.mongodb.DB;
+import com.mongodb.MongoClient;
+
 public class MongoDBUtils {
-	
+
 	private static String name86MongoDB = "mongodb-win32-i386-2.4.8";
 	private static String name64MongoDB = "mongodb-win32-x86_64-2008plus-2.4.8";
 	private static String fileRoot = ".zip";
@@ -29,7 +33,7 @@ public class MongoDBUtils {
 		ZipFile zipFile;
 		File destDir = new File(MainFrame.path.getPathToMongoDB()+File.separator);
 		try {
-			zipFile = new ZipFile(MainFrame.path.getPathToMongoDB()+File.separator+"mongoDB.zip");
+			zipFile = new ZipFile(MainFrame.path.getPathToMongoDB()+File.separator+"mongoDB"+fileRoot);
 			zipFile.extractAll(MainFrame.path.getPathToMongoDB());
 			if (System.getProperty("os.arch").contains("86") || System.getProperty("os.arch").contains("i386")) {
 				File srcDir = new File(MainFrame.path.getPathToMongoDB()+File.separator+name86MongoDB);
@@ -60,9 +64,9 @@ public class MongoDBUtils {
 		System.setProperty("http.agent", "Mozilla/5.0 (X11; Linux i686; rv:21.0) Gecko/20100101 Firefox/21.0");
 		try {
 			if (System.getProperty("os.arch").contains("86") || System.getProperty("os.arch").contains("i386")) {
-				//FileUtils.copyURLToFile(new URL("http://fastdl.mongodb.org/win32/"+MongoDBUtils.name86MongoDB+MongoDBUtils.fileRoot), new File(MainFrame.path.getPathToMongoDB()+File.separator+"mongoDB.zip"));
+				FileUtils.copyURLToFile(new URL("http://fastdl.mongodb.org/win32/"+MongoDBUtils.name86MongoDB+MongoDBUtils.fileRoot), new File(MainFrame.path.getPathToMongoDB()+File.separator+"mongoDB"+fileRoot));
 			} else if (System.getProperty("os.arch").contains("64")) {
-				//FileUtils.copyURLToFile(new URL("http://fastdl.mongodb.org/win32/"+MongoDBUtils.name64MongoDB+MongoDBUtils.fileRoot), new File(MainFrame.path.getPathToMongoDB()+File.separator+"mongoDB.zip"));
+				FileUtils.copyURLToFile(new URL("http://fastdl.mongodb.org/win32/"+MongoDBUtils.name64MongoDB+MongoDBUtils.fileRoot), new File(MainFrame.path.getPathToMongoDB()+File.separator+"mongoDB"+fileRoot));
 			} else {
 				System.out.println("Unknow architecture.");
 			}
@@ -92,5 +96,15 @@ public class MongoDBUtils {
 	          }
 	      }
 	  }
+	
+	public static void connectDatabase() {
+		MongoClient mongoClient;
+		try {
+			mongoClient = new MongoClient( "localhost" );
+			DB db = mongoClient.getDB( "mydb" );
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }
