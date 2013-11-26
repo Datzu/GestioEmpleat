@@ -10,6 +10,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import com.gestioempleats.employeetypes.Admin;
+import com.gestioempleats.start.MainFrame;
 import com.gestioempleats.utils.MongoDBUtils;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -75,9 +76,8 @@ public class FirstFrame extends JPanel {
 						mAdmin.put("password", data[1]);
 						MongoDBUtils.db = MongoDBUtils.mongoClient.getDB("db");
 						mAdmin.saveToMongo();
-						MongoDBUtils.showTables();
+						MainFrame.loadLoginFrame();
 						
-						System.exit(0);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -1,4 +1,14 @@
-Una empresa em demana un programa que gestioni el personal. Els punts que s'han de resoldre són:
+ db["_nom_taula"].find() -> Mostrar els objectes guardats de la taula adminUser
+ 
+  db._nom_taula.find({"_camp": "_valor_a_buscar"}) Fer una cerca d'un unic objecte
+ 
+ ----------------- Comprovar si existeix un objecte -------------- 
+DBCollection coll = db.getCollection("_taula");  // Retorna la taula és una [collection]
+DBObject myDoc = coll.findOne(); // Retorna el primer que troba
+System.out.println(myDoc);
+-------------------------------------------------------------------
+ 
+ Una empresa em demana un programa que gestioni el personal. Els punts que s'han de resoldre són:
 
 Alta/baixa d'empleats.
 Assignació de sous.
