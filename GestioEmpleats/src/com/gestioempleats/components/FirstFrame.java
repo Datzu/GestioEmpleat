@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import com.gestioempleats.employeetypes.Admin;
+import com.gestioempleats.utils.MongoDBUtils;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
@@ -67,6 +69,15 @@ public class FirstFrame extends JPanel {
 									.toString())) {
 						data[0] = textFieldUser.getText().toString();
 						data[1] = passwordFieldPassword.getText().toString();
+						Admin mAdmin = new Admin();
+						mAdmin.set(data);
+						mAdmin.put("user", data[0]);
+						mAdmin.put("password", data[1]);
+						MongoDBUtils.db = MongoDBUtils.mongoClient.getDB("db");
+						mAdmin.saveToMongo();
+						MongoDBUtils.showTables();
+						
+						System.exit(0);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

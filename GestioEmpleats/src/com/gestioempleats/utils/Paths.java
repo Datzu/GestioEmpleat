@@ -1,3 +1,4 @@
+package com.gestioempleats.utils;
 public class Paths {
 
 	private String pathToExe;

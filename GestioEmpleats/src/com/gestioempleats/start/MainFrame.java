@@ -1,3 +1,4 @@
+package com.gestioempleats.start;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.File;
@@ -7,13 +8,17 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.gestioempleats.components.FirstFrame;
+import com.gestioempleats.components.LoginFrame;
+import com.gestioempleats.utils.MongoDBUtils;
+import com.gestioempleats.utils.Paths;
+import com.gestioempleats.utils.Permissions;
 
 
 public class MainFrame extends JFrame {
 
 	private JPanel contentPane;
 	
-	static Paths path = new Paths();
+	public static Paths path = new Paths();
 
 	public static void main(String[] args) {
 		Permissions.createPermissionArray();
@@ -30,6 +35,7 @@ public class MainFrame extends JFrame {
 					MongoDBUtils.installMongoDExe();
 				}
 				MongoDBUtils.startMongoDExe();
+				MongoDBUtils.connectDatabase();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -54,8 +60,14 @@ public class MainFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		FirstFrame firstFrame = new FirstFrame();
-		contentPane.add(firstFrame, BorderLayout.CENTER);
+		if (MongoDBUtils.existsEmployee()) {
+			LoginFrame loginFrame = new LoginFrame();
+			contentPane.add(loginFrame, BorderLayout.CENTER);
+		} else {
+			FirstFrame firstFrame = new FirstFrame();
+			contentPane.add(firstFrame, BorderLayout.CENTER);
+		}
+		
 	}
 
 }

@@ -1,13 +1,16 @@
+package com.gestioempleats.utils;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.util.Set;
 
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 
 import org.apache.commons.io.FileUtils;
 
+import com.gestioempleats.start.MainFrame;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
@@ -16,6 +19,9 @@ public class MongoDBUtils {
 	private static String name86MongoDB = "mongodb-win32-i386-2.4.8";
 	private static String name64MongoDB = "mongodb-win32-x86_64-2008plus-2.4.8";
 	private static String fileRoot = ".zip";
+	
+	public static MongoClient mongoClient;
+	public static DB db;
 	
 	public static void startMongoDExe() {
 		
@@ -98,12 +104,26 @@ public class MongoDBUtils {
 	  }
 	
 	public static void connectDatabase() {
-		MongoClient mongoClient;
 		try {
+			System.out.println("Connecting to MongoDB...");
 			mongoClient = new MongoClient( "localhost" );
-			DB db = mongoClient.getDB( "mydb" );
+			db = mongoClient.getDB( "mydb" );
+			System.out.println("Connected to MongoDB sucefully!");
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public static boolean existsEmployee() {
+		
+		return false;
+	}
+	
+	public static void showTables() {
+		Set<String> tables = MongoDBUtils.db.getCollectionNames();
+		
+		for(String coll : tables){
+			System.out.println(coll);
 		}
 	}
 	

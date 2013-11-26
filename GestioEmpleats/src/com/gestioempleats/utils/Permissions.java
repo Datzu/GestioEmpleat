@@ -1,3 +1,4 @@
+package com.gestioempleats.utils;
 
 public final class Permissions {
 	
