@@ -31,7 +31,7 @@ public class MainFrame extends JFrame {
 			File checkPathToExe = new File(path.getPathToExe());
 			try {
 				if (!checkPathToExe.exists()) {
-					MongoDBUtils.startDownloadMongoDB();
+					//MongoDBUtils.startDownloadMongoDB();
 					MongoDBUtils.installMongoDExe();
 				}
 				MongoDBUtils.startMongoDExe();
