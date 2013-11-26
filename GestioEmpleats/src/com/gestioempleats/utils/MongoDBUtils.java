@@ -138,7 +138,7 @@ public class MongoDBUtils {
 		}
 	}
 
-	public static boolean existsEmployee(String name) {
+	public static boolean existsSuperAdmin() {
 		DBCollection coll = db.getCollection("adminUser");
 		DBObject myDoc = coll.findOne();
 		// System.out.println(myDoc);

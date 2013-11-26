@@ -61,9 +61,11 @@ public class MainFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
-		if (MongoDBUtils.existsEmployee("superadmin")) {
-			LoginFrame loginFrame = new LoginFrame();
-			contentPane.add(loginFrame, BorderLayout.CENTER);
+		if (MongoDBUtils.existsSuperAdmin()) {
+			//LoginFrame loginFrame = new LoginFrame();
+			//contentPane.add(loginFrame, BorderLayout.CENTER);
+			loadLoginFrame();
+
 		} else {
 			FirstFrame firstFrame = new FirstFrame();
 			contentPane.add(firstFrame, BorderLayout.CENTER);
@@ -74,17 +76,10 @@ public class MainFrame extends JFrame {
 	public static void loadLoginFrame() {
 		LoginFrame loginFrame = new LoginFrame();
 		contentPane.removeAll();
-		contentPane.getComponent(0).setVisible(false);
-		System.out.println(contentPane.getParent().toString());
-		//contentPane.add(loginFrame, BorderLayout.CENTER);
-		MainFrame frame = new MainFrame();
-		frame.setVisible(true);
-		frame.add(loginFrame);
-		//contentPane.repaint();
-		//frame.setBounds(0, 0, 300, 300);
-		//frame.setLocationRelativeTo(null);
-		//frame.setResizable(false);
-		//System.out.println(contentPane.getComponent(0).toString());
+		contentPane.add(loginFrame, BorderLayout.CENTER);
+		contentPane.revalidate();
+		contentPane.repaint();
+		contentPane.getRootPane().getParent().setSize(320, 285);
 
 	}
 }
