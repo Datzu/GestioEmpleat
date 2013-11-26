@@ -145,18 +145,16 @@ public class MongoDBUtils {
 		try {
 			String existsObject = myDoc.toString();
 			if (existsObject.contains("_id")) {
-				// System.out.println("Trobat");
+				System.out.println("Loading " + existsObject);
 				return true;
 			} else {
-				// System.out.println("NO Trobat");
+				System.out.println(existsObject + " not found!");
 				return false;
-
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;
-
 	}
 
 	public static void showTables() {
@@ -166,5 +164,4 @@ public class MongoDBUtils {
 			System.out.println(coll);
 		}
 	}
-
 }

@@ -87,5 +87,4 @@ public class FirstFrame extends JPanel {
 		});
 		add(btnCreate, "4, 10");
 	}
-
 }

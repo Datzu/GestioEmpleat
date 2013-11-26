@@ -1,10 +1,10 @@
 package com.gestioempleats.start;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,6 +29,17 @@ public class MainFrame extends JFrame {
 					+ "mongoDB");
 			path.setPathToExe(System.getenv("SystemDrive") + File.separator
 					+ "mongoDB" + File.separator + "bin" + "\\mongod.exe");
+			path.setPathToDB(System.getenv("SystemDrive") + File.separator
+					+ "data" + File.separator + "db");
+			File checkPathToDB = new File(path.getPathToDB());
+			System.out.println(checkPathToDB.getAbsolutePath());
+			try {
+				if (!checkPathToDB.exists()) {
+					checkPathToDB.mkdirs();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			File checkPathToExe = new File(path.getPathToExe());
 			try {
 				if (!checkPathToExe.exists()) {
@@ -60,17 +71,22 @@ public class MainFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		this.addWindowListener(new java.awt.event.WindowAdapter() {
+			public void windowsClosing(WindowEvent winEvt) {
+				try {
+					Runtime.getRuntime().exec("taskkill /F /IM mongod.exe");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
 		if (MongoDBUtils.existsSuperAdmin()) {
-			//LoginFrame loginFrame = new LoginFrame();
-			//contentPane.add(loginFrame, BorderLayout.CENTER);
 			loadLoginFrame();
-
 		} else {
 			FirstFrame firstFrame = new FirstFrame();
 			contentPane.add(firstFrame, BorderLayout.CENTER);
 		}
-
 	}
 
 	public static void loadLoginFrame() {
@@ -80,6 +96,6 @@ public class MainFrame extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 		contentPane.getRootPane().getParent().setSize(320, 285);
-
 	}
+
 }
