@@ -7,9 +7,9 @@ public class Paths {
 	private String pathToDB;
 
 	public Paths() {
-		
+
 	}
-	
+
 	public String getPathToExe() {
 		return pathToExe;
 	}
@@ -25,11 +25,11 @@ public class Paths {
 	public void setPathToMongoDB(String path) {
 		this.pathToMongoDB = path;
 	}
-	
+
 	public String getPathToDB() {
 		return pathToDB;
 	}
-	
+
 	public void setPathToDB(String path) {
 		this.pathToDB = path;
 	}

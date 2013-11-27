@@ -11,6 +11,7 @@ import net.lingala.zip4j.exception.ZipException;
 
 import org.apache.commons.io.FileUtils;
 
+import com.gestioempleats.employeetypes.Admin;
 import com.gestioempleats.start.MainFrame;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -29,7 +30,6 @@ public class MongoDBUtils {
 	public static DB db;
 
 	public static void startMongoDExe() {
-
 		try {
 			System.out.println("Starting Windows mongoDB server on "
 					+ MainFrame.path.getPathToExe());
@@ -128,12 +128,12 @@ public class MongoDBUtils {
 	}
 
 	public static void connectDatabase() {
+		System.out.println("Connecting to MongoDB...");
 		try {
-			System.out.println("Connecting to MongoDB...");
 			mongoClient = new MongoClient("localhost");
 			db = mongoClient.getDB("db");
 			System.out.println("Connected to MongoDB sucefully!");
-		} catch (UnknownHostException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
