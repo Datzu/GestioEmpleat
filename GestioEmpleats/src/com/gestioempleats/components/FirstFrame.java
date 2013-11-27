@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 
 import com.gestioempleats.employeetypes.Admin;
 import com.gestioempleats.start.MainFrame;
+import com.gestioempleats.utils.Encrypt;
 import com.gestioempleats.utils.MongoDBUtils;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -69,6 +70,7 @@ public class FirstFrame extends JPanel {
 							.equals(passwordFieldValidatePassword.getText()
 									.toString())) {
 						data[0] = textFieldUser.getText().toString();
+						// data[0] = Encrypt.encrypt(data[1]); // TODO encrypt password
 						data[1] = passwordFieldPassword.getText().toString();
 						Admin mAdmin = new Admin();
 						mAdmin.set(data);

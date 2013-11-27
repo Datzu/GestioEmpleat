@@ -32,7 +32,7 @@ public class MongoDBUtils {
 	public static void startMongoDExe() {
 		try {
 			System.out.println("Starting Windows mongoDB server on "
-					+ MainFrame.path.getPathToExe());
+					+ MainFrame.path.getPathToExe() + "...");
 			Runtime.getRuntime().exec(MainFrame.path.getPathToExe());
 			System.out.println("mongod.exe started sucefully!");
 		} catch (IOException e) {
@@ -42,7 +42,7 @@ public class MongoDBUtils {
 
 	public static void installMongoDExe() {
 		System.out.println("Starting install of mongoDB on "
-				+ MainFrame.path.getPathToMongoDB());
+				+ MainFrame.path.getPathToMongoDB() + "...");
 		ZipFile zipFile;
 		File destDir = new File(MainFrame.path.getPathToMongoDB()
 				+ File.separator);
