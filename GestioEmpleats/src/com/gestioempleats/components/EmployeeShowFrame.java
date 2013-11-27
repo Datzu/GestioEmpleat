@@ -22,22 +22,8 @@ public class EmployeeShowFrame extends JPanel {
 		
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(87dlu;default)"),
-				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,},
+				ColumnSpec.decode("max(87dlu;default)"),},
 			new RowSpec[] {
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
@@ -105,15 +91,6 @@ public class EmployeeShowFrame extends JPanel {
 		
 		JLabel lblIncentives = new JLabel(Incentives);
 		add(lblIncentives, "2, 30, right, default");
-		
-		JLabel lblUser = new JLabel(User);
-		add(lblUser, "2, 34, right, default");
-		
-		JLabel lblPassword = new JLabel(Password);
-		add(lblPassword, "2, 36, right, default");
-		
-		JLabel lblConfirmPassword = new JLabel(ConfirmPassword);
-		add(lblConfirmPassword, "2, 38, right, default");
 
 	}
 

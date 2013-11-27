@@ -21,9 +21,6 @@ public class EmployeeInfoFrame extends JPanel {
 	private JTextField textFieldDateContract;
 	private JTextField textFieldSalary;
 	private JTextField textFieldIncentives;
-	private JTextField textFieldUser;
-	private JTextField textFieldPassword;
-	private JTextField textFieldConfirmPassword;
 
 	/**
 	 * Create the panel.
@@ -31,22 +28,8 @@ public class EmployeeInfoFrame extends JPanel {
 	public EmployeeInfoFrame() {
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(87dlu;default):grow"),
-				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,},
+				ColumnSpec.decode("max(251dlu;default):grow"),},
 			new RowSpec[] {
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
@@ -79,7 +62,7 @@ public class EmployeeInfoFrame extends JPanel {
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
 		textFieldId = new JTextField();
-		add(textFieldId, "2, 4, fill, default");
+		add(textFieldId, "2, 4");
 		textFieldId.setColumns(10);
 		
 		textFieldDNI = new JTextField();
@@ -125,18 +108,6 @@ public class EmployeeInfoFrame extends JPanel {
 		textFieldIncentives = new JTextField();
 		add(textFieldIncentives, "2, 30, fill, default");
 		textFieldIncentives.setColumns(10);
-		
-		textFieldUser = new JTextField();
-		add(textFieldUser, "2, 34, fill, default");
-		textFieldUser.setColumns(10);
-		
-		textFieldPassword = new JTextField();
-		add(textFieldPassword, "2, 36, fill, default");
-		textFieldPassword.setColumns(10);
-		
-		textFieldConfirmPassword = new JTextField();
-		add(textFieldConfirmPassword, "2, 38, fill, default");
-		textFieldConfirmPassword.setColumns(10);
 
 	}
 
