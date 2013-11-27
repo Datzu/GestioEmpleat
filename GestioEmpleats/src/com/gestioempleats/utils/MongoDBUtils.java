@@ -145,10 +145,10 @@ public class MongoDBUtils {
 		try {
 			String existsObject = myDoc.toString();
 			if (existsObject.contains("_id")) {
-				System.out.println("Loading " + existsObject);
+				System.out.println("Found superAdmin: " + existsObject);
 				return true;
 			} else {
-				System.out.println(existsObject + " not found!");
+				System.out.println("SuperAdmin not found!");
 				return false;
 			}
 		} catch (Exception e) {
