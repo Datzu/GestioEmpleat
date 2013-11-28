@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import com.gestioempleats.components.FirstFrame;
 import com.gestioempleats.components.HomeFrame;
 import com.gestioempleats.components.LoginFrame;
+import com.gestioempleats.utils.Encrypt;
 import com.gestioempleats.utils.MongoDBUtils;
 import com.gestioempleats.utils.Paths;
 import com.gestioempleats.utils.Permissions;
