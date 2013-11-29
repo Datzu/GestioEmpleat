@@ -51,6 +51,8 @@ public class MongoDBUtils {
 			zipFile = new ZipFile(MainFrame.path.getPathToMongoDB()
 					+ File.separator + "mongoDB" + fileExt);
 			zipFile.extractAll(MainFrame.path.getPathToMongoDB());
+			System.out.println(System.clearProperty("os.arch"));
+
 			if (System.getProperty("os.arch").contains("86")
 					|| System.getProperty("os.arch").contains("i386")) {
 				File srcDir = new File(MainFrame.path.getPathToMongoDB()
@@ -104,7 +106,6 @@ public class MongoDBUtils {
 			}
 		} catch (Exception e) {
 			System.out.println("Failed getting system architecture.");
-			e.printStackTrace();
 		}
 	}
 

@@ -18,13 +18,13 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-public class FirtsFrame extends JPanel {
+public class FirstFrame extends JPanel {
 	private static JTextField textFieldUser;
 	private static JPasswordField passwordFieldPassword;
 	private static JPasswordField passwordFieldValidatePassword;
 	private static JButton btnCreate;
 
-	public FirtsFrame() {
+	public FirstFrame() {
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(73dlu;default)"),

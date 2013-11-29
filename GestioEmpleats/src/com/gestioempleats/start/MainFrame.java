@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.gestioempleats.components.FirtsFrame;
+import com.gestioempleats.components.FirstFrame;
 import com.gestioempleats.components.HomeFrame;
 import com.gestioempleats.components.LoadingFrame;
 import com.gestioempleats.components.LoginFrame;
@@ -146,7 +146,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	public static void loadFirtsFrame() {
-		FirtsFrame firtsFrame = new FirtsFrame();
+		FirstFrame firtsFrame = new FirstFrame();
 		contentPane.removeAll();
 		contentPane.add(firtsFrame, BorderLayout.CENTER);
 		contentPane.revalidate();
