@@ -24,7 +24,7 @@ public class MongoDBUtils {
 
 	private static String name86MongoDB = "mongodb-win32-i386-2.4.8";
 	private static String name64MongoDB = "mongodb-win32-x86_64-2008plus-2.4.8";
-	private static String fileRoot = ".zip";
+	private static String fileExt = ".zip";
 
 	public static MongoClient mongoClient;
 	public static DB db;
@@ -36,6 +36,7 @@ public class MongoDBUtils {
 			Runtime.getRuntime().exec(MainFrame.path.getPathToExe());
 			System.out.println("mongod.exe started sucefully!");
 		} catch (IOException e) {
+			System.out.println("Failder loading mongod.exe!");
 			e.printStackTrace();
 		}
 	}
@@ -48,7 +49,7 @@ public class MongoDBUtils {
 				+ File.separator);
 		try {
 			zipFile = new ZipFile(MainFrame.path.getPathToMongoDB()
-					+ File.separator + "mongoDB" + fileRoot);
+					+ File.separator + "mongoDB" + fileExt);
 			zipFile.extractAll(MainFrame.path.getPathToMongoDB());
 			if (System.getProperty("os.arch").contains("86")
 					|| System.getProperty("os.arch").contains("i386")) {
@@ -56,7 +57,7 @@ public class MongoDBUtils {
 						+ File.separator + name86MongoDB);
 				try {
 					FileUtils.copyDirectory(srcDir, destDir);
-					MongoDBUtils.rmdir(srcDir);
+					Paths.rmdir(srcDir);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -65,7 +66,7 @@ public class MongoDBUtils {
 						+ File.separator + name64MongoDB);
 				try {
 					FileUtils.copyDirectory(srcDir, destDir);
-					MongoDBUtils.rmdir(srcDir);
+					Paths.rmdir(srcDir);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -73,6 +74,7 @@ public class MongoDBUtils {
 				System.out.println("Unknow architecture.");
 			}
 		} catch (ZipException e) {
+			System.out.println("Failed getting system architecture.");
 			e.printStackTrace();
 		}
 	}
@@ -87,20 +89,21 @@ public class MongoDBUtils {
 				FileUtils.copyURLToFile(new URL(
 						"http://fastdl.mongodb.org/win32/"
 								+ MongoDBUtils.name86MongoDB
-								+ MongoDBUtils.fileRoot), new File(
+								+ MongoDBUtils.fileExt), new File(
 						MainFrame.path.getPathToMongoDB() + File.separator
-								+ "mongoDB" + fileRoot));
+								+ "mongoDB" + fileExt));
 			} else if (System.getProperty("os.arch").contains("64")) {
 				FileUtils.copyURLToFile(new URL(
 						"http://fastdl.mongodb.org/win32/"
 								+ MongoDBUtils.name64MongoDB
-								+ MongoDBUtils.fileRoot), new File(
+								+ MongoDBUtils.fileExt), new File(
 						MainFrame.path.getPathToMongoDB() + File.separator
-								+ "mongoDB" + fileRoot));
+								+ "mongoDB" + fileExt));
 			} else {
 				System.out.println("Unknow architecture.");
 			}
 		} catch (Exception e) {
+			System.out.println("Failed getting system architecture.");
 			e.printStackTrace();
 		}
 	}
@@ -109,50 +112,37 @@ public class MongoDBUtils {
 
 	}
 
-	public static void rmdir(final File folder) {
-		if (folder.isDirectory()) {
-			File[] list = folder.listFiles();
-			if (list != null) {
-				for (int i = 0; i < list.length; i++) {
-					File tmpF = list[i];
-					if (tmpF.isDirectory()) {
-						rmdir(tmpF);
-					}
-					tmpF.delete();
-				}
-			}
-			if (!folder.delete()) {
-				System.out.println("can't delete folder : " + folder);
-			}
-		}
-	}
-
-	public static void connectDatabase() {
+	public static boolean connectDatabase() {
 		System.out.println("Connecting to MongoDB...");
 		try {
 			mongoClient = new MongoClient("localhost");
 			db = mongoClient.getDB("db");
 			System.out.println("Connected to MongoDB sucefully!");
+			return true;
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Failed connecting to MongoDB!");
+			return false;
+			// e.printStackTrace();
 		}
 	}
 
 	public static boolean existsSuperAdmin() {
-		DBCollection coll = db.getCollection("adminUser");
-		DBObject myDoc = coll.findOne();
-		// System.out.println(myDoc);
+		// System.out.println(myDoc); // debug mode
+		DBCollection coll;
 		try {
+			coll = db.getCollection("adminUser");
+		} catch (Exception e) {
+			return false;
+		}
+		try {
+			DBObject myDoc = coll.findOne();
 			String existsObject = myDoc.toString();
 			if (existsObject.contains("_id")) {
-				System.out.println("Found superAdmin: " + existsObject);
+				System.out.println("SuperAdmin found!");
 				return true;
-			} else {
-				System.out.println("SuperAdmin not found!");
-				return false;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			return false;
 		}
 		return false;
 	}

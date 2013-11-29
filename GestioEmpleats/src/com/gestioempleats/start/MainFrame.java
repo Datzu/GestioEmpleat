@@ -11,26 +11,34 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.gestioempleats.components.FirstFrame;
+import com.gestioempleats.components.FirtsFrame;
 import com.gestioempleats.components.HomeFrame;
+import com.gestioempleats.components.LoadingFrame;
 import com.gestioempleats.components.LoginFrame;
-import com.gestioempleats.utils.Encrypt;
 import com.gestioempleats.utils.MongoDBUtils;
 import com.gestioempleats.utils.Paths;
 import com.gestioempleats.utils.Permissions;
 
 public class MainFrame extends JFrame {
 	public static JPanel contentPane = new JPanel();
+	public static MainFrame frame;
 
 	public static Paths path = new Paths();
 
 	public static void main(String[] args) {
-		preLoad();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame();
+					frame = new MainFrame();
 					frame.setVisible(true);
+					frame.setResizable(false);
+					loadLoadingFrame();
+					preLoad();
+					if (MongoDBUtils.existsSuperAdmin()) {
+						loadLoginFrame();
+					} else {
+						loadFirtsFrame();
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -64,9 +72,13 @@ public class MainFrame extends JFrame {
 				}
 				System.out.println("Detected: " + System.getProperty("os.arch"));
 				MongoDBUtils.startMongoDExe();
-				MongoDBUtils.connectDatabase();
+				boolean check = false;
+				while (!check) {
+					check = MongoDBUtils.connectDatabase();
+				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				System.out.println("Failed loading mongod.exe!");
+				//e.printStackTrace();
 			}
 		}
 	}
@@ -121,13 +133,6 @@ public class MainFrame extends JFrame {
 				
 			}
 		});
-
-		if (MongoDBUtils.existsSuperAdmin()) {
-			loadLoginFrame();
-		} else {
-			FirstFrame firstFrame = new FirstFrame();
-			contentPane.add(firstFrame, BorderLayout.CENTER);
-		}
 	}
 	
 	public static void exit() {
@@ -138,6 +143,15 @@ public class MainFrame extends JFrame {
 			es.printStackTrace();
 		}
 		System.exit(0);
+	}
+	
+	public static void loadFirtsFrame() {
+		FirtsFrame firtsFrame = new FirtsFrame();
+		contentPane.removeAll();
+		contentPane.add(firtsFrame, BorderLayout.CENTER);
+		contentPane.revalidate();
+		contentPane.repaint();
+		contentPane.getRootPane().getParent().setSize(480, 200);
 	}
 	
 	public static void loadHomeFrame() {
@@ -156,6 +170,15 @@ public class MainFrame extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 		contentPane.getRootPane().getParent().setSize(320, 285);
+	}
+	
+	public static void loadLoadingFrame() {
+		LoadingFrame loadingFrame = new LoadingFrame();
+		contentPane.removeAll();
+		contentPane.add(loadingFrame, BorderLayout.CENTER);
+		contentPane.revalidate();
+		contentPane.repaint();
+		contentPane.getRootPane().getParent().setSize(400, 150);
 	}
 
 }

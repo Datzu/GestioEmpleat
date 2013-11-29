@@ -1,5 +1,7 @@
 package com.gestioempleats.utils;
 
+import java.io.File;
+
 public class Paths {
 
 	private String pathToExe;
@@ -32,6 +34,24 @@ public class Paths {
 
 	public void setPathToDB(String path) {
 		this.pathToDB = path;
+	}
+	
+	public static void rmdir(final File folder) {
+		if (folder.isDirectory()) {
+			File[] list = folder.listFiles();
+			if (list != null) {
+				for (int i = 0; i < list.length; i++) {
+					File tmpF = list[i];
+					if (tmpF.isDirectory()) {
+						rmdir(tmpF);
+					}
+					tmpF.delete();
+				}
+			}
+			if (!folder.delete()) {
+				System.out.println("can't delete folder : " + folder);
+			}
+		}
 	}
 
 }
