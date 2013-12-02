@@ -6,14 +6,16 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
 public class LoadingFrame extends JPanel {
+	
+	JLabel label = new JLabel();
 
 	/**
 	 * Create the panel.
 	 */
 	public LoadingFrame() {
 		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		//setLayout(null);
 		
-		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(LoadingFrame.class.getResource("/com/gestioempleats/components/loading.jpg")));
 		add(label);
 

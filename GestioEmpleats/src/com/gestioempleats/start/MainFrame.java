@@ -57,12 +57,14 @@ public class MainFrame extends JFrame {
 			path.setPathToDB(System.getenv("SystemDrive") + File.separator
 					+ "data" + File.separator + "db");
 			File checkPathToDB = new File(path.getPathToDB());
+			System.out.println("Detected: " + System.getProperty("os.arch"));
 			try {
 				if (!checkPathToDB.exists()) {
 					checkPathToDB.mkdirs();
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				System.out.println("Failed checking for the path to the mongoDB!");
+				System.exit(0);
 			}
 			File checkPathToExe = new File(path.getPathToExe());
 			try {
@@ -70,7 +72,6 @@ public class MainFrame extends JFrame {
 					MongoDBUtils.startDownloadMongoDB();
 					MongoDBUtils.installMongoDExe();
 				}
-				System.out.println("Detected: " + System.getProperty("os.arch"));
 				MongoDBUtils.startMongoDExe();
 				boolean check = false;
 				while (!check) {
@@ -78,7 +79,7 @@ public class MainFrame extends JFrame {
 				}
 			} catch (Exception e) {
 				System.out.println("Failed loading mongod.exe!");
-				//e.printStackTrace();
+				System.exit(0);
 			}
 		}
 	}

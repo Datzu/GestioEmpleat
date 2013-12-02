@@ -36,8 +36,8 @@ public class MongoDBUtils {
 			Runtime.getRuntime().exec(MainFrame.path.getPathToExe());
 			System.out.println("mongod.exe started sucefully!");
 		} catch (IOException e) {
-			System.out.println("Failder loading mongod.exe!");
-			e.printStackTrace();
+			System.out.println("Failed loading mongod.exe!");
+			System.exit(0);
 		}
 	}
 
@@ -48,10 +48,10 @@ public class MongoDBUtils {
 		File destDir = new File(MainFrame.path.getPathToMongoDB()
 				+ File.separator);
 		try {
+			System.out.println(System.getProperty("os.arch"));
 			zipFile = new ZipFile(MainFrame.path.getPathToMongoDB()
 					+ File.separator + "mongoDB" + fileExt);
 			zipFile.extractAll(MainFrame.path.getPathToMongoDB());
-			System.out.println(System.clearProperty("os.arch"));
 
 			if (System.getProperty("os.arch").contains("86")
 					|| System.getProperty("os.arch").contains("i386")) {
@@ -61,7 +61,8 @@ public class MongoDBUtils {
 					FileUtils.copyDirectory(srcDir, destDir);
 					Paths.rmdir(srcDir);
 				} catch (IOException e) {
-					e.printStackTrace();
+					System.out.println("Downloading file failed.");
+					System.exit(0);
 				}
 			} else if (System.getProperty("os.arch").contains("64")) {
 				File srcDir = new File(MainFrame.path.getPathToMongoDB()
@@ -70,14 +71,16 @@ public class MongoDBUtils {
 					FileUtils.copyDirectory(srcDir, destDir);
 					Paths.rmdir(srcDir);
 				} catch (IOException e) {
-					e.printStackTrace();
+					System.out.println("Downloading file failed.");
+					System.exit(0);
 				}
 			} else {
 				System.out.println("Unknow architecture.");
+				System.exit(0);
 			}
 		} catch (ZipException e) {
 			System.out.println("Failed getting system architecture.");
-			e.printStackTrace();
+			System.exit(0);
 		}
 	}
 
@@ -103,9 +106,11 @@ public class MongoDBUtils {
 								+ "mongoDB" + fileExt));
 			} else {
 				System.out.println("Unknow architecture.");
+				System.exit(0);
 			}
 		} catch (Exception e) {
-			System.out.println("Failed getting system architecture.");
+			System.out.println("Failed trying to download MongoDB.");
+			System.exit(0);
 		}
 	}
 
