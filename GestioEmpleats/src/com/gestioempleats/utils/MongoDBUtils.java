@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.URL;
-import java.net.UnknownHostException;
+import java.util.List;
 import java.util.Set;
 
 import net.lingala.zip4j.core.ZipFile;
@@ -12,7 +12,6 @@ import net.lingala.zip4j.exception.ZipException;
 
 import org.apache.commons.io.FileUtils;
 
-import com.gestioempleats.employeetypes.Admin;
 import com.gestioempleats.start.MainFrame;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -22,6 +21,7 @@ import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
 public class MongoDBUtils {
+	static DBCollection coll;
 
 	private static String name86MongoDB = "mongodb-win32-i386-2.4.8";
 	private static String name64MongoDB = "mongodb-win32-x86_64-2008plus-2.4.8";
@@ -121,8 +121,16 @@ public class MongoDBUtils {
 	public static boolean connectDatabase() {
 		System.out.println("Connecting to MongoDB...");
 		try {
-			mongoClient = new MongoClient( "localhost" , 27017 );
+			mongoClient = new MongoClient("localhost", 27017);
 			db = mongoClient.getDB("db");
+			try {
+				coll = db.getCollection("employee");
+
+			} catch (Exception e) {
+				System.out.println("Error getting the collection 'employee'.");
+				return false;
+			}
+
 			System.out.println("Connected to MongoDB sucefully!");
 			return true;
 		} catch (Exception e) {
@@ -131,26 +139,22 @@ public class MongoDBUtils {
 		}
 	}
 
-	public static boolean existsSuperAdmin() throws ConnectException {
-		// System.out.println(myDoc); // debug mode
-		DBCollection coll;
+	public static boolean existsSuperAdmin() {
 		try {
-			coll = db.getCollection("adminUser");
-		} catch (Exception e) {
-			System.out.println("Error getting the collection 'adminUser'.");
-			return false;
-		}
-		DBObject myDoc = coll.findOne();
-		if (myDoc == null) {
-			return false;
-		} else {
-			String existsObject = myDoc.toString();
-			if (existsObject.contains("_id")) {
-				System.out.println("SuperAdmin found!");
-			return true;
+
+			DBObject user = coll.findOne();
+			System.out.println("Cursor: " + user.toString());
+			if (user.containsKey("user")) {
+				//System.out.println(user.get("user"));
+				//System.out.println(user.get("password"));
+				return true;
 			} else {
+				System.out.println("User not found");
 				return false;
-			}	
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -160,5 +164,56 @@ public class MongoDBUtils {
 		for (String coll : tables) {
 			System.out.println(coll);
 		}
+	}
+
+	public static boolean findUser(String user, String password) {
+		BasicDBObject queryUser = new BasicDBObject();
+		queryUser.put("user", user);
+		DBCursor cursor = coll.find(queryUser);
+		if (cursor.hasNext()) {
+			DBObject userObject = cursor.next();
+			cursor.close();
+			return true;
+		} else {
+			System.out.println("User not found");
+			cursor.close();
+			return false;
+		}
+	}
+
+	public static void saveEmployee(int employeeId, String user,
+			String password, String name, String lastname1, String lastname2,
+			String birthday, String contractDate, float income, int level,
+			int type, String role, String shift, List<String> languages,
+			String origin) {
+		DBCollection table = MongoDBUtils.db.getCollection("employee");
+		BasicDBObject employeeObject = new BasicDBObject();
+		employeeObject.put("employeeId", employeeId);
+		employeeObject.put("user", user);
+		employeeObject.put("password", password);
+		employeeObject.put("name", name);
+		employeeObject.put("lastname1", lastname1);
+		employeeObject.put("lastname2", lastname2);
+		employeeObject.put("birthday", birthday);
+		employeeObject.put("contractDate", contractDate);
+		employeeObject.put("income", income);
+		employeeObject.put("level", level);
+
+		switch (type) {
+		case 0: // admin
+			employeeObject.put("role", role);
+			break;
+		case 1: // secre
+			employeeObject.put("shift", shift);
+			break;
+		case 2: // program
+			employeeObject.put("language", languages.toArray());
+			break;
+		case 3: // becari
+			employeeObject.put("origin", origin);
+			break;
+
+		}
+		table.insert(employeeObject);
 	}
 }

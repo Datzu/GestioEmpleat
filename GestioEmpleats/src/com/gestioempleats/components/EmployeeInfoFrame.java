@@ -3,10 +3,16 @@ package com.gestioempleats.components;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.gestioempleats.utils.MongoDBUtils;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+
+import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class EmployeeInfoFrame extends JPanel {
 	private JTextField textFieldId;
@@ -21,6 +27,7 @@ public class EmployeeInfoFrame extends JPanel {
 	private JTextField textFieldDateContract;
 	private JTextField textFieldSalary;
 	private JTextField textFieldIncentives;
+	private JButton btnSave;
 
 	/**
 	 * Create the panel.
@@ -28,8 +35,12 @@ public class EmployeeInfoFrame extends JPanel {
 	public EmployeeInfoFrame() {
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(251dlu;default):grow"),},
+				ColumnSpec.decode("max(117dlu;default):grow"),
+				FormFactory.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("max(177dlu;default)"),},
 			new RowSpec[] {
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
@@ -108,6 +119,33 @@ public class EmployeeInfoFrame extends JPanel {
 		textFieldIncentives = new JTextField();
 		add(textFieldIncentives, "2, 30, fill, default");
 		textFieldIncentives.setColumns(10);
+		
+		btnSave = new JButton("Guardar");
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*switch ()
+				case a:
+				break;
+				
+				MongoDBUtils.saveEmployee(
+						textFieldId.getText().toString(), 
+						user, 
+						password, 
+						textFieldName, 
+						textFieldSurname1, 
+						textFieldSurname2, 
+						textFieldDateBirth, 
+						textFieldDateContract, 
+						textFieldSalary, 
+						textFieldlevel, 
+						textFieldtype, 
+						textFieldrole, 
+						textFieldshift, 
+						textFieldlanguages, 
+						textFieldorigin);*/
+			}
+		});
+		add(btnSave, "2, 32");
 
 	}
 

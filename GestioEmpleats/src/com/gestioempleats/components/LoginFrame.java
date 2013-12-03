@@ -11,6 +11,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import com.gestioempleats.start.MainFrame;
+import com.gestioempleats.utils.Encrypt;
+import com.gestioempleats.utils.MongoDBUtils;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
@@ -69,7 +71,13 @@ public class LoginFrame extends JPanel {
 		btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MainFrame.loadHomeFrame();
+				//db.employee.find({"user":"user1"})
+				if(MongoDBUtils.findUser(textFieldUser.getText().toString(), Encrypt.encrypt(passwordFieldPassword.getText().toString()))){
+					MainFrame.loadHomeFrame();
+				}else{
+					System.out.println("Error no existeix");
+				}
+				
 			}
 		});
 		add(btnLogin, "4, 12, center, default");

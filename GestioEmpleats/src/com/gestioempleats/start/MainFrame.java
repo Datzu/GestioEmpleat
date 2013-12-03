@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.gestioempleats.components.EmployeeEditFrameComplete;
+import com.gestioempleats.components.EmployeeShowFrameComplete;
 import com.gestioempleats.components.FirstFrame;
 import com.gestioempleats.components.HomeFrame;
 import com.gestioempleats.components.LoadingFrame;
@@ -29,6 +31,7 @@ public class MainFrame extends JFrame {
 
 	public static Paths path = new Paths();
 
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,7 +47,7 @@ public class MainFrame extends JFrame {
 					}
 				} catch (Exception e) {
 					System.out.println("Failed loading the program! Please restart your programm.");
-					System.exit(0);
+					//System.exit(0);
 				}
 			}
 		});
@@ -87,10 +90,10 @@ public class MainFrame extends JFrame {
 					}
 				}
 				MongoDBUtils.startMongoDExe();
-				boolean check = false;
-				while (!check) {
-					check = MongoDBUtils.connectDatabase();
-				}
+				//boolean check = false;
+				//while (!check) {
+					MongoDBUtils.connectDatabase();
+				//}
 			} catch (Exception e) {
 				System.out.println("Failed loading mongod.exe!");
 				System.exit(0);
@@ -217,5 +220,25 @@ public class MainFrame extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 		contentPane.getRootPane().getParent().setSize(400, 500);
+	}	
+	
+	public static void loadEmployeeShowFrameComplete() {
+		EmployeeShowFrameComplete employeeShowFrameComplete = new EmployeeShowFrameComplete();
+		contentPane.removeAll();
+		contentPane.add(employeeShowFrameComplete, BorderLayout.CENTER);
+		contentPane.revalidate();
+		contentPane.repaint();
+		contentPane.getRootPane().getParent().setSize(400, 500);
+	}	
+	
+	public static void loadEmployeeEditFrameComplete() {
+		EmployeeEditFrameComplete employeeEditFrameComplete = new EmployeeEditFrameComplete();
+		contentPane.removeAll();
+		contentPane.add(employeeEditFrameComplete, BorderLayout.CENTER);
+		contentPane.revalidate();
+		contentPane.repaint();
+		contentPane.getRootPane().getParent().setSize(500, 500);
 	}
+	
+	
 }

@@ -8,10 +8,13 @@ package com.gestioempleats.components;
  */
 import javax.swing.JPanel;
 import javax.swing.JButton;
+
+import com.gestioempleats.start.MainFrame;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.RowSpec;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -40,9 +43,11 @@ public class ManageFrame extends JPanel {
 		btnNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switch (ManageFrame.n){
-					case 0:
+					case 0: // admin
+						MainFrame.loadEmployeeEditFrameComplete();
 						break;
-					case 1:
+					case 1:		
+						MainFrame.loadEmployeeEditFrameComplete();
 						break;
 					case 2:
 						break;
@@ -60,6 +65,7 @@ public class ManageFrame extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				switch (ManageFrame.n){
 				case 0:
+					MainFrame.loadEmployeeEditFrameComplete();
 					break;
 				case 1:
 					break;
