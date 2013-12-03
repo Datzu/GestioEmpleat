@@ -7,7 +7,9 @@ import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -15,11 +17,11 @@ import com.gestioempleats.components.FirstFrame;
 import com.gestioempleats.components.HomeFrame;
 import com.gestioempleats.components.LoadingFrame;
 import com.gestioempleats.components.LoginFrame;
+import com.gestioempleats.components.ManageFrame;
+import com.gestioempleats.components.SettingsFrame;
 import com.gestioempleats.utils.MongoDBUtils;
 import com.gestioempleats.utils.Paths;
 import com.gestioempleats.utils.Permissions;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 
 public class MainFrame extends JFrame {
 	public static JPanel contentPane = new JPanel();
@@ -198,5 +200,22 @@ public class MainFrame extends JFrame {
 		contentPane.repaint();
 		contentPane.getRootPane().getParent().setSize(400, 150);
 	}
-
+	
+	public static void loadManageFrame(String newString, String modifyString, String deleteString, int n) {
+		ManageFrame manageFrame = new ManageFrame(newString, modifyString, deleteString, n);
+		contentPane.removeAll();
+		contentPane.add(manageFrame, BorderLayout.CENTER);
+		contentPane.revalidate();
+		contentPane.repaint();
+		contentPane.getRootPane().getParent().setSize(240, 190);
+	}
+	
+	public static void loadSettingsFrame() {
+		SettingsFrame settingsFrame = new SettingsFrame();
+		contentPane.removeAll();
+		contentPane.add(settingsFrame, BorderLayout.CENTER);
+		contentPane.revalidate();
+		contentPane.repaint();
+		contentPane.getRootPane().getParent().setSize(400, 500);
+	}
 }

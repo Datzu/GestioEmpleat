@@ -50,26 +50,41 @@ public class HomeFrame extends JPanel {
 		add(lblLogo, "4, 2, center, default");
 		
 		JButton btnMngEmployee = new JButton("Modul Empleats");
+		btnMngEmployee.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.loadManageFrame("Nou empleat", "Modificar empleat", "Esborrar empleat", 0);
+			}
+		});
 		add(btnMngEmployee, "4, 4");
 		
 		JButton btnMngTask = new JButton("Modul Tasques");
+		btnMngTask.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.loadManageFrame("Nova Tasca", "Modificar Tasca", "Esborrar Tasca", 0);
+			}
+		});
 		add(btnMngTask, "4, 6");
 		
 		JButton btnMngTrouble = new JButton("Modul Incidencies");
+		btnMngTrouble.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.loadManageFrame("Nova incidencia", "Modificar incidencia", "Esborrar incidencia", 0);
+			}
+		});
 		add(btnMngTrouble, "4, 8");
 		
 		JButton btnMngQuerys = new JButton("Modul Consultes");
+		btnMngQuerys.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.loadManageFrame("Nova consulta", "Modificar consulta", "Esborrar consulta", 0);
+			}
+		});
 		add(btnMngQuerys, "4, 10");
 		
 		JButton btnSettings = new JButton("Opcions");
 		btnSettings.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				HomeFrame homeFrame = new HomeFrame();
-				MainFrame.contentPane.removeAll();
-				MainFrame.contentPane.add(homeFrame, BorderLayout.CENTER);
-				MainFrame.contentPane.revalidate();
-				MainFrame.contentPane.repaint();
-				MainFrame.contentPane.getRootPane().getParent().setSize(190, 370);
+				MainFrame.loadSettingsFrame();
 			}
 		});
 		add(btnSettings, "4, 12");
