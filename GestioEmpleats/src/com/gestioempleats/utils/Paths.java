@@ -7,6 +7,7 @@ public class Paths {
 	private String pathToExe;
 	private String pathToMongoDB;
 	private String pathToDB;
+	private String pathToBin;
 
 	public Paths() {
 
@@ -34,6 +35,14 @@ public class Paths {
 
 	public void setPathToDB(String path) {
 		this.pathToDB = path;
+	}
+	
+	public String getPathToBin() {
+		return pathToBin;
+	}
+
+	public void setPathToBin(String path) {
+		this.pathToBin = path;
 	}
 	
 	public static void rmdir(final File folder) {

@@ -58,6 +58,8 @@ public class MainFrame extends JFrame {
 					+ "mongoDB" + File.separator + "bin" + "\\mongod.exe");
 			path.setPathToDB(System.getenv("SystemDrive") + File.separator
 					+ "data" + File.separator + "db");
+			path.setPathToBin(System.getenv("SystemDrive") + File.separator
+					+ "mongoDB" + File.separator + "bin");
 			File checkPathToDB = new File(path.getPathToDB());
 			System.out.println("Detected: " + System.getProperty("os.arch"));
 			try {
@@ -71,8 +73,16 @@ public class MainFrame extends JFrame {
 			File checkPathToExe = new File(path.getPathToExe());
 			try {
 				if (!checkPathToExe.exists()) {
-					MongoDBUtils.startDownloadMongoDB();
-					MongoDBUtils.installMongoDExe();
+					File checkPathToMongoDB = new File(path.getPathToMongoDB());
+					if (!checkPathToMongoDB.exists()) {
+						checkPathToMongoDB.mkdir();
+						MongoDBUtils.startDownloadMongoDB();
+					}
+					File checkPathToBin = new File(path.getPathToBin());
+					if (!checkPathToBin.exists()) {
+						checkPathToBin.mkdir();
+						MongoDBUtils.installMongoDExe();
+					}
 				}
 				MongoDBUtils.startMongoDExe();
 				boolean check = false;
