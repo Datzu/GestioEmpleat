@@ -73,6 +73,7 @@ public class LoginFrame extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				//db.employee.find({"user":"user1"})
 				if(MongoDBUtils.findUser(textFieldUser.getText().toString(), Encrypt.encrypt(passwordFieldPassword.getText().toString()))){
+					MainFrame.currentUser.showActualUser();
 					MainFrame.loadHomeFrame();
 				}else{
 					System.out.println("Error no existeix");

@@ -21,6 +21,7 @@ import com.gestioempleats.components.LoadingFrame;
 import com.gestioempleats.components.LoginFrame;
 import com.gestioempleats.components.ManageFrame;
 import com.gestioempleats.components.SettingsFrame;
+import com.gestioempleats.utils.ActualSession;
 import com.gestioempleats.utils.MongoDBUtils;
 import com.gestioempleats.utils.Paths;
 import com.gestioempleats.utils.Permissions;
@@ -30,6 +31,8 @@ public class MainFrame extends JFrame {
 	public static MainFrame frame;
 
 	public static Paths path = new Paths();
+	
+	public static ActualSession currentUser = new ActualSession();
 
 	
 	public static void main(String[] args) {

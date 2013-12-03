@@ -172,6 +172,9 @@ public class MongoDBUtils {
 		DBCursor cursor = coll.find(queryUser);
 		if (cursor.hasNext()) {
 			DBObject userObject = cursor.next();
+			MainFrame.currentUser.setUser(userObject.get("user").toString());
+			MainFrame.currentUser.setPassword(userObject.get("password").toString());
+			MainFrame.currentUser.setLevel(Integer.parseInt(userObject.get("level").toString()));
 			cursor.close();
 			return true;
 		} else {

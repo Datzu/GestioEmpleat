@@ -77,6 +77,7 @@ public class FirstFrame extends JPanel {
 						mAdmin.set(data);
 						mAdmin.put("user", data[0]);
 						mAdmin.put("password", data[1]);
+						mAdmin.put("level", 0);
 						mAdmin.saveToMongo();
 							
 						MainFrame.loadLoginFrame();
