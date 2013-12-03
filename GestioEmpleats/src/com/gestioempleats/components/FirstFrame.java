@@ -71,14 +71,12 @@ public class FirstFrame extends JPanel {
 							.equals(passwordFieldValidatePassword.getText()
 									.toString())) {
 						data[0] = textFieldUser.getText().toString();
-						// data[0] = Encrypt.encrypt(data[1]); // TODO encrypt password
 						data[1] = Encrypt.encrypt(passwordFieldPassword.getText().toString());
-						System.out.println(data[1]);
 						Admin mAdmin = new Admin();
 						mAdmin.set(data);
 						mAdmin.put("user", data[0]);
 						mAdmin.put("password", data[1]);
-						MongoDBUtils.db = MongoDBUtils.mongoClient.getDB("db");
+						//MongoDBUtils.db = MongoDBUtils.mongoClient.getDB("db");
 						mAdmin.saveToMongo();
 						MainFrame.loadLoginFrame();
 						

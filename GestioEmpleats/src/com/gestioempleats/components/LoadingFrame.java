@@ -14,7 +14,6 @@ public class LoadingFrame extends JPanel {
 	 */
 	public LoadingFrame() {
 		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		//setLayout(null);
 		
 		label.setIcon(new ImageIcon(LoadingFrame.class.getResource("/com/gestioempleats/components/loading.jpg")));
 		add(label);

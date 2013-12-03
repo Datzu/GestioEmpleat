@@ -2,6 +2,7 @@ package com.gestioempleats.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.ConnectException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Set;
@@ -48,7 +49,6 @@ public class MongoDBUtils {
 		File destDir = new File(MainFrame.path.getPathToMongoDB()
 				+ File.separator);
 		try {
-			System.out.println(System.getProperty("os.arch"));
 			zipFile = new ZipFile(MainFrame.path.getPathToMongoDB()
 					+ File.separator + "mongoDB" + fileExt);
 			zipFile.extractAll(MainFrame.path.getPathToMongoDB());
@@ -79,7 +79,7 @@ public class MongoDBUtils {
 				System.exit(0);
 			}
 		} catch (ZipException e) {
-			System.out.println("Failed getting system architecture.");
+			System.out.println("Failed unziping mongoDB.zip.");
 			System.exit(0);
 		}
 	}
@@ -121,36 +121,37 @@ public class MongoDBUtils {
 	public static boolean connectDatabase() {
 		System.out.println("Connecting to MongoDB...");
 		try {
-			mongoClient = new MongoClient("localhost");
+			mongoClient = new MongoClient( "localhost" , 27017 );
 			db = mongoClient.getDB("db");
 			System.out.println("Connected to MongoDB sucefully!");
 			return true;
 		} catch (Exception e) {
 			System.out.println("Failed connecting to MongoDB!");
 			return false;
-			// e.printStackTrace();
 		}
 	}
 
-	public static boolean existsSuperAdmin() {
+	public static boolean existsSuperAdmin() throws ConnectException {
 		// System.out.println(myDoc); // debug mode
 		DBCollection coll;
 		try {
 			coll = db.getCollection("adminUser");
 		} catch (Exception e) {
+			System.out.println("Error getting the collection 'adminUser'.");
 			return false;
 		}
-		try {
-			DBObject myDoc = coll.findOne();
+		DBObject myDoc = coll.findOne();
+		if (myDoc == null) {
+			return false;
+		} else {
 			String existsObject = myDoc.toString();
 			if (existsObject.contains("_id")) {
 				System.out.println("SuperAdmin found!");
-				return true;
-			}
-		} catch (Exception e) {
-			return false;
+			return true;
+			} else {
+				return false;
+			}	
 		}
-		return false;
 	}
 
 	public static void showTables() {

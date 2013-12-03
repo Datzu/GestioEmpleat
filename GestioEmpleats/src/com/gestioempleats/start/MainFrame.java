@@ -18,6 +18,8 @@ import com.gestioempleats.components.LoginFrame;
 import com.gestioempleats.utils.MongoDBUtils;
 import com.gestioempleats.utils.Paths;
 import com.gestioempleats.utils.Permissions;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class MainFrame extends JFrame {
 	public static JPanel contentPane = new JPanel();
@@ -32,7 +34,6 @@ public class MainFrame extends JFrame {
 					frame = new MainFrame();
 					frame.setVisible(true);
 					frame.setResizable(false);
-					loadLoadingFrame();
 					preLoad();
 					if (MongoDBUtils.existsSuperAdmin()) {
 						loadLoginFrame();
@@ -40,7 +41,8 @@ public class MainFrame extends JFrame {
 						loadFirtsFrame();
 					}
 				} catch (Exception e) {
-					e.printStackTrace();
+					System.out.println("Failed loading the program! Please restart your programm.");
+					System.exit(0);
 				}
 			}
 		});
@@ -86,10 +88,15 @@ public class MainFrame extends JFrame {
 
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 187);
+		setBounds(100, 100, 323, 238);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(MainFrame.class.getResource("/com/gestioempleats/components/loading.jpg")));
+		contentPane.add(label, BorderLayout.CENTER);
+		
 		this.addWindowListener(new WindowListener() {
 			
 			@Override
