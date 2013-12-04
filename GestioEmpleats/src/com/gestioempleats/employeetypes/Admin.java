@@ -52,11 +52,11 @@ public class Admin implements DBObject {
 	}
 	
 	public void saveToMongo() {
-		//DBCollection table = MongoDBUtils.db.getCollection("adminUser");
 		DBCollection table = MongoDBUtils.db.getCollection("employee");
 		BasicDBObject adminObject = new BasicDBObject();
 		adminObject.put("user", this.user);
 		adminObject.put("password", this.password);
+		adminObject.put("level", 0);
 		table.insert(adminObject);
 	}
 

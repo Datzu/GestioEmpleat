@@ -17,6 +17,7 @@ import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+import java.awt.Color;
 
 public class LoginFrame extends JPanel {
 	private JTextField textFieldUser;
@@ -24,6 +25,7 @@ public class LoginFrame extends JPanel {
 	private JLabel lblInfoLabel;
 	private JButton btnLogin;
 	private JLabel icon;
+	private JLabel lblError;
 
 	/**
 	 * Create the panel.
@@ -45,6 +47,8 @@ public class LoginFrame extends JPanel {
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("top:default"),
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
@@ -71,17 +75,18 @@ public class LoginFrame extends JPanel {
 		btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//db.employee.find({"user":"user1"})
-				if(MongoDBUtils.findUser(textFieldUser.getText().toString(), Encrypt.encrypt(passwordFieldPassword.getText().toString()))){
-					MainFrame.currentUser.showActualUser();
+				if(MongoDBUtils.findUser(textFieldUser.getText().toString(), Encrypt.encrypt(passwordFieldPassword.getText().toString()))) {
 					MainFrame.loadHomeFrame();
-				}else{
-					System.out.println("Error no existeix");
+				} else {
+					lblError.setText("Error user not found/incorrect password.");
 				}
-				
 			}
 		});
 		add(btnLogin, "4, 12, center, default");
+		
+		lblError = new JLabel("");
+		lblError.setForeground(Color.RED);
+		add(lblError, "2, 14, 3, 1");
 
 	}
 

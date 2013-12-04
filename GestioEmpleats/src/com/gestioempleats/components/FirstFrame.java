@@ -79,12 +79,11 @@ public class FirstFrame extends JPanel {
 						mAdmin.put("password", data[1]);
 						mAdmin.put("level", 0);
 						mAdmin.saveToMongo();
-							
 						MainFrame.loadLoginFrame();
 
 					}
 				} catch (Exception e) {
-					System.out.println("Error per descobrir");
+					System.out.println("There was a problem creating the Super Admin!");
 				}
 			}
 

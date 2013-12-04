@@ -50,7 +50,7 @@ public class MainFrame extends JFrame {
 					}
 				} catch (Exception e) {
 					System.out.println("Failed loading the program! Please restart your programm.");
-					//System.exit(0);
+					System.exit(0);
 				}
 			}
 		});
@@ -93,10 +93,7 @@ public class MainFrame extends JFrame {
 					}
 				}
 				MongoDBUtils.startMongoDExe();
-				//boolean check = false;
-				//while (!check) {
-					MongoDBUtils.connectDatabase();
-				//}
+				MongoDBUtils.connectDatabase();
 			} catch (Exception e) {
 				System.out.println("Failed loading mongod.exe!");
 				System.exit(0);
@@ -166,7 +163,8 @@ public class MainFrame extends JFrame {
 			System.out.println("Shutting down MongoDB server... See you later!");
 			Runtime.getRuntime().exec("taskkill /F /IM mongod.exe");
 		} catch (IOException es) {
-			es.printStackTrace();
+			System.out.println("Opps, some kind of error happened shutting down the server!");
+			System.exit(0);
 		}
 		System.exit(0);
 	}

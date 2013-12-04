@@ -141,19 +141,14 @@ public class MongoDBUtils {
 
 	public static boolean existsSuperAdmin() {
 		try {
-
 			DBObject user = coll.findOne();
-			System.out.println("Cursor: " + user.toString());
 			if (user.containsKey("user")) {
-				//System.out.println(user.get("user"));
-				//System.out.println(user.get("password"));
 				return true;
 			} else {
 				System.out.println("User not found");
 				return false;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			return false;
 		}
 	}
