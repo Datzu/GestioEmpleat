@@ -123,7 +123,7 @@ public class EmployeeInfoFrame extends JPanel {
 		btnSave = new JButton("Guardar");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				switch ()
+				/*switch ()
 				case a:
 				break;
 				
@@ -142,7 +142,7 @@ public class EmployeeInfoFrame extends JPanel {
 						textFieldrole, 
 						textFieldshift, 
 						textFieldlanguages, 
-						textFieldorigin);
+						textFieldorigin);*/
 			}
 		});
 		add(btnSave, "2, 32");
