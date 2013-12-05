@@ -114,10 +114,6 @@ public class MongoDBUtils {
 		}
 	}
 
-	public static void saveDataToDB() {
-
-	}
-
 	public static boolean connectDatabase() {
 		System.out.println("Connecting to MongoDB...");
 		try {
@@ -145,7 +141,7 @@ public class MongoDBUtils {
 			if (user.containsKey("user")) {
 				return true;
 			} else {
-				System.out.println("User not found");
+				System.out.println("Loagind first frame...");
 				return false;
 			}
 		} catch (Exception e) {
@@ -161,7 +157,7 @@ public class MongoDBUtils {
 		}
 	}
 
-	public static boolean findUser(String user, String password) {
+	public static boolean setActualUser(String user, String password) {
 		BasicDBObject queryUser = new BasicDBObject();
 		queryUser.put("user", user);
 		DBCursor cursor = coll.find(queryUser);
@@ -176,6 +172,18 @@ public class MongoDBUtils {
 			System.out.println("User not found");
 			cursor.close();
 			return false;
+		}
+	}
+	
+	public static DBCursor findDBObject(String key, String value) {
+		BasicDBObject queryUser = new BasicDBObject();
+		queryUser.put(key, value);
+		DBCursor cursor = coll.find(queryUser);
+		if (cursor.hasNext()) {
+			return cursor;
+		} else {
+			cursor.close();
+			return null;
 		}
 	}
 
@@ -196,18 +204,24 @@ public class MongoDBUtils {
 		employeeObject.put("contractDate", contractDate);
 		employeeObject.put("income", income);
 		employeeObject.put("level", level);
+		
+		// 0 - admin
+		// 1 - secretary
+		// 2 - programmer
+		// 3 - intern
+		// 4 - default - commercial
 
 		switch (type) {
-		case 0: // admin
+		case 0:
 			employeeObject.put("role", role);
 			break;
-		case 1: // secre
+		case 1:
 			employeeObject.put("shift", shift);
 			break;
-		case 2: // program
+		case 2:
 			employeeObject.put("language", languages.toArray());
 			break;
-		case 3: // becari
+		case 3:
 			employeeObject.put("origin", origin);
 			break;
 

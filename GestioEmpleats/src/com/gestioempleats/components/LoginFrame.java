@@ -77,7 +77,7 @@ public class LoginFrame extends JPanel {
 		btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(MongoDBUtils.findUser(textFieldUser.getText().toString(), Encrypt.encrypt(passwordFieldPassword.getText().toString()))) {
+				if(MongoDBUtils.setActualUser(textFieldUser.getText().toString(), Encrypt.encrypt(passwordFieldPassword.getText().toString()))) {
 					if (MainFrame.currentUser.getPassword().equals(Encrypt.encrypt(passwordFieldPassword.getText().toString()))) {
 						MainFrame.loadHomeFrame();
 					} else {
