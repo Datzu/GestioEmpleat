@@ -104,13 +104,14 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 323, 238);
+		setLocationRelativeTo(null);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(MainFrame.class.getResource("/com/gestioempleats/components/loading.jpg")));
 		contentPane.add(label, BorderLayout.CENTER);
+		setContentPane(contentPane);
 		
 		this.addWindowListener(new WindowListener() {
 			
@@ -196,14 +197,14 @@ public class MainFrame extends JFrame {
 		contentPane.getRootPane().getParent().setSize(320, 285);
 	}
 	
-	public static void loadLoadingFrame() {
-		LoadingFrame loadingFrame = new LoadingFrame();
-		contentPane.removeAll();
-		contentPane.add(loadingFrame, BorderLayout.CENTER);
-		contentPane.revalidate();
-		contentPane.repaint();
-		contentPane.getRootPane().getParent().setSize(400, 150);
-	}
+//	public static void loadLoadingFrame() {
+//		LoadingFrame loadingFrame = new LoadingFrame();
+//		contentPane.removeAll();
+//		contentPane.add(loadingFrame, BorderLayout.CENTER);
+//		contentPane.revalidate();
+//		contentPane.repaint();
+//		contentPane.getRootPane().getParent().setSize(400, 150);
+//	}
 	
 	public static void loadManageFrame(String newString, String modifyString, String deleteString, int n) {
 		ManageFrame manageFrame = new ManageFrame(newString, modifyString, deleteString, n);
