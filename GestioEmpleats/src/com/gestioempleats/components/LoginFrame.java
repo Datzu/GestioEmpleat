@@ -11,12 +11,14 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import com.gestioempleats.start.MainFrame;
+import com.gestioempleats.utils.ActualSession;
 import com.gestioempleats.utils.Encrypt;
 import com.gestioempleats.utils.MongoDBUtils;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+
 import java.awt.Color;
 
 public class LoginFrame extends JPanel {
@@ -76,9 +78,13 @@ public class LoginFrame extends JPanel {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(MongoDBUtils.findUser(textFieldUser.getText().toString(), Encrypt.encrypt(passwordFieldPassword.getText().toString()))) {
-					MainFrame.loadHomeFrame();
+					if (MainFrame.currentUser.getPassword().equals(Encrypt.encrypt(passwordFieldPassword.getText().toString()))) {
+						MainFrame.loadHomeFrame();
+					} else {
+						lblError.setText("Incorrect password.");
+					}
 				} else {
-					lblError.setText("Error user not found/incorrect password.");
+					lblError.setText("User not found.");
 				}
 			}
 		});
