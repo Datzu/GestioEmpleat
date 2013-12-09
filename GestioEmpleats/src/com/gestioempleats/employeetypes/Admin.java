@@ -57,6 +57,13 @@ public class Admin implements DBObject {
 		adminObject.put("user", this.user);
 		adminObject.put("password", this.password);
 		adminObject.put("level", 0);
+		adminObject.put("name", "");
+		adminObject.put("lastname1", "");
+		adminObject.put("lastname2", "");
+		adminObject.put("birthday", "");
+		adminObject.put("phone", "");
+		adminObject.put("contractDate", "");
+		adminObject.put("income", "0.0");
 		table.insert(adminObject);
 	}
 

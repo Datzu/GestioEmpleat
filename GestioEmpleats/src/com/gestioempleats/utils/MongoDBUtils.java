@@ -21,7 +21,7 @@ import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
 public class MongoDBUtils {
-	static DBCollection coll;
+	public static DBCollection coll;
 
 	private static String name86MongoDB = "mongodb-win32-i386-2.4.8";
 	private static String name64MongoDB = "mongodb-win32-x86_64-2008plus-2.4.8";
@@ -189,9 +189,9 @@ public class MongoDBUtils {
 		}
 	}
 
-	public static void saveEmployee(int employeeId, String user,
+	public static void saveEmployee(String employeeId, String user,
 			String password, String name, String lastname1, String lastname2,
-			String birthday, String contractDate, float income, int level,
+			String birthday, String phone, String contractDate, float income, int level,
 			int type, String role, String shift, List<String> languages,
 			String origin) {
 		DBCollection table = MongoDBUtils.db.getCollection("employee");
@@ -203,6 +203,7 @@ public class MongoDBUtils {
 		employeeObject.put("lastname1", lastname1);
 		employeeObject.put("lastname2", lastname2);
 		employeeObject.put("birthday", birthday);
+		employeeObject.put("phone", phone);
 		employeeObject.put("contractDate", contractDate);
 		employeeObject.put("income", income);
 		employeeObject.put("level", level);

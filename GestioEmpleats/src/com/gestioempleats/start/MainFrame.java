@@ -13,7 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.gestioempleats.components.EmployeeEdit;
 import com.gestioempleats.components.EmployeeEditFrameComplete;
+import com.gestioempleats.components.EmployeeNew;
+import com.gestioempleats.components.EmployeeShow;
 import com.gestioempleats.components.EmployeeShowFrameComplete;
 import com.gestioempleats.components.FirstFrame;
 import com.gestioempleats.components.HomeFrame;
@@ -197,15 +200,6 @@ public class MainFrame extends JFrame {
 		contentPane.getRootPane().getParent().setSize(320, 285);
 	}
 	
-//	public static void loadLoadingFrame() {
-//		LoadingFrame loadingFrame = new LoadingFrame();
-//		contentPane.removeAll();
-//		contentPane.add(loadingFrame, BorderLayout.CENTER);
-//		contentPane.revalidate();
-//		contentPane.repaint();
-//		contentPane.getRootPane().getParent().setSize(400, 150);
-//	}
-	
 	public static void loadManageFrame(String newString, String modifyString, String deleteString, int n) {
 		ManageFrame manageFrame = new ManageFrame(newString, modifyString, deleteString, n);
 		contentPane.removeAll();
@@ -222,24 +216,33 @@ public class MainFrame extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 		contentPane.getRootPane().getParent().setSize(400, 500);
-	}	
+	}
 	
-	public static void loadEmployeeShowFrameComplete() {
-		EmployeeShowFrameComplete employeeShowFrameComplete = new EmployeeShowFrameComplete();
+	public static void loadEmployeeNew() {
+		EmployeeNew employeeNew = new EmployeeNew();
 		contentPane.removeAll();
-		contentPane.add(employeeShowFrameComplete, BorderLayout.CENTER);
+		contentPane.add(employeeNew, BorderLayout.CENTER);
 		contentPane.revalidate();
 		contentPane.repaint();
 		contentPane.getRootPane().getParent().setSize(400, 500);
-	}	
+	}
 	
-	public static void loadEmployeeEditFrameComplete() {
-		EmployeeEditFrameComplete employeeEditFrameComplete = new EmployeeEditFrameComplete();
+	public static void loadEmployeeEdit() {
+		EmployeeEdit employeeEdit = new EmployeeEdit();
 		contentPane.removeAll();
-		contentPane.add(employeeEditFrameComplete, BorderLayout.CENTER);
+		contentPane.add(employeeEdit, BorderLayout.CENTER);
 		contentPane.revalidate();
 		contentPane.repaint();
-		contentPane.getRootPane().getParent().setSize(500, 500);
+		contentPane.getRootPane().getParent().setSize(400, 500);
+	}
+	
+	public static void loadEmployeeShow() {
+		EmployeeShow employeeShow = new EmployeeShow();
+		contentPane.removeAll();
+		contentPane.add(employeeShow, BorderLayout.CENTER);
+		contentPane.revalidate();
+		contentPane.repaint();
+		contentPane.getRootPane().getParent().setSize(400, 500);
 	}
 	
 	
