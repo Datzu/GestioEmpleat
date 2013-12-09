@@ -22,6 +22,11 @@ import com.mongodb.MongoClient;
 
 public class MongoDBUtils {
 	public static DBCollection coll;
+	
+	/**
+	 * @author Gerard, Adrian Garcia
+	 * Clase de utilitats per fer servir amb mongoDB
+	 */
 
 	private static String name86MongoDB = "mongodb-win32-i386-2.4.8";
 	private static String name64MongoDB = "mongodb-win32-x86_64-2008plus-2.4.8";

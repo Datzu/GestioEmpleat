@@ -22,6 +22,14 @@ import java.awt.event.ActionEvent;
 public class ManageFrame extends JPanel {
 	static int n;
 
+	/**
+	 * @author Gerard, Adrian Garcia
+	 * @param newString Cadena de text que agafara per mostrar el nou
+	 * @param modifyString Cadena de text que agafara per mostrar el modificar
+	 * @param deleteString Cadena de text que agafara per mostrar el esborrat
+	 * @param n Serveix de comodi per saber desde on vens i saber cap a on vas carregant la finestra amb uns metodes o uns altres
+	 */
+	
 	public ManageFrame(String newString, String modifyString,
 			String deleteString, int n) {
 		this.n = n;

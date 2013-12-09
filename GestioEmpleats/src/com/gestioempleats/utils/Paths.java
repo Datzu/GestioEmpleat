@@ -8,6 +8,15 @@ public class Paths {
 	private String pathToMongoDB;
 	private String pathToDB;
 	private String pathToBin;
+	
+	/**
+	 * @author Adrian Garcia
+	 * @param pathToExe path que apunta al mongod.exe
+	 * @param pathToMongoDB path que apunta a la carpeta que conte mongoDB
+	 * @param pathToDB path que apunta a on es la base de dades guardada
+	 * @param pathToBin path que apunta a la carpeta bin de mongoDB
+	 * Clase que serveis per configurar i guardar el paths del programa
+	 */
 
 	public Paths() {
 

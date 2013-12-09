@@ -20,6 +20,11 @@ import java.awt.event.ActionEvent;
 
 public class EmployeeShow extends JPanel {
 	
+	/**
+	 * @author Adrian Garcia
+	 * Finestra que mostra les dades de un empleat no modificable
+	 */
+	
 	private String id = "";
 	private String name = "";
 	private String surname1 = "";

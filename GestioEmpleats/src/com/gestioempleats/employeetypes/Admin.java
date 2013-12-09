@@ -12,6 +12,12 @@ import com.mongodb.DBObject;
 
 public class Admin implements DBObject {
 	
+	/**
+	 * @author Adrian Garcia
+	 * @param user Variable que guardar el nombre de usuari
+	 * @param password Variable que guarda la contrasenya del usuari, en des us
+	 */
+	
 	private String user;
 	private String password;
 	

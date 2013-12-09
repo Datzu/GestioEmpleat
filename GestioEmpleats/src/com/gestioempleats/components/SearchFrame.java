@@ -17,7 +17,9 @@ public class SearchFrame extends JPanel {
 	private JTextField textFieldSearchText;
 
 	/**
-	 * Create the panel.
+	 * @author Gerard, Adrian Garcia
+	 * @param titleFrame Cadena de text per mostrar a dalt de tot
+	 * Finestra que serveix per agafar i marcar el que es vol buscar
 	 */
 	public SearchFrame(String titleFrame) {
 		setLayout(new FormLayout(new ColumnSpec[] {

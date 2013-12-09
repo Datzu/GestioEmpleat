@@ -4,9 +4,19 @@ public class ActualSession {
 	private String user;
 	private String password;
 	private int level;
+	
+	/**
+	 * @author Adrian Garcia
+	 * @param user User del empleat
+	 * @param password Contrasenya del empleat en sha2
+	 * @param level Nivell del empleat a l'empresa
+	 * Clase que carrega les dades de comprobacio d'un empleat per utilitzar al programa
+	 */
 
 	public ActualSession() {
+		
 	}
+	
 	public ActualSession(String user, String password, int level) {
 		this.user = user;
 		this.password = password;

@@ -2,6 +2,12 @@ package com.gestioempleats.employeetypes;
 
 public class Intern extends Employee {
 	
+	/**
+	 * @author Adrian Garcia
+	 * @param origin per saber de quin tipus de centre ve
+	 * Clase que fa referencia a un becari
+	 */
+	
 	private String origin;
 
 	public Intern(int employeeId, String user, String password, String name,

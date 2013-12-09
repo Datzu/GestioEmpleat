@@ -1,6 +1,11 @@
 package com.gestioempleats.employeetypes;
 
 public class Commercial extends Employee {
+	
+	/**
+	 * @author Adrian Garcia
+	 * Clase que referencia a un comercial
+	 */
 
 	public Commercial(int employeeId, String user, String password,
 			String name, String lastname1, String lastname2, String birthday,

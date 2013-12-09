@@ -10,7 +10,8 @@ public class LoadingFrame extends JPanel {
 	JLabel label = new JLabel();
 
 	/**
-	 * Create the panel.
+	 * @author Adrian Garcia
+	 * JPanel que mostra una imatge mentre es carrega el programa i fa les connexions a la base de dades
 	 */
 	public LoadingFrame() {
 		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));

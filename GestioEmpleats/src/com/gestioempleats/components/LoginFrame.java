@@ -30,7 +30,8 @@ public class LoginFrame extends JPanel {
 	private JLabel lblError;
 
 	/**
-	 * Create the panel.
+	 * @author Gerard, Adrian Garcia
+	 * Aquesta finestra es mostra una vegada el progama s'ha carregat i hi ha al menys un compte creat per poder entrar
 	 */
 	public LoginFrame() {
 		setLayout(new FormLayout(new ColumnSpec[] {

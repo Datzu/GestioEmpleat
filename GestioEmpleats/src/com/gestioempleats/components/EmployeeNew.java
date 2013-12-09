@@ -23,6 +23,11 @@ import java.util.List;
 
 public class EmployeeNew extends JPanel {
 
+	/**
+	 * @author Adrian Garcia
+	 * Crea una nova finestra de tipus empleat buida per omplir i guardar a la base de dades
+	 */
+	
 	private String id = "";
 	private String user = "";
 	private String password = "";
@@ -38,6 +43,7 @@ public class EmployeeNew extends JPanel {
 	private String shift;
 	private List<String> languages;
 	private String origin;
+	
 	private JTextField txtId;
 	private JTextField txtName;
 	private JTextField txtLastname1;

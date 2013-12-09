@@ -4,6 +4,11 @@ public final class Permissions {
 	
 	private final static int[][] permissionArray = new int[5][];
 	
+	/**
+	 * @author Gerard, Adrian Garcia
+	 * Clase que serveix de suport i configuracio de els permisos que utilitza el programa per consultar si es pot fer servir una cosa o no
+	 */
+	
 	public final static void createPermissionArray() {
 		// permissions array sets
 		final int administratorArray[] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};

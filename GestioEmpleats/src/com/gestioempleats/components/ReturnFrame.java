@@ -15,7 +15,8 @@ import com.jgoodies.forms.factories.FormFactory;
 public class ReturnFrame extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * @author Gerard
+	 * JPanel per ficar a altres JPanel de mode estatic per enviar a la mateixa finestra sempre
 	 */
 	public ReturnFrame() {
 		setLayout(new FormLayout(new ColumnSpec[] {

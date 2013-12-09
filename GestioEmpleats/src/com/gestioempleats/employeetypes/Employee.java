@@ -2,6 +2,22 @@ package com.gestioempleats.employeetypes;
 
 public class Employee {
 	
+	/**
+	 * @author Gerard
+	 * @param employeeId Id del empleat
+	 * @param user nom de usuari del empleat
+	 * @param password contrasenya del empleat encriptada amb sha2
+	 * @param name nom del empleat
+	 * @param lastname1 primer cognom del empleat
+	 * @param lastname2 segon cognom del empleat
+	 * @param birthday aniversari del empleat
+	 * @param contractDate data de contractacio del empleat
+	 * @param income salari del empleat
+	 * @param level nivell d'access dins de la organitzacio
+	 * @param role variable depenent de la clase que es l'empleat
+	 * Clase base per cualquesevol empleat
+	 */
+	
 	private int employeeId;
 	private String user;
 	private String password;

@@ -14,7 +14,8 @@ import java.awt.event.ActionEvent;
 public class SettingsFrame extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * @author Adrian Garcia
+	 * Serveix per modificar les opcions que tenim disponible al nostre programa
 	 */
 	public SettingsFrame() {
 		setLayout(new FormLayout(new ColumnSpec[] {

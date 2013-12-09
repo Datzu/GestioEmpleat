@@ -4,6 +4,12 @@ import java.util.List;
 
 public class Programmer extends Employee {
 	
+	/**
+	 * @author Gerard
+	 * @param languages Llenguatges de programacio que coneix l'empleat
+	 * Clase que referencia a un programador
+	 */
+	
 	private List<String> languages;
 
 	public Programmer(int employeeId, String user, String password,

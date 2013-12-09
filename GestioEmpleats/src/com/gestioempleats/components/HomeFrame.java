@@ -19,7 +19,8 @@ import com.jgoodies.forms.layout.RowSpec;
 public class HomeFrame extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * @author Gerard, Adrian Garcia
+	 * Aixo es el centre de tot el programa, el menu principal on es pot criar per on vols anar
 	 */
 	public HomeFrame() {
 		setLayout(new FormLayout(new ColumnSpec[] {
@@ -60,7 +61,7 @@ public class HomeFrame extends JPanel {
 		JButton btnMngTask = new JButton("Modul Tasques");
 		btnMngTask.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MainFrame.loadManageFrame("Nova Tasca", "Modificar Tasca", "Esborrar Tasca", 0);
+				MainFrame.loadManageFrame("Nova Tasca", "Modificar Tasca", "Esborrar Tasca", 1);
 			}
 		});
 		add(btnMngTask, "4, 6");
@@ -68,7 +69,7 @@ public class HomeFrame extends JPanel {
 		JButton btnMngTrouble = new JButton("Modul Incidencies");
 		btnMngTrouble.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MainFrame.loadManageFrame("Nova incidencia", "Modificar incidencia", "Esborrar incidencia", 0);
+				MainFrame.loadManageFrame("Nova incidencia", "Modificar incidencia", "Esborrar incidencia", 2);
 			}
 		});
 		add(btnMngTrouble, "4, 8");
@@ -76,7 +77,7 @@ public class HomeFrame extends JPanel {
 		JButton btnMngQuerys = new JButton("Modul Consultes");
 		btnMngQuerys.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MainFrame.loadManageFrame("Nova consulta", "Modificar consulta", "Esborrar consulta", 0);
+				MainFrame.loadManageFrame("Nova consulta", "Modificar consulta", "Esborrar consulta", 3);
 			}
 		});
 		add(btnMngQuerys, "4, 10");

@@ -5,6 +5,13 @@ import java.security.NoSuchAlgorithmException;
 
 public class Encrypt {
 	
+	/**
+	 * @author Adrian Garcia
+	 * @param cad Cadena que envia per transformar
+	 * @return retorna la cadena ya transformada
+	 * Clase que transforma i encripta una contrasenya
+	 */
+	
 	public static String encrypt(String cad) {
 		MessageDigest md;
 		try {

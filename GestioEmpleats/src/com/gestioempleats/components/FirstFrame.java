@@ -23,6 +23,11 @@ public class FirstFrame extends JPanel {
 	private static JPasswordField passwordFieldPassword;
 	private static JPasswordField passwordFieldValidatePassword;
 	private static JButton btnCreate;
+	
+	/**
+	 * @author Adrian Garcia
+	 * Primera finestra en mostrarse si no existeis un compte creat, es mostra i et demana que creeis un de nou
+	 */
 
 	public FirstFrame() {
 		setLayout(new FormLayout(new ColumnSpec[] {

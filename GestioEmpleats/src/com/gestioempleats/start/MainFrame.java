@@ -36,6 +36,12 @@ public class MainFrame extends JFrame {
 	public static Paths path = new Paths();
 	
 	public static ActualSession currentUser = new ActualSession();
+	
+	/**
+	 * @author Gerard, Adrian Garcia
+	 * @param args
+	 * Clase que inicialitza tot el programa i el carrega
+	 */
 
 	
 	public static void main(String[] args) {

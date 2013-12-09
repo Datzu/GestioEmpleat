@@ -11,7 +11,11 @@ import javax.swing.JButton;
 public class ConfirmFrame extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * @author Gerard
+	 * @param classType Envia el tipus de clase que es lo que es vol confirmar
+	 * @param identificationType Identifica el que es vol esborrar
+	 * @param identificationValue Mostra el contingut del que es vol esborrar
+	 * Mostra una finestra de tipus JOptionPanel personalitzable
 	 */
 	public ConfirmFrame(String classType, String identificationType, String identificationValue) {
 		setLayout(new FormLayout(new ColumnSpec[] {

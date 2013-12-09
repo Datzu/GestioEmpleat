@@ -15,7 +15,8 @@ import javax.swing.DefaultComboBoxModel;
 public class EmployeeRoleFrame extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * @author Gerard
+	 * JPanel que conte el rols que pot tenir un empleat
 	 */
 	public EmployeeRoleFrame() {
 		setLayout(new FormLayout(new ColumnSpec[] {
