@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="com.gestioempleats.employeetypes.Admin" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/employeetypes/Admin.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="459" width="166" x="167" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.gestioempleats.utils.Permissions" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/utils/Permissions.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="201" x="373" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.gestioempleats.components.ManageFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/ManageFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="206" x="828" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.gestioempleats.components.SearchFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/SearchFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="174" x="614" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.gestioempleats.components.ConfirmFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/ConfirmFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="191" x="1074" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.gestioempleats.utils.Paths" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/utils/Paths.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="178" x="8147" y="676"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.gestioempleats.utils.Encrypt" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/utils/Encrypt.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="130" x="1305" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.gestioempleats.employeetypes.Employee" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/employeetypes/Employee.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="346" x="7333" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.gestioempleats.components.TroubleCardFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/TroubleCardFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="153" x="1696" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.gestioempleats.components.TroubleInfoFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/TroubleInfoFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="181" x="1475" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="com.gestioempleats.employeetypes.Programmer" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/employeetypes/Programmer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="358" x="6102" y="676"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="com.gestioempleats.components.SettingsFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/SettingsFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="148" x="1889" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.gestioempleats.components.EmployeeRoleFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/EmployeeRoleFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="148" x="2077" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="com.gestioempleats.components.ReturnFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/ReturnFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="148" x="2265" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="com.gestioempleats.components.TroubleShowFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/TroubleShowFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="250" x="2453" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="com.gestioempleats.components.TaskInfoFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/TaskInfoFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="211" x="2743" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="com.gestioempleats.employeetypes.Intern" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/employeetypes/Intern.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="358" x="6500" y="676"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="com.gestioempleats.components.EmployeeInfoFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/EmployeeInfoFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="182" x="2994" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="com.gestioempleats.utils.ActualSession" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/utils/ActualSession.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="177" x="8365" y="676"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="com.gestioempleats.employeetypes.Administrator" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/employeetypes/Administrator.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="395" x="6898" y="676"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="com.gestioempleats.components.EmployeeShow" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/EmployeeShow.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="149" x="3216" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="com.gestioempleats.components.TaskCardFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/TaskCardFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="214" x="3405" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="com.gestioempleats.components.FirstFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/FirstFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="269" x="3659" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="com.gestioempleats.components.HomeFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/HomeFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="148" x="3968" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="com.gestioempleats.start.MainFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/start/MainFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="249" x="8256" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="com.gestioempleats.components.EmployeeNew" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/EmployeeNew.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="891" width="163" x="4156" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="com.gestioempleats.components.EmployeeShowFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/EmployeeShowFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="601" x="4968" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="com.gestioempleats.components.LoginFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/LoginFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="231" x="4697" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="com.gestioempleats.components.TaskShowFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/TaskShowFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="298" x="4359" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="com.gestioempleats.utils.MongoDBUtils" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/utils/MongoDBUtils.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="387" width="608" x="5609" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="com.gestioempleats.components.EmployeeEdit" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/EmployeeEdit.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="909" width="163" x="6257" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="com.gestioempleats.components.EmployeeShowFrameComplete" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/EmployeeShowFrameComplete.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="201" x="6460" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="com.gestioempleats.components.LoadingFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/LoadingFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="161" x="6701" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="com.gestioempleats.employeetypes.Secretary" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/employeetypes/Secretary.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="379" x="7728" y="676"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="com.gestioempleats.employeetypes.Commercial" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/employeetypes/Commercial.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="355" x="7333" y="676"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="com.gestioempleats.components.EmployeeCardFrame" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/EmployeeCardFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="161" x="6902" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="com.gestioempleats.components.EmployeeEditFrameComplete" project="GestioEmpleats" 
+    file="/GestioEmpleats/src/com/gestioempleats/components/EmployeeEditFrameComplete.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="190" x="7103" y="-273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="38">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="39">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="40" name="frame"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="42">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="43" name="currentUser"/>      
+      <multiplicity id="44" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="46">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="47" name="path"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="49">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="50">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="51">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
