@@ -164,8 +164,10 @@ public class MongoDBUtils {
 		if (cursor.hasNext()) {
 			DBObject userObject = cursor.next();
 			MainFrame.currentUser.setUser(userObject.get("user").toString());
-			MainFrame.currentUser.setPassword(userObject.get("password").toString());
-			MainFrame.currentUser.setLevel(Integer.parseInt(userObject.get("level").toString()));
+			MainFrame.currentUser.setPassword(userObject.get("password")
+					.toString());
+			MainFrame.currentUser.setLevel(Integer.parseInt(userObject.get(
+					"level").toString()));
 			cursor.close();
 			return true;
 		} else {
@@ -174,7 +176,7 @@ public class MongoDBUtils {
 			return false;
 		}
 	}
-	
+
 	public static DBCursor findDBObject(String key, String value) {
 		BasicDBObject queryUser = new BasicDBObject();
 		queryUser.put(key, value);
@@ -204,7 +206,7 @@ public class MongoDBUtils {
 		employeeObject.put("contractDate", contractDate);
 		employeeObject.put("income", income);
 		employeeObject.put("level", level);
-		
+
 		// 0 - admin
 		// 1 - secretary
 		// 2 - programmer
@@ -228,4 +230,70 @@ public class MongoDBUtils {
 		}
 		table.insert(employeeObject);
 	}
+
+	public static void saveTask(int taskId, String dateCreation,
+			String dateEnd, String dateDelivery, String comment,
+			String employeeAsigned, int type) {
+		DBCollection table = MongoDBUtils.db.getCollection("task");
+		BasicDBObject taskObject = new BasicDBObject();
+		// 0 - admin
+		// 1 - secretary
+		// 2 - programmer
+		// 3 - intern
+		// 4 - default - commercial
+
+		switch (type) {
+		case 0:
+			taskObject.put("taskId", taskId);
+			taskObject.put("dateCreation", dateCreation);
+			taskObject.put("dateEnd", dateEnd);
+			taskObject.put("dateDelivery", dateDelivery);
+			taskObject.put("comment", comment);
+			taskObject.put("employeeAsigned", employeeAsigned);
+			break;
+		case 1:
+			break;
+		case 2:
+			taskObject.put("taskId", taskId);
+			taskObject.put("dateCreation", dateCreation);
+			taskObject.put("dateEnd", dateEnd);
+			taskObject.put("dateDelivery", dateDelivery);
+			taskObject.put("comment", comment);
+			taskObject.put("employeeAsigned", employeeAsigned);
+			break;
+		case 3:
+			break;
+
+		}
+		table.insert(taskObject);
+	}
+
+	public static void saveTrouble(int troubleId, String dateCreation,
+			String employee, String comment, int type) {
+		DBCollection table = MongoDBUtils.db.getCollection("trouble");
+		BasicDBObject troubleObject = new BasicDBObject();
+		// 0 - admin
+		// 1 - secretary
+		// 2 - programmer
+		// 3 - intern
+		// 4 - default - commercial
+
+		switch (type) {
+		case 0:
+			troubleObject.put("taskId", troubleId);
+			troubleObject.put("dateCreation", dateCreation);
+			troubleObject.put("dateEnd", employee);
+			troubleObject.put("dateDelivery", comment);
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+
+		}
+		table.insert(troubleObject);
+	}
+
 }
