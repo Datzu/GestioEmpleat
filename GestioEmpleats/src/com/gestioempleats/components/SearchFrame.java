@@ -51,15 +51,21 @@ public class SearchFrame extends JPanel {
 		JComboBox comboBoxSearchType = new JComboBox();
 		add(comboBoxSearchType, "4, 4, fill, default");
 		
+		JLabel lbllf = new JLabel("Filtrar:");
+		add(lbllf, "2, 6, right, default");
+		
+		JComboBox comboBoxSearchValue = new JComboBox();
+		add(comboBoxSearchValue, "4, 6, fill, default");
+		
 		JLabel lblSearchText = new JLabel("Text a cercar:");
-		add(lblSearchText, "2, 6, right, default");
+		add(lblSearchText, "2, 8, right, default");
 		
 		textFieldSearchText = new JTextField();
-		add(textFieldSearchText, "4, 6, fill, default");
+		add(textFieldSearchText, "4, 8, fill, default");
 		textFieldSearchText.setColumns(10);
 		
 		JButton btnSearch = new JButton("Cercar");
-		add(btnSearch, "4, 8");
+		add(btnSearch, "4, 10");
 		
 	}
 
