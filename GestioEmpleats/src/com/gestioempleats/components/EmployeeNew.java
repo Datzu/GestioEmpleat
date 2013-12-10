@@ -1,25 +1,26 @@
 package com.gestioempleats.components;
 
-import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import com.gestioempleats.employeetypes.Administrator;
 import com.gestioempleats.start.MainFrame;
 import com.gestioempleats.utils.MongoDBUtils;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.factories.FormFactory;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
-import com.mongodb.DBObject;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.RowSpec;
 
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.util.List;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class EmployeeNew extends JPanel {
 
@@ -65,6 +66,10 @@ public class EmployeeNew extends JPanel {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(14dlu;default)"),},
 			new RowSpec[] {
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
@@ -208,8 +213,22 @@ public class EmployeeNew extends JPanel {
 				MainFrame.loadHomeFrame();
 			}
 		});
-		add(btnReturn, "2, 34");
-		add(btnSave, "4, 34, right, default");
+		add(btnReturn, "2, 38");
+		add(btnSave, "4, 38, right, default");
+		
+		JLabel lblType = new JLabel("Type:");
+		add(lblType, "2, 32, right, default");
+		
+//		if (e.getItem().toString().equals("Administrador")) {
+//			System.exit(0);
+//		}
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Administrador", "Programador", "Secretaria", "Becari", "Commercial"}));
+		comboBox.setToolTipText("");
+		add(comboBox, "4, 32, fill, default");
+		add(btnReturn, "2, 38");
+		add(btnSave, "4, 38, right, default");
 
 	}
 

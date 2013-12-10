@@ -20,6 +20,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class EmployeeEdit extends JPanel {
 
@@ -33,7 +35,7 @@ public class EmployeeEdit extends JPanel {
 	private String phone = "";
 	private String contractDate = "";
 	private float income;
-	private int type;
+	private int level;
 	private String role;
 	private String shift;
 	private List<String> languages;
@@ -61,6 +63,10 @@ public class EmployeeEdit extends JPanel {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(14dlu;default)"),},
 			new RowSpec[] {
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
@@ -160,6 +166,20 @@ public class EmployeeEdit extends JPanel {
 		add(txtPhone, "4, 26, fill, default");
 		txtPhone.setColumns(10);
 		
+		JLabel lblContractDate = new JLabel("Contract date:");
+		add(lblContractDate, "2, 28, right, default");
+		
+		txtContractDate = new JTextField(this.contractDate);
+		add(txtContractDate, "4, 28, fill, default");
+		txtContractDate.setColumns(10);
+		
+		JLabel lblIncome = new JLabel("Income:");
+		add(lblIncome, "2, 30, right, default");
+		
+		txtIncome = new JTextField(String.valueOf(this.income));
+		add(txtIncome, "4, 30, fill, default");
+		txtIncome.setColumns(10);
+		
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -176,7 +196,7 @@ public class EmployeeEdit extends JPanel {
 						contractDate, 
 						income, 
 						MainFrame.currentUser.getLevel(), 
-						type,
+						level,
 						role,
 						shift,
 						languages, 
@@ -184,28 +204,22 @@ public class EmployeeEdit extends JPanel {
 			}
 		});
 		
-		JLabel lblContractDate = new JLabel("Contract date:");
-		add(lblContractDate, "2, 28, right, default");
-		
-		txtContractDate = new JTextField(this.contractDate);
-		add(txtContractDate, "4, 28, fill, default");
-		txtContractDate.setColumns(10);
-		
-		JLabel lblIncome = new JLabel("Income:");
-		add(lblIncome, "2, 30, right, default");
-		
-		txtIncome = new JTextField(String.valueOf(this.income));
-		add(txtIncome, "4, 30, fill, default");
-		txtIncome.setColumns(10);
-		
 		JButton btnReturn = new JButton("Return");
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				MainFrame.loadHomeFrame();
 			}
 		});
-		add(btnReturn, "2, 34");
-		add(btnSave, "4, 34, right, default");
+		
+		JLabel lblType = new JLabel("Type:");
+		add(lblType, "2, 32, right, default");
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Administrador", "Programador", "Secretaria", "Becari", "Commercial"}));
+		comboBox.setToolTipText("");
+		add(comboBox, "4, 32, fill, default");
+		add(btnReturn, "2, 38");
+		add(btnSave, "4, 38, right, default");
 
 	}
 
