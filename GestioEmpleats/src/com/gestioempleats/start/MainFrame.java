@@ -112,7 +112,7 @@ public class MainFrame extends JFrame {
 
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 323, 238);
+		setBounds(100, 100, 323, 201);
 		setLocationRelativeTo(null);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -120,6 +120,7 @@ public class MainFrame extends JFrame {
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(MainFrame.class.getResource("/com/gestioempleats/components/loading.jpg")));
 		contentPane.add(label, BorderLayout.CENTER);
+		label.setVisible(true);
 		setContentPane(contentPane);
 		
 		this.addWindowListener(new WindowListener() {
@@ -251,5 +252,5 @@ public class MainFrame extends JFrame {
 		contentPane.getRootPane().getParent().setSize(400, 500);
 	}
 	
-	
+	////////////////////////////////////////////////////
 }

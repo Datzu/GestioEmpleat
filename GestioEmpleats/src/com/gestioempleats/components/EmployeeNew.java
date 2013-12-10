@@ -224,6 +224,13 @@ public class EmployeeNew extends JPanel {
 //		}
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent i) {
+				if (i.equals("Administrador")) {
+					System.exit(0);
+				}
+			}
+		});
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Administrador", "Programador", "Secretaria", "Becari", "Commercial"}));
 		comboBox.setToolTipText("");
 		add(comboBox, "4, 32, fill, default");

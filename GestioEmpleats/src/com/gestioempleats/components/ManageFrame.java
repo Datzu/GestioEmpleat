@@ -20,7 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ManageFrame extends JPanel {
-	static int n;
+	public static int n;
 
 	/**
 	 * @author Gerard, Adrian Garcia
@@ -29,6 +29,9 @@ public class ManageFrame extends JPanel {
 	 * @param deleteString Cadena de text que agafara per mostrar el esborrat
 	 * @param n Serveix de comodi per saber desde on vens i saber cap a on vas carregant la finestra amb uns metodes o uns altres
 	 */
+	public int getFrom() {
+		return this.n;
+	}
 	
 	public ManageFrame(String newString, String modifyString,
 			String deleteString, int n) {
@@ -51,22 +54,29 @@ public class ManageFrame extends JPanel {
 		JButton btnNew = new JButton(newString);
 		btnNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				switch (ManageFrame.n) {
-				case 0: // admin
-					MainFrame.loadEmployeeNew();
-					break;
-				case 1:
-					MainFrame.loadEmployeeShow();
-					break;
-				case 2:
-					MainFrame.loadEmployeeNew();
-					break;
-				case 3:
-					MainFrame.loadEmployeeShow();
-					break;
-				case 4:
-					MainFrame.loadEmployeeShow();
-					break;
+				switch (MainFrame.currentUser.getLevel()) {
+					case 0:
+						switch(getFrom()) {
+							case 0:
+								MainFrame.loadEmployeeNew();
+							case 1:
+							default:
+								System.out.println(getFrom());
+						}
+						
+						break;
+					case 1:
+						MainFrame.loadEmployeeShow();
+						break;
+					case 2:
+						MainFrame.loadEmployeeNew();
+						break;
+					case 3:
+						MainFrame.loadEmployeeShow();
+						break;
+					case 4:
+						MainFrame.loadEmployeeShow();
+						break;
 				}
 			}
 		});
