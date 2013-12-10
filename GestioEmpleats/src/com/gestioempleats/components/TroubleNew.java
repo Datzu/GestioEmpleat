@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -17,23 +16,21 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-public class TaskCardFrame extends JPanel {
-	private JTextField txtTaskId;
+public class TroubleNew extends JPanel {
+	private JTextField txtTroubleID;
 	private JTextField txtDateCreation;
-	private JTextField txtDateEnd;
-	private JTextField txtDateDelivery;
+	private JTextField txtEmployee;
 	private JTextArea  txtComment;
-	private JComboBox  ComboEmployeeAssigned;
 
 	/**
 	 * Create the panel.
 	 */
-	public TaskCardFrame(String titleFrame) {
+	public TroubleNew() {
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(87dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
+				ColumnSpec.decode("max(143dlu;default):grow"),
 				FormFactory.RELATED_GAP_COLSPEC,
 				FormFactory.DEFAULT_COLSPEC,},
 			new RowSpec[] {
@@ -48,28 +45,24 @@ public class TaskCardFrame extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		JLabel lblTitleFrame = new JLabel(titleFrame);
+		JLabel lblTitleFrame = new JLabel("Trouble new");
 		lblTitleFrame.setFont(new Font("Tahoma", Font.BOLD, 11));
 		add(lblTitleFrame, "2, 2, center, default");
 		
 		JLabel lblId = new JLabel("ID: ");
 		add(lblId, "2, 4, right, default");
 		
-		txtTaskId = new JTextField();
-		add(txtTaskId, "4, 4, fill, default");
-		txtTaskId.setColumns(10);
+		txtTroubleID = new JTextField();
+		add(txtTroubleID, "4, 4, fill, default");
+		txtTroubleID.setColumns(10);
 		
-		JLabel lblTaskInfo = new JLabel("Estat de la Tasca:");
-		lblTaskInfo.setFont(new Font("Tahoma", Font.BOLD, 11));
-		add(lblTaskInfo, "2, 6, right, default");
+		JLabel lblTroubleInfo = new JLabel("Estat de la Incidencia:");
+		lblTroubleInfo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		add(lblTroubleInfo, "2, 6, right, default");
 		
 		JLabel lblDateCreation = new JLabel("Data Creació: ");
 		add(lblDateCreation, "2, 8, right, default");
@@ -78,48 +71,32 @@ public class TaskCardFrame extends JPanel {
 		add(txtDateCreation, "4, 8, fill, default");
 		txtDateCreation.setColumns(10);
 		
-		JLabel lblDateEnd = new JLabel("Data Finalització: ");
+		JLabel lblDateEnd = new JLabel("Empelat que la genera:");
 		add(lblDateEnd, "2, 10, right, default");
 		
-		txtDateEnd = new JTextField();
-		add(txtDateEnd, "4, 10, fill, default");
-		txtDateEnd.setColumns(10);
+		txtEmployee = new JTextField();
+		add(txtEmployee, "4, 10, fill, default");
+		txtEmployee.setColumns(10);
 		
-		JLabel lblDateDelivery = new JLabel("Data d'Entrega: ");
+		JLabel lblDateDelivery = new JLabel("Comentari:");
 		add(lblDateDelivery, "2, 12, right, default");
 		
-		txtDateDelivery = new JTextField();
-		add(txtDateDelivery, "4, 12, fill, default");
-		txtDateDelivery.setColumns(10);
-		
-		JLabel lblComment = new JLabel("Comentari: ");
-		add(lblComment, "2, 14, right, default");
-		
 		txtComment = new JTextArea();
-		add(txtComment, "4, 14, fill, fill");
-		
-		JLabel lblEmployeeAssigned = new JLabel("Empleat assignat: ");
-		add(lblEmployeeAssigned, "2, 16, right, default");
-		
-		ComboEmployeeAssigned = new JComboBox();
-		add(ComboEmployeeAssigned, "4, 16, fill, default");
+		add(txtComment, "4, 12, fill, fill");
 		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				MongoDBUtils.saveTask(
-						Integer.parseInt(txtTaskId.getText().toString()), 
+				MongoDBUtils.saveTrouble(
+						Integer.parseInt(txtTroubleID.getText().toString()), 
 						txtDateCreation.getText().toString(),
-						txtDateEnd.getText().toString(),
-						txtDateDelivery.getText().toString(),
+						txtEmployee.getText().toString(),
 						txtComment.getText().toString(),
-						ComboEmployeeAssigned.getSelectedItem().toString(),
 						4
 						);
 			}
 		});
-		add(btnGuardar, "4, 18");
+		add(btnGuardar, "4, 14");
 		
 		
 

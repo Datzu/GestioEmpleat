@@ -38,7 +38,7 @@ public class EmployeeEdit extends JPanel {
 	private int level;
 	private String role;
 	private String shift;
-	private List<String> languages;
+	private String languages;
 	private String origin;
 	private JTextField txtId;
 	private JTextField txtName;
@@ -54,6 +54,7 @@ public class EmployeeEdit extends JPanel {
 	public EmployeeEdit() {
 		
 		setValues();
+	
 		
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
@@ -224,9 +225,9 @@ public class EmployeeEdit extends JPanel {
 	}
 
 	private void setValues() {
-		BasicDBObject queryUser = new BasicDBObject();
-		queryUser.put("user", MainFrame.currentUser.getUser());
-		DBCursor cursor = MongoDBUtils.coll.find(queryUser);
+		//BasicDBObject queryUser = new BasicDBObject();
+		//queryUser.put("user", MainFrame.currentUser.getUser());
+		DBCursor cursor = MainFrame.tmp;
 		if (cursor.hasNext()) {
 			DBObject userObject = cursor.next();
 			setId(userObject.get("_id").toString());

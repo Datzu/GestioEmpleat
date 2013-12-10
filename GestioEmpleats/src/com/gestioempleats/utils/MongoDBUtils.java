@@ -22,10 +22,10 @@ import com.mongodb.MongoClient;
 
 public class MongoDBUtils {
 	public static DBCollection coll;
-	
+
 	/**
-	 * @author Gerard, Adrian Garcia
-	 * Clase de utilitats per fer servir amb mongoDB
+	 * @author Gerard, Adrian Garcia Clase de utilitats per fer servir amb
+	 *         mongoDB
 	 */
 
 	private static String name86MongoDB = "mongodb-win32-i386-2.4.8";
@@ -119,14 +119,17 @@ public class MongoDBUtils {
 		}
 	}
 
+	public static void setCollection(String cad) {
+		coll = db.getCollection(cad);
+	}
+
 	public static boolean connectDatabase() {
 		System.out.println("Connecting to MongoDB...");
 		try {
 			mongoClient = new MongoClient("localhost", 27017);
 			db = mongoClient.getDB("db");
 			try {
-				coll = db.getCollection("employee");
-
+				setCollection("employee");
 			} catch (Exception e) {
 				System.out.println("Error getting the collection 'employee'.");
 				return false;
@@ -196,8 +199,8 @@ public class MongoDBUtils {
 
 	public static void saveEmployee(String employeeId, String user,
 			String password, String name, String lastname1, String lastname2,
-			String birthday, String phone, String contractDate, float income, int level,
-			int type, String role, String shift, List<String> languages,
+			String birthday, String phone, String contractDate, float income,
+			int level, int type, String role, String shift, String languages,
 			String origin) {
 		DBCollection table = MongoDBUtils.db.getCollection("employee");
 		BasicDBObject employeeObject = new BasicDBObject();
@@ -219,21 +222,18 @@ public class MongoDBUtils {
 		// 3 - intern
 		// 4 - default - commercial
 
-		switch (type) {
-		case 0:
-			employeeObject.put("role", role);
-			break;
-		case 1:
-			employeeObject.put("shift", shift);
-			break;
-		case 2:
-			employeeObject.put("language", languages.toArray());
-			break;
-		case 3:
-			employeeObject.put("origin", origin);
-			break;
-
-		}
+		/*
+		 * switch (type) { case 0: employeeObject.put("role", role); break; case
+		 * 1: employeeObject.put("shift", shift); break; case 2:
+		 * employeeObject.put("language", languages); break; case 3:
+		 * employeeObject.put("origin", origin); break;
+		 * 
+		 * }
+		 */
+		employeeObject.put("role", role);
+		employeeObject.put("shift", shift);
+		employeeObject.put("language", languages);
+		employeeObject.put("origin", origin);
 		table.insert(employeeObject);
 	}
 

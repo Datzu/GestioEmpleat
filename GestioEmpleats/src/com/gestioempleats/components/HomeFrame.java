@@ -77,7 +77,7 @@ public class HomeFrame extends JPanel {
 		JButton btnMngQuerys = new JButton("Modul Consultes");
 		btnMngQuerys.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MainFrame.loadManageFrame("Nova consulta", "Modificar consulta", "Esborrar consulta", 3);
+				MainFrame.loadSearchFrame();
 			}
 		});
 		add(btnMngQuerys, "4, 10");

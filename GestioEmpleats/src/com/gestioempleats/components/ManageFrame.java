@@ -25,15 +25,20 @@ public class ManageFrame extends JPanel {
 
 	/**
 	 * @author Gerard, Adrian Garcia
-	 * @param newString Cadena de text que agafara per mostrar el nou
-	 * @param modifyString Cadena de text que agafara per mostrar el modificar
-	 * @param deleteString Cadena de text que agafara per mostrar el esborrat
-	 * @param n Serveix de comodi per saber desde on vens i saber cap a on vas carregant la finestra amb uns metodes o uns altres
+	 * @param newString
+	 *            Cadena de text que agafara per mostrar el nou
+	 * @param modifyString
+	 *            Cadena de text que agafara per mostrar el modificar
+	 * @param deleteString
+	 *            Cadena de text que agafara per mostrar el esborrat
+	 * @param n
+	 *            Serveix de comodi per saber desde on vens i saber cap a on vas
+	 *            carregant la finestra amb uns metodes o uns altres
 	 */
 	public int getFrom() {
 		return this.n;
 	}
-	
+
 	public ManageFrame(String newString, String modifyString,
 			String deleteString, int n) {
 		this.n = n;
@@ -56,169 +61,171 @@ public class ManageFrame extends JPanel {
 		btnNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switch (MainFrame.currentUser.getLevel()) {
+				case 0:
+					switch (getFrom()) {
 					case 0:
-						switch(getFrom()) {
-							case 0:
-								MainFrame.loadEmployeeNew();
-								break;
-							case 1:
-								MainFrame.loadTaskNew();
-								break;
-							case 2:
-								MainFrame.loadTroubleNew();
-								break;
-						}
-						break;
-					case 1:
-						switch(getFrom()) {
-							case 0:
-								MainFrame.loadEmployeeShow();
-								break;
-							case 1:
-								MainFrame.loadTaskNew();
-								break;
-							case 2:
-								MainFrame.loadTroubleNew();
-								break;
-						}
-						MainFrame.loadEmployeeShow();
-						break;
-					case 2:
-						switch(getFrom()) {
-							case 0:
-								MainFrame.loadEmployeeNew();
-								break;
-							case 1:
-								JOptionPane.showMessageDialog(getComponent(0), "No pots accedir aqui.");
-								break;
-							case 2:
-								MainFrame.loadTroubleNew();
-								break;
-						}
 						MainFrame.loadEmployeeNew();
 						break;
-					case 3:
-						switch(getFrom()) {
-							case 0:
-								MainFrame.loadEmployeeShow();
-								break;
-							case 1:
-								JOptionPane.showMessageDialog(getComponent(0), "No pots accedir aqui.");
-								break;
-							case 2:
-								MainFrame.loadTroubleNew();
-								break;
-						}
+					case 1:
+						MainFrame.loadTaskNew();
+						break;
+					case 2:
+						MainFrame.loadTroubleNew();
+						break;
+					}
+					break;
+				case 1:
+					switch (getFrom()) {
+					case 0:
 						MainFrame.loadEmployeeShow();
 						break;
-					case 4:
-						switch(getFrom()) {
-							case 0:
-								MainFrame.loadEmployeeShow();
-								break;
-							case 1:
-								JOptionPane.showMessageDialog(getComponent(0), "No pots accedir aqui.");
-								break;
-							case 2:
-								MainFrame.loadTroubleNew();
-								break;
-						}
+					case 1:
+						MainFrame.loadTaskNew();
 						break;
+					case 2:
+						MainFrame.loadTroubleNew();
+						break;
+					}
+					MainFrame.loadEmployeeShow();
+					break;
+				case 2:
+					switch (getFrom()) {
+					case 0:
+						MainFrame.loadEmployeeNew();
+						break;
+					case 1:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
+						break;
+					case 2:
+						MainFrame.loadTroubleNew();
+						break;
+					}
+					MainFrame.loadEmployeeNew();
+					break;
+				case 3:
+					switch (getFrom()) {
+					case 0:
+						MainFrame.loadEmployeeShow();
+						break;
+					case 1:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
+						break;
+					case 2:
+						MainFrame.loadTroubleNew();
+						break;
+					}
+					MainFrame.loadEmployeeShow();
+					break;
+				case 4:
+					switch (getFrom()) {
+					case 0:
+						MainFrame.loadEmployeeShow();
+						break;
+					case 1:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
+						break;
+					case 2:
+						MainFrame.loadTroubleNew();
+						break;
+					}
+					break;
 				}
 			}
 		});
 		add(btnNew, "2, 2, fill, top");
 
-		JButton btnModify = new JButton(modifyString);
+		/*JButton btnModify = new JButton(modifyString);
 		btnModify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switch (MainFrame.currentUser.getLevel()) {
+				case 0:
+					switch (getFrom()) {
 					case 0:
-						switch(getFrom()) {
-							case 0:
-								MainFrame.loadEmployeeEdit();
-								break;
-							case 1:
-								MainFrame.loadTaskEdit();
-								break;
-							case 2:
-								MainFrame.loadTroubleEdit();
-								break;
-						}
+						MainFrame.loadEmployeeEdit();
 						break;
 					case 1:
-						switch(getFrom()) {
-							case 0:
-								JOptionPane.showMessageDialog(getComponent(0), "No pots accedir aqui.");
-								break;
-							case 1:
-								MainFrame.loadTaskEdit();
-								break;
-							case 2:
-								JOptionPane.showMessageDialog(getComponent(0), "No pots accedir aqui.");
-								break;
-						}
+						MainFrame.loadTaskEdit();
 						break;
 					case 2:
-						switch(getFrom()) {
-							case 0:
-								MainFrame.loadEmployeeEdit();
-								break;
-							case 1:
-								JOptionPane.showMessageDialog(getComponent(0), "No pots accedir aqui.");
-								break;
-							case 2:
-								JOptionPane.showMessageDialog(getComponent(0), "No pots accedir aqui.");
-								break;
-						}
+						MainFrame.loadTroubleEdit();
 						break;
-					case 3:
-						switch(getFrom()) {
-							case 0:
-								JOptionPane.showMessageDialog(getComponent(0), "No pots accedir aqui.");
-								break;
-							case 1:
-								JOptionPane.showMessageDialog(getComponent(0), "No pots accedir aqui.");
-								break;
-							case 2:
-								JOptionPane.showMessageDialog(getComponent(0), "No pots accedir aqui.");
-								break;
-						}
+					}
+					break;
+				case 1:
+					switch (getFrom()) {
+					case 0:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
 						break;
-					case 4:
-						switch(getFrom()) {
-							case 0:
-								JOptionPane.showMessageDialog(getComponent(0), "No pots accedir aqui.");
-								break;
-							case 1:
-								JOptionPane.showMessageDialog(getComponent(0), "No pots accedir aqui.");
-								break;
-							case 2:
-								JOptionPane.showMessageDialog(getComponent(0), "No pots accedir aqui.");
-								break;
-						}
+					case 1:
+						MainFrame.loadTaskEdit();
 						break;
+					case 2:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
+						break;
+					}
+					break;
+				case 2:
+					switch (getFrom()) {
+					case 0:
+						MainFrame.loadEmployeeEdit();
+						break;
+					case 1:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
+						break;
+					case 2:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
+						break;
+					}
+					break;
+				case 3:
+					switch (getFrom()) {
+					case 0:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
+						break;
+					case 1:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
+						break;
+					case 2:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
+						break;
+					}
+					break;
+				case 4:
+					switch (getFrom()) {
+					case 0:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
+						break;
+					case 1:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
+						break;
+					case 2:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
+						break;
+					}
+					break;
 				}
 			}
 		});
-		add(btnModify, "2, 4, fill, top");
+		add(btnModify, "2, 4, fill, top");*/
 
 		JButton btnDelete = new JButton(deleteString);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				switch (MainFrame.currentUser.getLevel()) {
-					case 0:
-						break;
-					case 1:
-						break;
-					case 2:
-						break;
-					case 3:
-						break;
-					case 4:
-						break;
-					}
-				}
+				MainFrame.loadSearchFrame();
+			}
 		});
 		add(btnDelete, "2, 6, fill, top");
 
@@ -226,4 +233,5 @@ public class ManageFrame extends JPanel {
 		add(returnFrame, "2, 8, fill, fill");
 
 	}
+
 }
