@@ -80,7 +80,6 @@ public class MainFrame extends JFrame {
 
 	public static void preLoad() {
 		Permissions.createPermissionArray();
-		// System.out.println();
 		if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
 			path.setPathToMongoDB(System.getenv("SystemDrive") + File.separator
 					+ "mongoDB");
@@ -212,7 +211,7 @@ public class MainFrame extends JFrame {
 		contentPane.add(homeFrame, BorderLayout.CENTER);
 		contentPane.revalidate();
 		contentPane.repaint();
-		contentPane.getRootPane().getParent().setSize(190, 370);
+		contentPane.getRootPane().getParent().setSize(190, 400);
 	}
 
 	public static void loadLoginFrame() {

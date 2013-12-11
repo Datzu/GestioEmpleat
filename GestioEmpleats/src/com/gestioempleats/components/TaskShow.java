@@ -109,8 +109,7 @@ public class TaskShow extends JPanel {
 	private void getValues() {
 		BasicDBObject queryTask = new BasicDBObject();
 		MongoDBUtils.setCollection("task");
-		queryTask.put("task", MainFrame.currentUser.getTask());
-		DBCursor cursor = MongoDBUtils.coll.find(queryTask);
+		DBCursor cursor = MongoDBUtils.coll.find(MainFrame.tmp);
 		if (cursor.hasNext()) {
 			DBObject userObject = cursor.next();
 			setId(userObject.get("_id").toString());

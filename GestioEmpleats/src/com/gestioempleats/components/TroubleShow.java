@@ -91,8 +91,7 @@ public class TroubleShow extends JPanel {
 	private void getValues() {
 		BasicDBObject queryTrouble = new BasicDBObject();
 		MongoDBUtils.setCollection("trouble");
-		queryTrouble.put("trouble", MainFrame.currentUser.getTrouble());
-		DBCursor cursor = MongoDBUtils.coll.find(queryTrouble);
+		DBCursor cursor = MongoDBUtils.coll.find(MainFrame.tmp);
 		if (cursor.hasNext()) {
 			DBObject userObject = cursor.next();
 			setId(userObject.get("_id").toString());
