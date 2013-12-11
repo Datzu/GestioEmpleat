@@ -144,6 +144,18 @@ public class ManageFrame extends JPanel {
 		JButton btnDelete = new JButton(deleteString);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				switch (MainFrame.currentUser.getLevel()) {
+					case 0:
+						switch (getFrom()) {
+							// to do
+							default:
+								break;
+						}
+					default:
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No pots accedir aqui.");
+						break;
+				}
 				MainFrame.loadSearchFrame();
 			}
 		});
