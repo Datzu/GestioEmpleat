@@ -136,98 +136,14 @@ public class ManageFrame extends JPanel {
 			}
 		});
 		add(btnNew, "2, 2, fill, top");
-
-		/*JButton btnModify = new JButton(modifyString);
-		btnModify.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				switch (MainFrame.currentUser.getLevel()) {
-				case 0:
-					switch (getFrom()) {
-					case 0:
-						MainFrame.loadEmployeeEdit();
-						break;
-					case 1:
-						MainFrame.loadTaskEdit();
-						break;
-					case 2:
-						MainFrame.loadTroubleEdit();
-						break;
-					}
-					break;
-				case 1:
-					switch (getFrom()) {
-					case 0:
-						JOptionPane.showMessageDialog(getComponent(0),
-								"No pots accedir aqui.");
-						break;
-					case 1:
-						MainFrame.loadTaskEdit();
-						break;
-					case 2:
-						JOptionPane.showMessageDialog(getComponent(0),
-								"No pots accedir aqui.");
-						break;
-					}
-					break;
-				case 2:
-					switch (getFrom()) {
-					case 0:
-						MainFrame.loadEmployeeEdit();
-						break;
-					case 1:
-						JOptionPane.showMessageDialog(getComponent(0),
-								"No pots accedir aqui.");
-						break;
-					case 2:
-						JOptionPane.showMessageDialog(getComponent(0),
-								"No pots accedir aqui.");
-						break;
-					}
-					break;
-				case 3:
-					switch (getFrom()) {
-					case 0:
-						JOptionPane.showMessageDialog(getComponent(0),
-								"No pots accedir aqui.");
-						break;
-					case 1:
-						JOptionPane.showMessageDialog(getComponent(0),
-								"No pots accedir aqui.");
-						break;
-					case 2:
-						JOptionPane.showMessageDialog(getComponent(0),
-								"No pots accedir aqui.");
-						break;
-					}
-					break;
-				case 4:
-					switch (getFrom()) {
-					case 0:
-						JOptionPane.showMessageDialog(getComponent(0),
-								"No pots accedir aqui.");
-						break;
-					case 1:
-						JOptionPane.showMessageDialog(getComponent(0),
-								"No pots accedir aqui.");
-						break;
-					case 2:
-						JOptionPane.showMessageDialog(getComponent(0),
-								"No pots accedir aqui.");
-						break;
-					}
-					break;
-				}
-			}
-		});
-		add(btnModify, "2, 4, fill, top");*/
-
+		
 		JButton btnDelete = new JButton(deleteString);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				MainFrame.loadSearchFrame();
 			}
 		});
-		add(btnDelete, "2, 6, fill, top");
+		add(btnDelete, "2, 4, fill, top");
 
 		ReturnFrame returnFrame = new ReturnFrame();
 		add(returnFrame, "2, 8, fill, fill");

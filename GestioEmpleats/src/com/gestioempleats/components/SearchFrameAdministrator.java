@@ -8,6 +8,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -17,6 +18,7 @@ import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+import com.mongodb.DBCursor;
 
 public class SearchFrameAdministrator extends JPanel {
 	private JTextField textFieldSearchText;
@@ -55,13 +57,13 @@ public class SearchFrameAdministrator extends JPanel {
 		
 		JLabel lblId = new JLabel("Filtrar:");
 		add(lblId, "2, 4, right, default");
-		comboBoxSearchType.setModel(new DefaultComboBoxModel(new String[] {"Empleat", "Tasca", "Incid\u00E8ncia"}));
+		comboBoxSearchType.setModel(new DefaultComboBoxModel(new String[] {"Empleat", "Tasca", "Incidencia"}));
 		
 		add(comboBoxSearchType, "4, 4, fill, default");
 		
 		JLabel lbllf = new JLabel("Filtrar:");
 		add(lbllf, "2, 6, right, default");
-		comboBoxSearchValue.setModel(new DefaultComboBoxModel(new String[] {"ID", "Nom", "Data"}));
+		comboBoxSearchValue.setModel(new DefaultComboBoxModel(new String[] {"ID", "Usuari", "Nom", "Data"}));
 		
 	
 		add(comboBoxSearchValue, "4, 6, fill, default");
@@ -76,23 +78,54 @@ public class SearchFrameAdministrator extends JPanel {
 		JButton btnSearch = new JButton("Cercar");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				DBCursor cursor;
 				switch (comboBoxSearchType.getSelectedIndex()) {
 				case 0:
 					MongoDBUtils.setCollection("employee");
-					MainFrame.tmp = MongoDBUtils.findDBObject(comboBoxSearchValue.getSelectedItem().toString(), textFieldSearchText.getText().toString());
-					MainFrame.loadEmployeeEdit();
+					cursor = MongoDBUtils.findDBObject(comboBoxSearchValue.getSelectedItem().toString(), textFieldSearchText.getText().toString());
+					if (cursor == null) {
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No s'ha trobat res.");
+						cursor.close();
+						MainFrame.loadSearchFrame();
+					} else if (cursor.hasNext()) {
+						MainFrame.tmp = cursor.next();
+						cursor.close();
+						MainFrame.closeSearchFrame();
+						MainFrame.loadEmployeeEdit();
+					}
 					break;
 				case 1:
 					MongoDBUtils.setCollection("task");
-					MainFrame.tmp = MongoDBUtils.findDBObject(comboBoxSearchValue.getSelectedItem().toString(), textFieldSearchText.getText().toString());
+					cursor = MongoDBUtils.findDBObject(comboBoxSearchValue.getSelectedItem().toString(), textFieldSearchText.getText().toString());
+					if (cursor == null) {
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No s'ha trobat res.");
+						cursor.close();
+						MainFrame.loadSearchFrame();
+					} else if (cursor.hasNext()) {
+						MainFrame.tmp = cursor.next();
+						cursor.close();
+						MainFrame.closeSearchFrame();
+						MainFrame.loadTaskEdit();
+					}
 					break;
 				case 2:
 					MongoDBUtils.setCollection("trouble");
-					MainFrame.tmp = MongoDBUtils.findDBObject(comboBoxSearchValue.getSelectedItem().toString(), textFieldSearchText.getText().toString());
+					cursor = MongoDBUtils.findDBObject(comboBoxSearchValue.getSelectedItem().toString(), textFieldSearchText.getText().toString());
+					if (cursor == null) {
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No s'ha trobat res.");
+						cursor.close();
+						MainFrame.loadSearchFrame();
+					} else if (cursor.hasNext()) {
+						MainFrame.tmp = cursor.next();
+						cursor.close();
+						MainFrame.closeSearchFrame();
+						MainFrame.loadTroubleEdit();
+					}
 					break;
 				}
-				MainFrame.closeSearchFrame();
-
 			}
 		});
 		add(btnSearch, "4, 10");

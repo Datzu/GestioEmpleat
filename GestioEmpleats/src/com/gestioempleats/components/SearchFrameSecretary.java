@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -16,6 +17,8 @@ import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+import com.mongodb.DBCursor;
+
 import javax.swing.DefaultComboBoxModel;
 
 public class SearchFrameSecretary extends JPanel {
@@ -77,15 +80,20 @@ public class SearchFrameSecretary extends JPanel {
 		JButton btnSearch = new JButton("Cercar");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				DBCursor cursor;
 				MongoDBUtils.setCollection("employee");
-				MainFrame.tmp = MongoDBUtils.findDBObject(comboBoxSearchValue
-						.getSelectedItem().toString(), textFieldSearchText
-						.getText().toString());
-				
-				MainFrame.closeSearchFrame();
-
-
+				cursor = MongoDBUtils.findDBObject(comboBoxSearchValue.getSelectedItem().toString(), textFieldSearchText.getText().toString());
+				if (cursor == null) {
+					JOptionPane.showMessageDialog(getComponent(0),
+							"No s'ha trobat res.");
+					cursor.close();
+					MainFrame.loadSearchFrame();
+				} else if (cursor.hasNext()) {
+					MainFrame.tmp = cursor.next();
+					cursor.close();
+					MainFrame.closeSearchFrame();
+					MainFrame.loadEmployeeEdit();
+				}
 			}
 		});
 		add(btnSearch, "4, 10");

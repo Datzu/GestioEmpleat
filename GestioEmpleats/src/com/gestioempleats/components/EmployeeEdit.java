@@ -14,12 +14,14 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.List;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
@@ -225,24 +227,23 @@ public class EmployeeEdit extends JPanel {
 	}
 
 	private void setValues() {
-		//BasicDBObject queryUser = new BasicDBObject();
-		//queryUser.put("user", MainFrame.currentUser.getUser());
-		DBCursor cursor = MainFrame.tmp;
-		if (cursor.hasNext()) {
-			DBObject userObject = cursor.next();
-			setId(userObject.get("_id").toString());
-			setUser(userObject.get("user").toString());
-			setPassword(userObject.get("password").toString());
-			setName(userObject.get("name").toString());
-			setLastname1(userObject.get("lastname1").toString());
-			setLastname2(userObject.get("lastname2").toString());
-			setBirthday(userObject.get("birthday").toString());
-			setPhone(userObject.get("phone").toString());
-			setContractDate(userObject.get("contractDate").toString());
-			setIncome(Float.valueOf(userObject.get("income").toString()));
-			cursor.close();
-		}
-		
+		try {
+			DBObject userObject = MainFrame.tmp;
+			if (userObject != null) {
+				setId(userObject.get("_id").toString());
+				setUser(userObject.get("user").toString());
+				setPassword(userObject.get("password").toString());
+				setName(userObject.get("name").toString());
+				setLastname1(userObject.get("lastname1").toString());
+				setLastname2(userObject.get("lastname2").toString());
+				setBirthday(userObject.get("birthday").toString());
+				setPhone(userObject.get("phone").toString());
+				setContractDate(userObject.get("contractDate").toString());
+				setIncome(Float.valueOf(userObject.get("income").toString()));
+			}
+		} catch (Exception e) {
+			return;
+		}	
 	}
 
 	public String getId() {

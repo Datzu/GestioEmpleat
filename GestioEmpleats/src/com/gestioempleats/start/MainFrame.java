@@ -36,6 +36,7 @@ import com.gestioempleats.utils.MongoDBUtils;
 import com.gestioempleats.utils.Paths;
 import com.gestioempleats.utils.Permissions;
 import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 
 public class MainFrame extends JFrame {
 	public static JPanel contentPane = new JPanel();
@@ -45,7 +46,7 @@ public class MainFrame extends JFrame {
 
 	public static ActualSession currentUser = new ActualSession();
 
-	public static DBCursor tmp;
+	public static DBObject tmp;
 
 	public static JFrame searchFrame = new JFrame();
 
@@ -244,31 +245,24 @@ public class MainFrame extends JFrame {
 	}
 
 	public static void loadSearchFrame() {
-		/*
-		 * SearchFrameAdministrator searchFrame = new
-		 * SearchFrameAdministrator(); contentPane.removeAll();
-		 * contentPane.add(searchFrame, BorderLayout.CENTER);
-		 * contentPane.revalidate(); contentPane.repaint();
-		 * contentPane.getRootPane().getParent().setSize(470, 230);
-		 */
 		searchFrame = new JFrame();
 		searchFrame.setVisible(true);
 		searchFrame.setBounds(0, 0, 470, 230);
 		searchFrame.setLocationRelativeTo(null);
 		searchFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		switch (currentUser.getLevel()) {
-		case 0:
-			searchFrame.setContentPane(new SearchFrameAdministrator());
-			break;
-		case 1:
-			searchFrame.setContentPane(new SearchFrameProgrammer());
-			break;
-		case 2:
-			searchFrame.setContentPane(new SearchFrameSecretary());
-			break;
-		case 3:
-			searchFrame.setContentPane(new SearchFrameIntern());
-			break;
+			case 0:
+				searchFrame.setContentPane(new SearchFrameAdministrator());
+				break;
+			case 1:
+				searchFrame.setContentPane(new SearchFrameProgrammer());
+				break;
+			case 2:
+				searchFrame.setContentPane(new SearchFrameSecretary());
+				break;
+			case 3:
+				searchFrame.setContentPane(new SearchFrameIntern());
+				break;
 		}
 	}
 
