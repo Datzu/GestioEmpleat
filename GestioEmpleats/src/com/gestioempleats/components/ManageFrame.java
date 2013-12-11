@@ -156,7 +156,6 @@ public class ManageFrame extends JPanel {
 								"No pots accedir aqui.");
 						break;
 				}
-				MainFrame.loadSearchFrame();
 			}
 		});
 		add(btnDelete, "2, 4, fill, top");
