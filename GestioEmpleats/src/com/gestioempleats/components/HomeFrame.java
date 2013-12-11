@@ -44,6 +44,8 @@ public class HomeFrame extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
 		JLabel lblLogo = new JLabel("");
@@ -96,7 +98,15 @@ public class HomeFrame extends JPanel {
 				MainFrame.exit();
 			}
 		});
-		add(btnExit, "4, 14");
+		
+		JButton btnLogout = new JButton("Logout");
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.loadLoginFrame();
+			}
+		});
+		add(btnLogout, "4, 14");
+		add(btnExit, "4, 16");
 
 	}
 
