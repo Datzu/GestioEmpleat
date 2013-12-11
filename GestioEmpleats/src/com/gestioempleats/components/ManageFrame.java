@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ManageFrame extends JPanel {
-	public static int n;
+	private int n;
 
 	/**
 	 * @author Gerard, Adrian Garcia
@@ -38,10 +38,14 @@ public class ManageFrame extends JPanel {
 	public int getFrom() {
 		return this.n;
 	}
+	
+	public void setFrom(int n) {
+		this.n = n;
+	}
 
 	public ManageFrame(String newString, String modifyString,
 			String deleteString, int n) {
-		this.n = n;
+		setFrom(n);
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("190px:grow"),
@@ -61,78 +65,78 @@ public class ManageFrame extends JPanel {
 		btnNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switch (MainFrame.currentUser.getLevel()) {
-				case 0:
-					switch (getFrom()) {
 					case 0:
+						switch (getFrom()) {
+						case 0:
+							MainFrame.loadEmployeeNew();
+							break;
+						case 1:
+							MainFrame.loadTaskNew();
+							break;
+						case 2:
+							MainFrame.loadTroubleNew();
+							break;
+						}
+						break;
+					case 1:
+						switch (getFrom()) {
+						case 0:
+							MainFrame.loadEmployeeShow();
+							break;
+						case 1:
+							MainFrame.loadTaskNew();
+							break;
+						case 2:
+							MainFrame.loadTroubleNew();
+							break;
+						}
+						MainFrame.loadEmployeeShow();
+						break;
+					case 2:
+						switch (getFrom()) {
+						case 0:
+							MainFrame.loadEmployeeNew();
+							break;
+						case 1:
+							JOptionPane.showMessageDialog(getComponent(0),
+									"No pots accedir aqui.");
+							break;
+						case 2:
+							MainFrame.loadTroubleNew();
+							break;
+						}
 						MainFrame.loadEmployeeNew();
 						break;
-					case 1:
-						MainFrame.loadTaskNew();
-						break;
-					case 2:
-						MainFrame.loadTroubleNew();
-						break;
-					}
-					break;
-				case 1:
-					switch (getFrom()) {
-					case 0:
+					case 3:
+						switch (getFrom()) {
+						case 0:
+							MainFrame.loadEmployeeShow();
+							break;
+						case 1:
+							JOptionPane.showMessageDialog(getComponent(0),
+									"No pots accedir aqui.");
+							break;
+						case 2:
+							MainFrame.loadTroubleNew();
+							break;
+						}
 						MainFrame.loadEmployeeShow();
 						break;
-					case 1:
-						MainFrame.loadTaskNew();
-						break;
-					case 2:
-						MainFrame.loadTroubleNew();
-						break;
-					}
-					MainFrame.loadEmployeeShow();
-					break;
-				case 2:
-					switch (getFrom()) {
-					case 0:
-						MainFrame.loadEmployeeNew();
-						break;
-					case 1:
-						JOptionPane.showMessageDialog(getComponent(0),
-								"No pots accedir aqui.");
-						break;
-					case 2:
-						MainFrame.loadTroubleNew();
+					case 4:
+						switch (getFrom()) {
+						case 0:
+							MainFrame.loadEmployeeShow();
+							break;
+						case 1:
+							JOptionPane.showMessageDialog(getComponent(0),
+									"No pots accedir aqui.");
+							break;
+						case 2:
+							MainFrame.loadTroubleNew();
+							break;
+						}
 						break;
 					}
-					MainFrame.loadEmployeeNew();
-					break;
-				case 3:
-					switch (getFrom()) {
-					case 0:
-						MainFrame.loadEmployeeShow();
-						break;
-					case 1:
-						JOptionPane.showMessageDialog(getComponent(0),
-								"No pots accedir aqui.");
-						break;
-					case 2:
-						MainFrame.loadTroubleNew();
-						break;
-					}
-					MainFrame.loadEmployeeShow();
-					break;
-				case 4:
-					switch (getFrom()) {
-					case 0:
-						MainFrame.loadEmployeeShow();
-						break;
-					case 1:
-						JOptionPane.showMessageDialog(getComponent(0),
-								"No pots accedir aqui.");
-						break;
-					case 2:
-						MainFrame.loadTroubleNew();
-						break;
-					}
-					break;
-				}
 			}
 		});
 		add(btnNew, "2, 2, fill, top");

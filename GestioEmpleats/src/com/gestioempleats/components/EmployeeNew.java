@@ -53,11 +53,11 @@ public class EmployeeNew extends JPanel {
 	private JTextField txtPassword;
 	private JTextField txtContractDate;
 	private JTextField txtIncome;
-
-	JLabel lblShowLevel = new JLabel();
-	JComboBox comboBox = new JComboBox();
 	private JTextField txtType;
 
+	JLabel lblShowLevel = new JLabel("0");
+	JComboBox comboBox = new JComboBox();
+	
 	public EmployeeNew() {
 
 		setLayout(new FormLayout(new ColumnSpec[] {
@@ -153,31 +153,24 @@ public class EmployeeNew extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				setValues();				
 				switch (getType()) {
-				case 0:
-					setRole(txtType.getText().toString());
-					break;
-				case 1:
-					setLanguages(txtType.getText().toString());
-
-					break;
-				case 2:
-					setShift(txtType.getText().toString());
-
-					break;
-				case 3:
-					setOrigin(txtType.getText().toString());
-
-					break;
-
+					case 0:
+						setRole(txtType.getText().toString());
+						break;
+					case 1:
+						setLanguages(txtType.getText().toString());
+						break;
+					case 2:
+						setShift(txtType.getText().toString());
+						break;
+					case 3:
+						setOrigin(txtType.getText().toString());
+						break;
 				}
-				
-
 				MongoDBUtils.saveEmployee(id, user, password, name, lastname1,
 						lastname2, birthday, phone, contractDate, income,
-						MainFrame.currentUser.getLevel(), type, role, shift,
+						comboBox.getSelectedIndex(), type, role, shift,
 						languages, origin);
 				MainFrame.loadEmployeeNew();
-
 			}
 
 		});
@@ -211,10 +204,6 @@ public class EmployeeNew extends JPanel {
 
 		JLabel lblType = new JLabel("Type:");
 		add(lblType, "2, 32, right, default");
-
-		// if (e.getItem().toString().equals("Administrador")) {
-		// System.exit(0);
-		// }
 
 		comboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent i) {
