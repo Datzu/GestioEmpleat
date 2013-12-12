@@ -15,6 +15,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import javax.swing.JButton;
 
 
 public class TroubleShow extends JPanel {
@@ -50,7 +51,7 @@ public class TroubleShow extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		JLabel lblTitleFrame = new JLabel("Show Trouble");
+		JLabel lblTitleFrame = new JLabel("Mostrar Incidencia:");
 		lblTitleFrame.setFont(new Font("Tahoma", Font.BOLD, 11));
 		add(lblTitleFrame, "2, 2, center, default");
 		
@@ -84,6 +85,9 @@ public class TroubleShow extends JPanel {
 		JTextArea txtCommentShow = new JTextArea();
 		txtCommentShow.setText(this.comentari);
 		add(txtCommentShow, "4, 12, fill, fill");
+		
+		JButton button = new JButton("Tornar");
+		add(button, "2, 14, center, default");
 		
 		
 

@@ -57,7 +57,7 @@ public class TaskEdit extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		JLabel lblTitleFrame = new JLabel("task edit");
+		JLabel lblTitleFrame = new JLabel("Editar Tasca:");
 		lblTitleFrame.setFont(new Font("Tahoma", Font.BOLD, 11));
 		add(lblTitleFrame, "2, 2, center, default");
 		
@@ -120,7 +120,10 @@ public class TaskEdit extends JPanel {
 						);
 			}
 		});
-		add(btnGuardar, "4, 18");
+		
+		JButton button = new JButton("Tornar");
+		add(button, "2, 18, center, default");
+		add(btnGuardar, "4, 18, right, default");
 		
 		
 

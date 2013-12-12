@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.gestioempleats.start.MainFrame;
 import com.gestioempleats.utils.MongoDBUtils;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -17,6 +18,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 public class TroubleNew extends JPanel {
+	
 	private JTextField txtTroubleID;
 	private JTextField txtDateCreation;
 	private JTextField txtEmployee;
@@ -50,7 +52,7 @@ public class TroubleNew extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		JLabel lblTitleFrame = new JLabel("Trouble new");
+		JLabel lblTitleFrame = new JLabel("Nova Incidencia");
 		lblTitleFrame.setFont(new Font("Tahoma", Font.BOLD, 11));
 		add(lblTitleFrame, "2, 2, center, default");
 		
@@ -97,7 +99,15 @@ public class TroubleNew extends JPanel {
 						);
 			}
 		});
-		add(btnGuardar, "4, 14");
+		
+		JButton btnTornar = new JButton("Tornar");
+		btnTornar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.loadHomeFrame();
+			}
+		});
+		add(btnTornar, "2, 14, center, default");
+		add(btnGuardar, "4, 14, right, default");
 		
 		
 

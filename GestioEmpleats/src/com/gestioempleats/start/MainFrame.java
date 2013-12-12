@@ -330,7 +330,7 @@ public class MainFrame extends JFrame {
 		contentPane.add(troubleNew, BorderLayout.CENTER);
 		contentPane.revalidate();
 		contentPane.repaint();
-		contentPane.getRootPane().getParent().setSize(400, 500);
+		contentPane.getRootPane().getParent().setSize(700, 500);
 	}
 
 	public static void loadTroubleEdit() {

@@ -15,6 +15,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import javax.swing.JButton;
 
 
 
@@ -57,7 +58,7 @@ public class TaskShow extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		JLabel lblTitleFrame = new JLabel("Show Task");
+		JLabel lblTitleFrame = new JLabel("Mostrar Tasca:");
 		lblTitleFrame.setFont(new Font("Tahoma", Font.BOLD, 11));
 		add(lblTitleFrame, "2, 2, center, default");
 		
@@ -101,6 +102,9 @@ public class TaskShow extends JPanel {
 		
 		JLabel lblEmployeeAssignedShow = new JLabel(this.empleat_asignat);
 		add(lblEmployeeAssignedShow, "4, 16");
+		
+		JButton button = new JButton("Tornar");
+		add(button, "2, 18, center, default");
 		
 		
 		

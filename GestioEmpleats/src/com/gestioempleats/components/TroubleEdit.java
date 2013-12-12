@@ -51,7 +51,7 @@ public class TroubleEdit extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		JLabel lblTitleFrame = new JLabel("Trouble new");
+		JLabel lblTitleFrame = new JLabel("Nova Incidencia:");
 		lblTitleFrame.setFont(new Font("Tahoma", Font.BOLD, 11));
 		add(lblTitleFrame, "2, 2, center, default");
 		
@@ -98,7 +98,10 @@ public class TroubleEdit extends JPanel {
 						);
 			}
 		});
-		add(btnGuardar, "4, 14");
+		
+		JButton button = new JButton("Tornar");
+		add(button, "2, 14, center, default");
+		add(btnGuardar, "4, 14, right, default");
 		
 		
 
