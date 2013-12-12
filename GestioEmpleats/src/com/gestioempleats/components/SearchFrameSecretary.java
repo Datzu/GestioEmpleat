@@ -96,7 +96,15 @@ public class SearchFrameSecretary extends JPanel {
 				}
 			}
 		});
-		add(btnSearch, "4, 10");
+		
+		JButton btnTornar = new JButton("Tornar");
+		btnTornar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.loadHomeFrame();
+			}
+		});
+		add(btnTornar, "2, 10, center, default");
+		add(btnSearch, "4, 10, right, default");
 
 	}
 

@@ -21,16 +21,18 @@ import com.mongodb.DBCursor;
 
 import javax.swing.DefaultComboBoxModel;
 
-public class SearchFrameIntern extends JPanel {
+public class DeleteFrameSecretary extends JPanel {
 	private JTextField textFieldSearchText;
 	JComboBox comboBoxSearchType = new JComboBox();
 	JComboBox comboBoxSearchValue = new JComboBox();
+
 	/**
 	 * @author Gerard, Adrian Garcia
-	 * @param titleFrame Cadena de text per mostrar a dalt de tot
-	 * Finestra que serveix per agafar i marcar el que es vol buscar
+	 * @param titleFrame
+	 *            Cadena de text per mostrar a dalt de tot Finestra que serveix
+	 *            per agafar i marcar el que es vol buscar
 	 */
-	public SearchFrameIntern() {
+	public DeleteFrameSecretary() {
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(87dlu;default):grow"),
@@ -49,36 +51,37 @@ public class SearchFrameIntern extends JPanel {
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),}));
-		
+
 		JLabel lblTitleFrame = new JLabel("Search frame");
 		lblTitleFrame.setFont(new Font("Tahoma", Font.BOLD, 11));
 		add(lblTitleFrame, "2, 2, center, default");
-		
+
 		JLabel lblId = new JLabel("Filtrar:");
 		add(lblId, "2, 4, right, default");
-		comboBoxSearchType.setModel(new DefaultComboBoxModel(new String[] {"Tasca"}));
-		
+		comboBoxSearchType.setModel(new DefaultComboBoxModel(
+				new String[] { "Empleat" }));
+
 		add(comboBoxSearchType, "4, 4, fill, default");
-		
+
 		JLabel lbllf = new JLabel("Filtrar:");
 		add(lbllf, "2, 6, right, default");
-		comboBoxSearchValue.setModel(new DefaultComboBoxModel(new String[] {"ID", "Nom", "Data"}));
-		
-	
+		comboBoxSearchValue.setModel(new DefaultComboBoxModel(new String[] {
+				"ID", "Nom", "Data" }));
+
 		add(comboBoxSearchValue, "4, 6, fill, default");
-		
+
 		JLabel lblSearchText = new JLabel("Text a cercar:");
 		add(lblSearchText, "2, 8, right, default");
-		
+
 		textFieldSearchText = new JTextField();
 		add(textFieldSearchText, "4, 8, fill, default");
 		textFieldSearchText.setColumns(10);
-		
+
 		JButton btnSearch = new JButton("Cercar");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DBCursor cursor;
-				MongoDBUtils.setCollection("task");
+				MongoDBUtils.setCollection("employee");
 				cursor = MongoDBUtils.findDBObject(comboBoxSearchValue.getSelectedItem().toString(), textFieldSearchText.getText().toString());
 				if (cursor == null) {
 					JOptionPane.showMessageDialog(getComponent(0),
@@ -89,15 +92,20 @@ public class SearchFrameIntern extends JPanel {
 					MainFrame.tmp = cursor.next();
 					cursor.close();
 					MainFrame.closeSearchFrame();
-					MainFrame.loadTaskShow();
+					MainFrame.loadEmployeeEdit();
 				}
 			}
 		});
 		
-		JButton button = new JButton("Tornar");
-		add(button, "2, 10, center, default");
+		JButton btnTornar = new JButton("Tornar");
+		btnTornar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.loadHomeFrame();
+			}
+		});
+		add(btnTornar, "2, 10, center, default");
 		add(btnSearch, "4, 10, right, default");
-		
+
 	}
 
 }

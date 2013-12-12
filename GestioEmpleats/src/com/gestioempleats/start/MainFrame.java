@@ -13,6 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.gestioempleats.components.DeleteFrameAdministrator;
+import com.gestioempleats.components.DeleteFrameProgrammer;
+import com.gestioempleats.components.DeleteFrameSecretary;
 import com.gestioempleats.components.EmployeeEdit;
 import com.gestioempleats.components.EmployeeNew;
 import com.gestioempleats.components.EmployeeShow;
@@ -35,7 +38,6 @@ import com.gestioempleats.utils.ActualSession;
 import com.gestioempleats.utils.MongoDBUtils;
 import com.gestioempleats.utils.Paths;
 import com.gestioempleats.utils.Permissions;
-import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
 public class MainFrame extends JFrame {
@@ -349,6 +351,33 @@ public class MainFrame extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 		contentPane.getRootPane().getParent().setSize(400, 500);
+	}
+	
+	public static void loadDeleteFrameAdministrator() {
+		searchFrame = new JFrame();
+		searchFrame.setVisible(true);
+		searchFrame.setBounds(0, 0, 470, 230);
+		searchFrame.setLocationRelativeTo(null);
+		searchFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		searchFrame.setContentPane(new DeleteFrameAdministrator());
+	}
+	
+	public static void loadDeleteFrameProgrammer() {
+		searchFrame = new JFrame();
+		searchFrame.setVisible(true);
+		searchFrame.setBounds(0, 0, 470, 230);
+		searchFrame.setLocationRelativeTo(null);
+		searchFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		searchFrame.setContentPane(new DeleteFrameProgrammer());
+	}
+	
+	public static void loadDeleteFrameSecretary() {
+		searchFrame = new JFrame();
+		searchFrame.setVisible(true);
+		searchFrame.setBounds(0, 0, 470, 230);
+		searchFrame.setLocationRelativeTo(null);
+		searchFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		searchFrame.setContentPane(new DeleteFrameSecretary());
 	}
 
 }

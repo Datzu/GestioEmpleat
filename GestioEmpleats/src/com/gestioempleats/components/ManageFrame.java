@@ -143,17 +143,17 @@ public class ManageFrame extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				switch (MainFrame.currentUser.getLevel()) {
 					case 0:
-						switch (getFrom()) {
-							// to do
-							default:
-								break;
-						}
+						MainFrame.loadDeleteFrameAdministrator();
+					case 1:
+						MainFrame.loadDeleteFrameProgrammer();
+					case 2:
+						MainFrame.loadDeleteFrameSecretary();
 					default:
 						JOptionPane.showMessageDialog(getComponent(0),
 								"No pots accedir aqui.");
 						break;
+					}
 				}
-			}
 		});
 		add(btnDelete, "2, 4, fill, top");
 

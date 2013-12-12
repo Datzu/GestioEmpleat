@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -19,9 +20,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 import com.mongodb.DBCursor;
 
-import javax.swing.DefaultComboBoxModel;
-
-public class SearchFrameIntern extends JPanel {
+public class DeleteFrameAdministrator extends JPanel {
 	private JTextField textFieldSearchText;
 	JComboBox comboBoxSearchType = new JComboBox();
 	JComboBox comboBoxSearchValue = new JComboBox();
@@ -30,7 +29,7 @@ public class SearchFrameIntern extends JPanel {
 	 * @param titleFrame Cadena de text per mostrar a dalt de tot
 	 * Finestra que serveix per agafar i marcar el que es vol buscar
 	 */
-	public SearchFrameIntern() {
+	public DeleteFrameAdministrator() {
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(87dlu;default):grow"),
@@ -48,6 +47,8 @@ public class SearchFrameIntern extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),}));
 		
 		JLabel lblTitleFrame = new JLabel("Search frame");
@@ -56,13 +57,13 @@ public class SearchFrameIntern extends JPanel {
 		
 		JLabel lblId = new JLabel("Filtrar:");
 		add(lblId, "2, 4, right, default");
-		comboBoxSearchType.setModel(new DefaultComboBoxModel(new String[] {"Tasca"}));
+		comboBoxSearchType.setModel(new DefaultComboBoxModel(new String[] {"Empleat", "Tasca", "Incidencia"}));
 		
 		add(comboBoxSearchType, "4, 4, fill, default");
 		
 		JLabel lbllf = new JLabel("Filtrar:");
 		add(lbllf, "2, 6, right, default");
-		comboBoxSearchValue.setModel(new DefaultComboBoxModel(new String[] {"ID", "Nom", "Data"}));
+		comboBoxSearchValue.setModel(new DefaultComboBoxModel(new String[] {"ID", "Usuari", "Nom", "Data"}));
 		
 	
 		add(comboBoxSearchValue, "4, 6, fill, default");
@@ -78,18 +79,52 @@ public class SearchFrameIntern extends JPanel {
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DBCursor cursor;
-				MongoDBUtils.setCollection("task");
-				cursor = MongoDBUtils.findDBObject(comboBoxSearchValue.getSelectedItem().toString(), textFieldSearchText.getText().toString());
-				if (cursor == null) {
-					JOptionPane.showMessageDialog(getComponent(0),
-							"No s'ha trobat res.");
-					MainFrame.closeSearchFrame();
-					MainFrame.loadSearchFrame();
-				} else if (cursor.hasNext()) {
-					MainFrame.tmp = cursor.next();
-					cursor.close();
-					MainFrame.closeSearchFrame();
-					MainFrame.loadTaskShow();
+				switch (comboBoxSearchType.getSelectedIndex()) {
+				case 0:
+					MongoDBUtils.setCollection("employee");
+					cursor = MongoDBUtils.findDBObject(comboBoxSearchValue.getSelectedItem().toString(), textFieldSearchText.getText().toString());
+					if (cursor == null) {
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No s'ha trobat res.");
+						MainFrame.closeSearchFrame();
+						MainFrame.loadSearchFrame();
+					} else if (cursor.hasNext()) {
+						MainFrame.tmp = cursor.next();
+						cursor.close();
+						MainFrame.closeSearchFrame();
+						MainFrame.loadEmployeeEdit();
+					}
+					break;
+				case 1:
+					MongoDBUtils.setCollection("task");
+					cursor = MongoDBUtils.findDBObject(comboBoxSearchValue.getSelectedItem().toString(), textFieldSearchText.getText().toString());
+					if (cursor == null) {
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No s'ha trobat res.");
+						MainFrame.closeSearchFrame();
+						MainFrame.loadSearchFrame();
+					} else if (cursor.hasNext()) {
+						MainFrame.tmp = cursor.next();
+						cursor.close();
+						MainFrame.closeSearchFrame();
+						MainFrame.loadTaskEdit();
+					}
+					break;
+				case 2:
+					MongoDBUtils.setCollection("trouble");
+					cursor = MongoDBUtils.findDBObject(comboBoxSearchValue.getSelectedItem().toString(), textFieldSearchText.getText().toString());
+					if (cursor == null) {
+						JOptionPane.showMessageDialog(getComponent(0),
+								"No s'ha trobat res.");
+						MainFrame.closeSearchFrame();
+						MainFrame.loadSearchFrame();
+					} else if (cursor.hasNext()) {
+						MainFrame.tmp = cursor.next();
+						cursor.close();
+						MainFrame.closeSearchFrame();
+						MainFrame.loadTroubleEdit();
+					}
+					break;
 				}
 			}
 		});

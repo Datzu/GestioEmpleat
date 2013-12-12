@@ -96,7 +96,10 @@ public class SearchFrameProgrammer extends JPanel {
 				}
 			}
 		});
-		add(btnSearch, "4, 10");
+		
+		JButton button = new JButton("Tornar");
+		add(button, "2, 10, center, default");
+		add(btnSearch, "4, 10, right, default");
 
 	}
 
