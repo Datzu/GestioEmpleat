@@ -3,6 +3,7 @@ package com.gestioempleats.components;
 import javax.swing.JPanel;
 
 import com.gestioempleats.start.MainFrame;
+import com.gestioempleats.utils.Encrypt;
 import com.gestioempleats.utils.MongoDBUtils;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -36,13 +37,12 @@ public class EmployeeEdit extends JPanel {
 	private String birthday = "";
 	private String phone = "";
 	private String contractDate = "";
+	
 	private float income;
+	
 	private int level;
-	private String role;
-	private String shift;
-	private String languages;
-	private String origin;
-	private JTextField txtId;
+	
+	private String aditional;
 	private JTextField txtName;
 	private JTextField txtLastname1;
 	private JTextField txtLastname2;
@@ -52,11 +52,13 @@ public class EmployeeEdit extends JPanel {
 	private JTextField txtPassword;
 	private JTextField txtContractDate;
 	private JTextField txtIncome;
+	private JTextField txtAditional;
+	
+	JComboBox comboBox = new JComboBox();
 
 	public EmployeeEdit() {
 		
 		setValues();
-	
 		
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
@@ -110,15 +112,14 @@ public class EmployeeEdit extends JPanel {
 		JLabel lblLevel = new JLabel("Level:");
 		add(lblLevel, "2, 4, right, default");
 		
-		JLabel lblShowLevel = new JLabel(String.valueOf(MainFrame.currentUser.getLevel()));
+		JLabel lblShowLevel = new JLabel(String.valueOf(level));
 		add(lblShowLevel, "4, 4, left, default");
 		
 		JLabel lblId = new JLabel("ID:");
 		add(lblId, "2, 8, right, default");
 		
-		txtId = new JTextField(this.id);
-		add(txtId, "4, 8, fill, default");
-		txtId.setColumns(10);
+		JLabel lblSId = new JLabel(this.id);
+		add(lblSId, "4, 8");
 		
 		JLabel lblUser = new JLabel("User:");
 		add(lblUser, "2, 10, right, default");
@@ -183,27 +184,33 @@ public class EmployeeEdit extends JPanel {
 		add(txtIncome, "4, 30, fill, default");
 		txtIncome.setColumns(10);
 		
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Administrador", "Programador", "Secretaria", "Becari", "Commercial"}));
+		comboBox.setToolTipText("");
+		comboBox.setSelectedIndex(level);
+		add(comboBox, "4, 32, fill, default");
+		
+		txtAditional = new JTextField(this.aditional);
+		add(txtAditional, "4, 34, fill, default");
+		txtAditional.setColumns(10);
+		
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//MongoDBUtils.updateEmployee(user);
-				MongoDBUtils.saveEmployee(
-						id, 
-						user, 
-						password, 
-						name, 
-						lastname1, 
-						lastname2, 
-						birthday,
-						phone,
-						contractDate, 
-						income, 
-						MainFrame.currentUser.getLevel(), 
-						level,
-						role,
-						shift,
-						languages, 
-						origin);
+				DBObject oldEmployee = MainFrame.tmp;
+				BasicDBObject newEmployee = new BasicDBObject();
+				//newEmployee.put("_id", txtId.getText().toString());
+				newEmployee.put("user", txtUser.getText().toString());
+				newEmployee.put("password", Encrypt.encrypt(txtPassword.getText().toString()));
+				newEmployee.put("name", txtName.getText().toString());
+				newEmployee.put("lastname1", txtLastname1.getText().toString());
+				newEmployee.put("lastname2", txtLastname2.getText().toString());
+				newEmployee.put("birthday", txtBirthay.getText().toString());
+				newEmployee.put("phone", txtPhone.getText().toString());
+				newEmployee.put("contractDate", txtContractDate.getText().toString());
+				newEmployee.put("income", txtIncome.getText().toString());
+				newEmployee.put("level", comboBox.getSelectedIndex());
+				newEmployee.put("aditional", txtAditional.getText().toString());
+				MongoDBUtils.updateEmployee(oldEmployee, newEmployee);
 			}
 		});
 		
@@ -217,10 +224,6 @@ public class EmployeeEdit extends JPanel {
 		JLabel lblType = new JLabel("Type:");
 		add(lblType, "2, 32, right, default");
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Administrador", "Programador", "Secretaria", "Becari", "Commercial"}));
-		comboBox.setToolTipText("");
-		add(comboBox, "4, 32, fill, default");
 		add(btnReturn, "2, 38");
 		add(btnSave, "4, 38, right, default");
 
@@ -240,10 +243,16 @@ public class EmployeeEdit extends JPanel {
 				setPhone(userObject.get("phone").toString());
 				setContractDate(userObject.get("contractDate").toString());
 				setIncome(Float.valueOf(userObject.get("income").toString()));
+				setLevel(Integer.valueOf(userObject.get("level").toString()));
+				setAditional(userObject.get("aditional").toString());
 			}
 		} catch (Exception e) {
 			return;
 		}	
+	}
+
+	private void setLevel(Integer level) {
+		this.level = level;
 	}
 
 	public String getId() {
@@ -324,6 +333,14 @@ public class EmployeeEdit extends JPanel {
 
 	public void setContractDate(String contractDate) {
 		this.contractDate = contractDate;
+	}
+	
+	public String getAditional() {
+		return aditional;
+	}
+
+	public void setAditional(String aditional) {
+		this.aditional = aditional;
 	}
 
 }

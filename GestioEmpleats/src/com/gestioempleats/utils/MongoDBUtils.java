@@ -214,8 +214,7 @@ public class MongoDBUtils {
 	public static void saveEmployee(String employeeId, String user,
 			String password, String name, String lastname1, String lastname2,
 			String birthday, String phone, String contractDate, float income,
-			int level, int type, String role, String shift, String languages,
-			String origin) {
+			int level, int type, String aditional) {
 		DBCollection table = MongoDBUtils.db.getCollection("employee");
 		BasicDBObject employeeObject = new BasicDBObject();
 		employeeObject.put("_id", employeeId);
@@ -229,10 +228,7 @@ public class MongoDBUtils {
 		employeeObject.put("contractDate", contractDate);
 		employeeObject.put("income", income);
 		employeeObject.put("level", level);
-		employeeObject.put("role", role);
-		employeeObject.put("shift", shift);
-		employeeObject.put("language", languages);
-		employeeObject.put("origin", origin);
+		employeeObject.put("aditional", aditional);
 		table.insert(employeeObject);
 	}
 
@@ -285,6 +281,11 @@ public class MongoDBUtils {
 				break;
 		}
 		table.insert(troubleObject);
+	}
+
+	public static void updateEmployee(DBObject oldEmployee, DBObject newEmployee) {
+		setCollection("employee");
+		coll.update(oldEmployee, newEmployee);
 	}
 
 }

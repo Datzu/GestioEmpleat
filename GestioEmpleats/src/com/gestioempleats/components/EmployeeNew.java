@@ -38,10 +38,7 @@ public class EmployeeNew extends JPanel {
 	private String contractDate = "";
 	private float income;
 	private int type;
-	private String role;
-	private String shift;
-	private String languages;
-	private String origin;
+	private String aditional;
 
 	private JTextField txtId;
 	private JTextField txtName;
@@ -53,7 +50,7 @@ public class EmployeeNew extends JPanel {
 	private JTextField txtPassword;
 	private JTextField txtContractDate;
 	private JTextField txtIncome;
-	private JTextField txtType;
+	private JTextField txtAditional;
 
 	JLabel lblShowLevel = new JLabel("0");
 	JComboBox comboBox = new JComboBox();
@@ -154,22 +151,21 @@ public class EmployeeNew extends JPanel {
 				setValues();				
 				switch (getType()) {
 					case 0:
-						setRole(txtType.getText().toString());
+						setAditional(txtAditional.getText().toString());
 						break;
 					case 1:
-						setLanguages(txtType.getText().toString());
+						setAditional(txtAditional.getText().toString());
 						break;
 					case 2:
-						setShift(txtType.getText().toString());
+						setAditional(txtAditional.getText().toString());
 						break;
 					case 3:
-						setOrigin(txtType.getText().toString());
+						setAditional(txtAditional.getText().toString());
 						break;
 				}
 				MongoDBUtils.saveEmployee(id, user, password, name, lastname1,
 						lastname2, birthday, phone, contractDate, income,
-						comboBox.getSelectedIndex(), type, role, shift,
-						languages, origin);
+						comboBox.getSelectedIndex(), type, aditional);
 				MainFrame.loadEmployeeNew();
 			}
 
@@ -196,9 +192,9 @@ public class EmployeeNew extends JPanel {
 			}
 		});
 
-		txtType = new JTextField();
-		add(txtType, "4, 34, fill, default");
-		txtType.setColumns(10);
+		txtAditional = new JTextField();
+		add(txtAditional, "4, 34, fill, default");
+		txtAditional.setColumns(10);
 		add(btnReturn, "2, 38");
 		add(btnSave, "4, 38, right, default");
 
@@ -308,27 +304,26 @@ public class EmployeeNew extends JPanel {
 	public int getType() {
 		return type;
 	}
-
-	public void setRole(String role) {
-		this.role = role;
+	
+	public String getAditional() {
+		return this.aditional;
 	}
 
-	public void setLanguages(String languages) {
-		this.languages = languages;
-	}
-
-	public void setShift(String shift) {
-		this.shift = shift;
-	}
-
-	public void setOrigin(String origin) {
-		this.origin = origin;
+	public void setAditional(String aditional) {
+		this.aditional = aditional;
 	}
 	
 	public void setValues(){
 		this.id = txtId.getText().toString();
 		this.user = txtUser.getText().toString();
 		this.password = Encrypt.encrypt(txtPassword.getText().toString());
-		// añadir todo lo que falta aqui
+		this.name = txtName.getText().toString();
+		this.lastname1 = txtLastname1.getText().toString();
+		this.lastname2 = txtLastname2.getText().toString();
+		this.birthday = txtBirthay.getText().toString();
+		this.phone = txtPhone.getText().toString();
+		this.contractDate = txtContractDate.getText().toString();
+		this.income = Integer.valueOf(txtIncome.getText().toString());
+		this.aditional = txtAditional.getText().toString();
 	}
 }

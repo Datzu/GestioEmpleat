@@ -90,7 +90,6 @@ public class ManageFrame extends JPanel {
 							MainFrame.loadTroubleNew();
 							break;
 						}
-						MainFrame.loadEmployeeShow();
 						break;
 					case 2:
 						switch (getFrom()) {
@@ -105,7 +104,6 @@ public class ManageFrame extends JPanel {
 							MainFrame.loadTroubleNew();
 							break;
 						}
-						MainFrame.loadEmployeeNew();
 						break;
 					case 3:
 						switch (getFrom()) {
@@ -120,7 +118,6 @@ public class ManageFrame extends JPanel {
 							MainFrame.loadTroubleNew();
 							break;
 						}
-						MainFrame.loadEmployeeShow();
 						break;
 					case 4:
 						switch (getFrom()) {
