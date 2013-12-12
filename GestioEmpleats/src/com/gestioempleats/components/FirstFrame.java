@@ -17,12 +17,15 @@ import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+import java.awt.Color;
 
 public class FirstFrame extends JPanel {
+	
 	private static JTextField textFieldUser;
 	private static JPasswordField passwordFieldPassword;
 	private static JPasswordField passwordFieldValidatePassword;
 	private static JButton btnCreate;
+	private static JLabel lblShowError;
 	
 	/**
 	 * @author Adrian Garcia
@@ -36,12 +39,20 @@ public class FirstFrame extends JPanel {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(108dlu;default):grow"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(69dlu;default)"), }, new RowSpec[] {
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC, }));
+				ColumnSpec.decode("max(69dlu;default)"),},
+			new RowSpec[] {
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,}));
 
 		JLabel lblFirstFrame = new JLabel("Crea un compte d'administrador.");
 		add(lblFirstFrame, "2, 2");
@@ -64,35 +75,49 @@ public class FirstFrame extends JPanel {
 
 		passwordFieldValidatePassword = new JPasswordField();
 		add(passwordFieldValidatePassword, "4, 8, fill, default");
+		
+		lblShowError = new JLabel("");
+		lblShowError.setForeground(Color.RED);
+		add(lblShowError, "2, 10, 3, 1");
 
 		btnCreate = new JButton("Crear");
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					String[] data = new String[2];
-					if (passwordFieldPassword
-							.getText()
-							.toString()
-							.equals(passwordFieldValidatePassword.getText()
-									.toString())) {
-						data[0] = textFieldUser.getText().toString();
-						data[1] = Encrypt.encrypt(passwordFieldPassword
-								.getText().toString());
-						Admin mAdmin = new Admin();
-						mAdmin.set(data);
-						mAdmin.put("user", data[0]);
-						mAdmin.put("password", data[1]);
-						mAdmin.put("level", 0);
-						mAdmin.saveToMongo();
-						MainFrame.loadLoginFrame();
-
+				if (textFieldUser.getText().toString().length() > 3) {
+					if (passwordFieldPassword.getText().toString().length() > 3) {
+						try {
+							String[] data = new String[2];
+							if (passwordFieldPassword
+									.getText()
+									.toString()
+									.equals(passwordFieldValidatePassword.getText()
+											.toString())) {
+								data[0] = textFieldUser.getText().toString();
+								data[1] = Encrypt.encrypt(passwordFieldPassword
+										.getText().toString());
+								Admin mAdmin = new Admin();
+								mAdmin.set(data);
+								mAdmin.put("user", data[0]);
+								mAdmin.put("password", data[1]);
+								mAdmin.put("level", 0);
+								mAdmin.saveToMongo();
+								MainFrame.loadLoginFrame();
+		
+							} else {
+								lblShowError.setText("Les contrasenyes han de ser iguals!");
+							}
+						} catch (Exception e) {
+							System.out.println("There was a problem creating the Super Admin!");
+						}
+					} else {
+						lblShowError.setText("La contrasenya ha de tenir com ha minim 3 caracters!");
 					}
-				} catch (Exception e) {
-					System.out.println("There was a problem creating the Super Admin!");
+				} else {
+					lblShowError.setText("L'usuari ha de tenir com a minim 4 caracters!");
 				}
+				
 			}
-
 		});
-		add(btnCreate, "4, 10");
+		add(btnCreate, "4, 12");
 	}
 }

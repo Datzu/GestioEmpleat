@@ -329,5 +329,6 @@ public class EmployeeNew extends JPanel {
 		this.id = txtId.getText().toString();
 		this.user = txtUser.getText().toString();
 		this.password = Encrypt.encrypt(txtPassword.getText().toString());
+		// añadir todo lo que falta aqui
 	}
 }

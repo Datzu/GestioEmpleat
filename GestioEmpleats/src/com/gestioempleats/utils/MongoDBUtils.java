@@ -218,7 +218,7 @@ public class MongoDBUtils {
 			String origin) {
 		DBCollection table = MongoDBUtils.db.getCollection("employee");
 		BasicDBObject employeeObject = new BasicDBObject();
-		employeeObject.put("employeeId", employeeId);
+		employeeObject.put("_id", employeeId);
 		employeeObject.put("user", user);
 		employeeObject.put("password", password);
 		employeeObject.put("name", name);

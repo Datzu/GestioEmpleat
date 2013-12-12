@@ -70,6 +70,7 @@ public class MainFrame extends JFrame {
 						loadFirtsFrame();
 					}
 				} catch (Exception e) {
+					e.printStackTrace();
 					System.out
 							.println("Failed loading the program! Please restart your programm.");
 					System.exit(0);

@@ -83,6 +83,7 @@ public class SearchFrameIntern extends JPanel {
 				if (cursor == null) {
 					JOptionPane.showMessageDialog(getComponent(0),
 							"No s'ha trobat res.");
+					MainFrame.closeSearchFrame();
 					MainFrame.loadSearchFrame();
 				} else if (cursor.hasNext()) {
 					MainFrame.tmp = cursor.next();

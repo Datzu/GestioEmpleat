@@ -82,10 +82,10 @@ public class LoginFrame extends JPanel {
 					if (MainFrame.currentUser.getPassword().equals(Encrypt.encrypt(passwordFieldPassword.getText().toString()))) {
 						MainFrame.loadHomeFrame();
 					} else {
-						lblError.setText("Incorrect password.");
+						lblError.setText("Contrasenya incorrecta.");
 					}
 				} else {
-					lblError.setText("User not found.");
+					lblError.setText("Usuari no trobat.");
 				}
 			}
 		});
