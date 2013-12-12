@@ -89,10 +89,7 @@ public class DeleteFrameSecretary extends JPanel {
 					MainFrame.closeSearchFrame();
 					MainFrame.loadSearchFrame();
 				} else if (cursor.hasNext()) {
-					MainFrame.tmp = cursor.next();
 					cursor.close();
-					MainFrame.closeSearchFrame();
-					MainFrame.loadEmployeeEdit();
 				}
 			}
 		});

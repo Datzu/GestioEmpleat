@@ -89,10 +89,7 @@ public class DeleteFrameProgrammer extends JPanel {
 					MainFrame.closeSearchFrame();
 					MainFrame.loadSearchFrame();
 				} else if (cursor.hasNext()) {
-					MainFrame.tmp = cursor.next();
 					cursor.close();
-					MainFrame.closeSearchFrame();
-					MainFrame.loadTaskEdit();
 				}
 			}
 		});

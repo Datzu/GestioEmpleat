@@ -89,10 +89,7 @@ public class DeleteFrameAdministrator extends JPanel {
 						MainFrame.closeSearchFrame();
 						MainFrame.loadSearchFrame();
 					} else if (cursor.hasNext()) {
-						MainFrame.tmp = cursor.next();
 						cursor.close();
-						MainFrame.closeSearchFrame();
-						MainFrame.loadEmployeeEdit();
 					}
 					break;
 				case 1:
@@ -104,10 +101,7 @@ public class DeleteFrameAdministrator extends JPanel {
 						MainFrame.closeSearchFrame();
 						MainFrame.loadSearchFrame();
 					} else if (cursor.hasNext()) {
-						MainFrame.tmp = cursor.next();
 						cursor.close();
-						MainFrame.closeSearchFrame();
-						MainFrame.loadTaskEdit();
 					}
 					break;
 				case 2:
@@ -119,10 +113,7 @@ public class DeleteFrameAdministrator extends JPanel {
 						MainFrame.closeSearchFrame();
 						MainFrame.loadSearchFrame();
 					} else if (cursor.hasNext()) {
-						MainFrame.tmp = cursor.next();
 						cursor.close();
-						MainFrame.closeSearchFrame();
-						MainFrame.loadTroubleEdit();
 					}
 					break;
 				}
