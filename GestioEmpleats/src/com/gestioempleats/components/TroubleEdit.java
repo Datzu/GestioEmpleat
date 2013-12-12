@@ -24,7 +24,8 @@ public class TroubleEdit extends JPanel {
 	private JTextArea  txtComment;
 
 	/**
-	 * Create the panel.
+	 * @author Gerard
+	 * Modifica una incidencia
 	 */
 	public TroubleEdit() {
 		setLayout(new FormLayout(new ColumnSpec[] {

@@ -23,7 +23,8 @@ public class TroubleNew extends JPanel {
 	private JTextArea  txtComment;
 
 	/**
-	 * Create the panel.
+	 * @author Gerard
+	 * Crea una nova incidencia
 	 */
 	public TroubleNew() {
 		setLayout(new FormLayout(new ColumnSpec[] {

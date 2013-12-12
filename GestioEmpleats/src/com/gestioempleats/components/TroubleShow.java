@@ -23,7 +23,8 @@ public class TroubleShow extends JPanel {
 	private String empleat = "";
 	private String comentari = "";
 	/**
-	 * Create the panel.
+	 * @author Gerard
+	 * Mostra una incidencia
 	 */
 	public TroubleShow() {
 		setLayout(new FormLayout(new ColumnSpec[] {

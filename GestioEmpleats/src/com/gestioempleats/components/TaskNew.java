@@ -26,7 +26,8 @@ public class TaskNew extends JPanel {
 	private JComboBox  ComboEmployeeAssigned;
 
 	/**
-	 * Create the panel.
+	 * @author Gerard
+	 * Crea una nova tasca
 	 */
 	public TaskNew() {
 		setLayout(new FormLayout(new ColumnSpec[] {

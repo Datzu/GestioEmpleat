@@ -26,7 +26,8 @@ public class TaskShow extends JPanel {
 	private String comentari = "";
 	private String empleat_asignat = "";
 	/**
-	 * Create the panel.
+	 * @author Gerard
+	 * Mostra una tasca
 	 */
 	public TaskShow() {
 		setLayout(new FormLayout(new ColumnSpec[] {

@@ -210,6 +210,60 @@ public class MongoDBUtils {
 			return null;
 		}
 	}
+	
+	public static DBCursor findAllUsers() {
+		setCollection("employee");
+		DBCursor cursor = coll.find();
+		if (cursor.hasNext()) {
+			return cursor;
+		} else {
+			cursor.close();
+			return null;
+		}
+	}
+	
+	public static void showAllUsers() {
+		DBCursor cursor = findAllUsers();
+		while (cursor.hasNext()) {
+			System.out.println(cursor.next().get("name").toString());
+		}
+	}
+	
+	public static DBCursor findAllTasks() {
+		setCollection("task");
+		DBCursor cursor = coll.find();
+		if (cursor.hasNext()) {
+			return cursor;
+		} else {
+			cursor.close();
+			return null;
+		}
+	}
+	
+	public static void showAllTasks() {
+		DBCursor cursor = findAllTasks();
+		while (cursor.hasNext()) {
+			System.out.println(cursor.next().get("name").toString());
+		}
+	}
+	
+	public static DBCursor findAllTroubles() {
+		setCollection("trouble");
+		DBCursor cursor = coll.find();
+		if (cursor.hasNext()) {
+			return cursor;
+		} else {
+			cursor.close();
+			return null;
+		}
+	}
+	
+	public static void showAllTroubles() {
+		DBCursor cursor = findAllTroubles();
+		while (cursor.hasNext()) {
+			System.out.println(cursor.next().get("name").toString());
+		}
+	}
 
 	public static void saveEmployee(String employeeId, String user,
 			String password, String name, String lastname1, String lastname2,

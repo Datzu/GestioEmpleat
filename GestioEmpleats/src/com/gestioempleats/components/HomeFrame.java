@@ -10,10 +10,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.gestioempleats.start.MainFrame;
+import com.gestioempleats.utils.MongoDBUtils;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+import com.mongodb.DBCursor;
 
 public class HomeFrame extends JPanel {
 

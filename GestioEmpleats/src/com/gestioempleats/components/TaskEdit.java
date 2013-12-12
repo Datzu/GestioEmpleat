@@ -26,7 +26,8 @@ public class TaskEdit extends JPanel {
 	private JComboBox  ComboEmployeeAssigned;
 
 	/**
-	 * Create the panel.
+	 * @author Gerard
+	 * Modifica una tasca
 	 */
 	public TaskEdit() {
 		setLayout(new FormLayout(new ColumnSpec[] {
