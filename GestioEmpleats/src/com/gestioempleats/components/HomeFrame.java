@@ -1,13 +1,12 @@
 package com.gestioempleats.components;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.gestioempleats.start.MainFrame;
@@ -87,7 +86,9 @@ public class HomeFrame extends JPanel {
 		JButton btnSettings = new JButton("Opcions");
 		btnSettings.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MainFrame.loadSettingsFrame();
+				JOptionPane.showMessageDialog(getComponent(0),
+						"No pots accedir aqui encara per la teva seguretat.");
+				//MainFrame.loadSettingsFrame();
 			}
 		});
 		add(btnSettings, "4, 12");

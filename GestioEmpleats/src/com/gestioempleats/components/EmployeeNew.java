@@ -19,6 +19,9 @@ import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+import java.awt.Color;
+import java.awt.event.MouseWheelListener;
+import java.awt.event.MouseWheelEvent;
 
 public class EmployeeNew extends JPanel {
 
@@ -53,6 +56,8 @@ public class EmployeeNew extends JPanel {
 	private JTextField txtAditional;
 
 	JLabel lblShowLevel = new JLabel("0");
+	JLabel lblShowError = new JLabel("");
+	
 	JComboBox comboBox = new JComboBox();
 	
 	public EmployeeNew() {
@@ -148,27 +153,28 @@ public class EmployeeNew extends JPanel {
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setValues();				
-				switch (getType()) {
-					case 0:
-						setAditional(txtAditional.getText().toString());
-						break;
-					case 1:
-						setAditional(txtAditional.getText().toString());
-						break;
-					case 2:
-						setAditional(txtAditional.getText().toString());
-						break;
-					case 3:
-						setAditional(txtAditional.getText().toString());
-						break;
+				setValues();
+				if (check()) {				
+					switch (getType()) {
+						case 0:
+							setAditional(txtAditional.getText().toString());
+							break;
+						case 1:
+							setAditional(txtAditional.getText().toString());
+							break;
+						case 2:
+							setAditional(txtAditional.getText().toString());
+							break;
+						case 3:
+							setAditional(txtAditional.getText().toString());
+							break;
+					}
+					MongoDBUtils.saveEmployee(id, user, password, name, lastname1,
+							lastname2, birthday, phone, contractDate, income,
+							comboBox.getSelectedIndex(), type, aditional);
+					MainFrame.loadEmployeeNew();
 				}
-				MongoDBUtils.saveEmployee(id, user, password, name, lastname1,
-						lastname2, birthday, phone, contractDate, income,
-						comboBox.getSelectedIndex(), type, aditional);
-				MainFrame.loadEmployeeNew();
 			}
-
 		});
 
 		JLabel lblContractDate = new JLabel("Contract date:");
@@ -195,6 +201,10 @@ public class EmployeeNew extends JPanel {
 		txtAditional = new JTextField();
 		add(txtAditional, "4, 34, fill, default");
 		txtAditional.setColumns(10);
+		
+		lblShowError.setForeground(Color.RED);
+		add(lblShowError, "2, 36, 3, 1");
+		
 		add(btnReturn, "2, 38");
 		add(btnSave, "4, 38, right, default");
 
@@ -314,16 +324,69 @@ public class EmployeeNew extends JPanel {
 	}
 	
 	public void setValues(){
-		this.id = txtId.getText().toString();
-		this.user = txtUser.getText().toString();
-		this.password = Encrypt.encrypt(txtPassword.getText().toString());
-		this.name = txtName.getText().toString();
-		this.lastname1 = txtLastname1.getText().toString();
-		this.lastname2 = txtLastname2.getText().toString();
-		this.birthday = txtBirthay.getText().toString();
-		this.phone = txtPhone.getText().toString();
-		this.contractDate = txtContractDate.getText().toString();
-		this.income = Integer.valueOf(txtIncome.getText().toString());
-		this.aditional = txtAditional.getText().toString();
+		try {
+			this.id = txtId.getText().toString();
+			this.user = txtUser.getText().toString();
+			this.password = txtPassword.getText().toString();
+			this.name = txtName.getText().toString();
+			this.lastname1 = txtLastname1.getText().toString();
+			this.lastname2 = txtLastname2.getText().toString();
+			this.birthday = txtBirthay.getText().toString();
+			this.phone = txtPhone.getText().toString();
+			this.contractDate = txtContractDate.getText().toString();
+			this.income = Integer.valueOf(txtIncome.getText().toString());
+			this.aditional = txtAditional.getText().toString();
+		} catch (Exception e) {
+			return;
+		}
 	}
+	
+	private boolean check() {
+		if (this.id.length() < 3) {
+			lblShowError.setText("Id te que tenir minim 3 caracters!");
+			return false;
+		}
+		if (this.user.length() < 3) {
+			lblShowError.setText("L'usuari te que tenir minim 3 caracters!");
+			return false;
+		}
+		if (this.password.length() < 3) {
+			lblShowError.setText("La contrasenya te que tenir minim 3 caracters!");
+			return false;
+		}
+		if (this.name.length() < 1) {
+			lblShowError.setText("Tens que omplir el nom!");
+			return false;
+		}
+		if (this.lastname1.length() < 1) {
+			lblShowError.setText("Tens que omplir el primer cognom!");
+			return false;
+		}
+		if (this.lastname2.length() < 1) {
+			lblShowError.setText("Tens que omplir el segon cognom!");
+			return false;
+		}
+		if (this.birthday.length() < 3) {
+			lblShowError.setText("La data te que ser correcta!");
+			return false;
+		}
+		if (this.phone.length() != 9) {
+			lblShowError.setText("El telefon te que tenir 9 digits!");
+			return false;
+		}
+		if (this.contractDate.length() < 3) {
+			lblShowError.setText("La data te que ser correcta!");
+			return false;
+		}
+		if (this.income < 0) {
+			lblShowError.setText("El salari no pot ser negatiu!!");
+			return false;
+		}
+		if (this.aditional.length() < 1) {
+			lblShowError.setText("Tens que omplir el camp adicional!!");
+			return false;
+		}
+		return true;
+	}
+	
 }

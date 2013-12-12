@@ -219,7 +219,7 @@ public class MongoDBUtils {
 		BasicDBObject employeeObject = new BasicDBObject();
 		employeeObject.put("_id", employeeId);
 		employeeObject.put("user", user);
-		employeeObject.put("password", password);
+		employeeObject.put("password", Encrypt.encrypt(password));
 		employeeObject.put("name", name);
 		employeeObject.put("lastname1", lastname1);
 		employeeObject.put("lastname2", lastname2);

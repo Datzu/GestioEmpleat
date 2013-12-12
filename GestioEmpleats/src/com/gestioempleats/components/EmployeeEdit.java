@@ -198,7 +198,6 @@ public class EmployeeEdit extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				DBObject oldEmployee = MainFrame.tmp;
 				BasicDBObject newEmployee = new BasicDBObject();
-				//newEmployee.put("_id", txtId.getText().toString());
 				newEmployee.put("user", txtUser.getText().toString());
 				newEmployee.put("password", Encrypt.encrypt(txtPassword.getText().toString()));
 				newEmployee.put("name", txtName.getText().toString());
