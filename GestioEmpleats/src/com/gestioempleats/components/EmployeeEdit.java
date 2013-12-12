@@ -16,6 +16,7 @@ import com.mongodb.DBObject;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -49,7 +50,7 @@ public class EmployeeEdit extends JPanel {
 	private JTextField txtBirthay;
 	private JTextField txtPhone;
 	private JTextField txtUser;
-	private JTextField txtPassword;
+	private JPasswordField txtPassword;
 	private JTextField txtContractDate;
 	private JTextField txtIncome;
 	private JTextField txtAditional;
@@ -131,7 +132,7 @@ public class EmployeeEdit extends JPanel {
 		JLabel lblPassword = new JLabel("Password:");
 		add(lblPassword, "2, 12, right, default");
 		
-		txtPassword = new JTextField(this.password);
+		txtPassword = new JPasswordField();
 		add(txtPassword, "4, 12, fill, default");
 		txtPassword.setColumns(10);
 		
@@ -199,7 +200,11 @@ public class EmployeeEdit extends JPanel {
 				DBObject oldEmployee = MainFrame.tmp;
 				BasicDBObject newEmployee = new BasicDBObject();
 				newEmployee.put("user", txtUser.getText().toString());
-				newEmployee.put("password", Encrypt.encrypt(txtPassword.getText().toString()));
+				if (txtPassword.getText().toString().length() > 0) {
+					newEmployee.put("password", Encrypt.encrypt(txtPassword.getText().toString()));
+				} else {
+					newEmployee.put("password", password);
+				}
 				newEmployee.put("name", txtName.getText().toString());
 				newEmployee.put("lastname1", txtLastname1.getText().toString());
 				newEmployee.put("lastname2", txtLastname2.getText().toString());
