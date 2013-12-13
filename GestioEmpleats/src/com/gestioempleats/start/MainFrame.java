@@ -249,7 +249,7 @@ public class MainFrame extends JFrame {
 	public static void loadSearchFrame() {
 		searchFrame = new JFrame();
 		searchFrame.setVisible(true);
-		searchFrame.setBounds(0, 0, 470, 230);
+		searchFrame.setBounds(0, 0, 490, 230);
 		searchFrame.setLocationRelativeTo(null);
 		searchFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		switch (currentUser.getLevel()) {

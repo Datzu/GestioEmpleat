@@ -98,6 +98,11 @@ public class SearchFrameProgrammer extends JPanel {
 		});
 		
 		JButton button = new JButton("Tornar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.closeSearchFrame();
+			}
+		});
 		add(button, "2, 10, center, default");
 		add(btnSearch, "4, 10, right, default");
 

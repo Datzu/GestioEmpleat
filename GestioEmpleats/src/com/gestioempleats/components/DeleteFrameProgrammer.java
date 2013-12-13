@@ -27,10 +27,10 @@ public class DeleteFrameProgrammer extends JPanel {
 	JComboBox comboBoxSearchValue = new JComboBox();
 
 	/**
-	 * @author Gerard, Adrian Garcia
+	 * @author Adrian Garcia
 	 * @param titleFrame
 	 *            Cadena de text per mostrar a dalt de tot Finestra que serveix
-	 *            per agafar i marcar el que es vol buscar
+	 *            per agafar i marcar el que es vol buscar per ser eliminat
 	 */
 	public DeleteFrameProgrammer() {
 		setLayout(new FormLayout(new ColumnSpec[] {
@@ -89,12 +89,20 @@ public class DeleteFrameProgrammer extends JPanel {
 					MainFrame.closeSearchFrame();
 					MainFrame.loadSearchFrame();
 				} else if (cursor.hasNext()) {
+					MongoDBUtils.coll.remove(cursor.next());
+					JOptionPane.showMessageDialog(getComponent(0),
+							"Eliminat amb exit.");
 					cursor.close();
 				}
 			}
 		});
 		
 		JButton button = new JButton("Tornar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.closeSearchFrame();
+			}
+		});
 		add(button, "2, 10, center, default");
 		add(btnSearch, "4, 10, right, default");
 

@@ -144,10 +144,13 @@ public class ManageFrame extends JPanel {
 				switch (MainFrame.currentUser.getLevel()) {
 					case 0:
 						MainFrame.loadDeleteFrameAdministrator();
+						break;
 					case 1:
 						MainFrame.loadDeleteFrameProgrammer();
+						break;
 					case 2:
 						MainFrame.loadDeleteFrameSecretary();
+						break;
 					default:
 						JOptionPane.showMessageDialog(getComponent(0),
 								"No pots accedir aqui.");

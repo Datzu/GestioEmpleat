@@ -100,7 +100,7 @@ public class SearchFrameSecretary extends JPanel {
 		JButton btnTornar = new JButton("Tornar");
 		btnTornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.loadHomeFrame();
+				MainFrame.closeSearchFrame();
 			}
 		});
 		add(btnTornar, "2, 10, center, default");

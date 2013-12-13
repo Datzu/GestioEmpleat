@@ -18,6 +18,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 import com.mongodb.DBCursor;
+import com.mongodb.Mongo;
 
 import javax.swing.DefaultComboBoxModel;
 
@@ -27,10 +28,10 @@ public class DeleteFrameSecretary extends JPanel {
 	JComboBox comboBoxSearchValue = new JComboBox();
 
 	/**
-	 * @author Gerard, Adrian Garcia
+	 * @author Adrian Garcia
 	 * @param titleFrame
 	 *            Cadena de text per mostrar a dalt de tot Finestra que serveix
-	 *            per agafar i marcar el que es vol buscar
+	 *            per agafar i marcar el que es vol buscar per ser eliminat
 	 */
 	public DeleteFrameSecretary() {
 		setLayout(new FormLayout(new ColumnSpec[] {
@@ -89,6 +90,9 @@ public class DeleteFrameSecretary extends JPanel {
 					MainFrame.closeSearchFrame();
 					MainFrame.loadSearchFrame();
 				} else if (cursor.hasNext()) {
+					MongoDBUtils.coll.remove(cursor.next());
+					JOptionPane.showMessageDialog(getComponent(0),
+							"Eliminat amb exit.");
 					cursor.close();
 				}
 			}
@@ -97,7 +101,7 @@ public class DeleteFrameSecretary extends JPanel {
 		JButton btnTornar = new JButton("Tornar");
 		btnTornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.loadHomeFrame();
+				MainFrame.closeSearchFrame();
 			}
 		});
 		add(btnTornar, "2, 10, center, default");

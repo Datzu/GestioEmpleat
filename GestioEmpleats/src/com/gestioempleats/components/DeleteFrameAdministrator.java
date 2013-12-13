@@ -25,9 +25,9 @@ public class DeleteFrameAdministrator extends JPanel {
 	JComboBox comboBoxSearchType = new JComboBox();
 	JComboBox comboBoxSearchValue = new JComboBox();
 	/**
-	 * @author Gerard, Adrian Garcia
+	 * @author Adrian Garcia
 	 * @param titleFrame Cadena de text per mostrar a dalt de tot
-	 * Finestra que serveix per agafar i marcar el que es vol buscar
+	 * Finestra que serveix per agafar i marcar el que es vol buscar per ser eliminat
 	 */
 	public DeleteFrameAdministrator() {
 		setLayout(new FormLayout(new ColumnSpec[] {
@@ -47,9 +47,7 @@ public class DeleteFrameAdministrator extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("default:grow"),}));
+				FormFactory.DEFAULT_ROWSPEC,}));
 		
 		JLabel lblTitleFrame = new JLabel("Search frame");
 		lblTitleFrame.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -89,6 +87,9 @@ public class DeleteFrameAdministrator extends JPanel {
 						MainFrame.closeSearchFrame();
 						MainFrame.loadSearchFrame();
 					} else if (cursor.hasNext()) {
+						MongoDBUtils.coll.remove(cursor.next());
+						JOptionPane.showMessageDialog(getComponent(0),
+								"Eliminat amb exit.");
 						cursor.close();
 					}
 					break;
@@ -101,6 +102,9 @@ public class DeleteFrameAdministrator extends JPanel {
 						MainFrame.closeSearchFrame();
 						MainFrame.loadSearchFrame();
 					} else if (cursor.hasNext()) {
+						MongoDBUtils.coll.remove(cursor.next());
+						JOptionPane.showMessageDialog(getComponent(0),
+								"Eliminat amb exit.");
 						cursor.close();
 					}
 					break;
@@ -113,6 +117,9 @@ public class DeleteFrameAdministrator extends JPanel {
 						MainFrame.closeSearchFrame();
 						MainFrame.loadSearchFrame();
 					} else if (cursor.hasNext()) {
+						MongoDBUtils.coll.remove(cursor.next());
+						JOptionPane.showMessageDialog(getComponent(0),
+								"Eliminat amb exit.");
 						cursor.close();
 					}
 					break;
@@ -121,6 +128,11 @@ public class DeleteFrameAdministrator extends JPanel {
 		});
 		
 		JButton button = new JButton("Tornar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.closeSearchFrame();
+			}
+		});
 		add(button, "2, 10, center, default");
 		add(btnSearch, "4, 10, right, default");
 		

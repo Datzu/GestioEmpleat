@@ -32,11 +32,11 @@ public class SearchFrameAdministrator extends JPanel {
 	public SearchFrameAdministrator() {
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(87dlu;default):grow"),
+				ColumnSpec.decode("max(83dlu;default):grow"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(121dlu;default):grow"),
+				ColumnSpec.decode("max(141dlu;default):grow"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,},
+				ColumnSpec.decode("max(18dlu;default)"),},
 			new RowSpec[] {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
@@ -47,9 +47,7 @@ public class SearchFrameAdministrator extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("default:grow"),}));
+				FormFactory.DEFAULT_ROWSPEC,}));
 		
 		JLabel lblTitleFrame = new JLabel("Search frame");
 		lblTitleFrame.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -130,6 +128,11 @@ public class SearchFrameAdministrator extends JPanel {
 		});
 		
 		JButton button = new JButton("Tornar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.closeSearchFrame();
+			}
+		});
 		add(button, "2, 10, center, default");
 		add(btnSearch, "4, 10, right, default");
 		
