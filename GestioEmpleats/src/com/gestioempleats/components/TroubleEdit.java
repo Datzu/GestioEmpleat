@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.gestioempleats.start.MainFrame;
 import com.gestioempleats.utils.MongoDBUtils;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -100,6 +101,11 @@ public class TroubleEdit extends JPanel {
 		});
 		
 		JButton button = new JButton("Tornar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.loadHomeFrame();
+			}
+		});
 		add(button, "2, 14, center, default");
 		add(btnGuardar, "4, 14, right, default");
 		

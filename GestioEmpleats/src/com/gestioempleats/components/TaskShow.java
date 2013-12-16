@@ -16,6 +16,8 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 
@@ -27,7 +29,7 @@ public class TaskShow extends JPanel {
 	private String comentari = "";
 	private String empleat_asignat = "";
 	/**
-	 * @author Gerard
+	 * @author Gerard, Adrian Garcia
 	 * Mostra una tasca
 	 */
 	public TaskShow() {
@@ -104,16 +106,17 @@ public class TaskShow extends JPanel {
 		add(lblEmployeeAssignedShow, "4, 16");
 		
 		JButton button = new JButton("Tornar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.loadHomeFrame();
+			}
+		});
 		add(button, "2, 18, center, default");
-		
-		
-		
-
 	}
 	
 	private void getValues() {
 		BasicDBObject queryTask = new BasicDBObject();
-		MongoDBUtils.setCollection("task");
+		//MongoDBUtils.setCollection("task");
 		DBCursor cursor = MongoDBUtils.coll.find(MainFrame.tmp);
 		if (cursor.hasNext()) {
 			DBObject userObject = cursor.next();

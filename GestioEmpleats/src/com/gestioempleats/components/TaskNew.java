@@ -3,7 +3,9 @@ package com.gestioempleats.components;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -11,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.gestioempleats.start.MainFrame;
 import com.gestioempleats.utils.MongoDBUtils;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -26,7 +29,7 @@ public class TaskNew extends JPanel {
 	private JComboBox  ComboEmployeeAssigned;
 
 	/**
-	 * @author Gerard
+	 * @author Gerard, Adrian Garcia
 	 * Crea una nova tasca
 	 */
 	public TaskNew() {
@@ -103,6 +106,10 @@ public class TaskNew extends JPanel {
 		add(lblEmployeeAssigned, "2, 16, right, default");
 		
 		ComboEmployeeAssigned = new JComboBox();
+		ArrayList<String> employeeArray = MongoDBUtils.getAllEmployee();
+		for (String employeeName : employeeArray) {
+			ComboEmployeeAssigned.addItem(employeeName);
+		}
 		add(ComboEmployeeAssigned, "4, 16, fill, default");
 		
 		JButton btnGuardar = new JButton("Guardar");
@@ -122,6 +129,11 @@ public class TaskNew extends JPanel {
 		});
 		
 		JButton button = new JButton("Tornar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.loadHomeFrame();
+			}
+		});
 		add(button, "2, 18, center, default");
 		add(btnGuardar, "4, 18, right, default");
 		

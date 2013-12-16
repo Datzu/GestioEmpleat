@@ -2,9 +2,8 @@ package com.gestioempleats.utils;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.ConnectException;
 import java.net.URL;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Set;
 
 import net.lingala.zip4j.core.ZipFile;
@@ -340,6 +339,16 @@ public class MongoDBUtils {
 	public static void updateEmployee(DBObject oldEmployee, DBObject newEmployee) {
 		setCollection("employee");
 		coll.update(oldEmployee, newEmployee);
+	}
+	
+	public static ArrayList<String> getAllEmployee() {
+		ArrayList employeeList = new ArrayList<String>();
+		
+		DBCursor employeeCursor = findAllUsers();
+		while (employeeCursor.hasNext()) {
+			employeeList.add(employeeCursor.next().get("name").toString());
+		}
+		return employeeList;
 	}
 
 }

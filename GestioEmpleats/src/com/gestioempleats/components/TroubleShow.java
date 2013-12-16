@@ -16,6 +16,8 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class TroubleShow extends JPanel {
@@ -87,6 +89,11 @@ public class TroubleShow extends JPanel {
 		add(txtCommentShow, "4, 12, fill, fill");
 		
 		JButton button = new JButton("Tornar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.loadHomeFrame();
+			}
+		});
 		add(button, "2, 14, center, default");
 		
 		
