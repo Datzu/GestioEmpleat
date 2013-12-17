@@ -292,7 +292,7 @@ public class MongoDBUtils {
 		BasicDBObject taskObject = new BasicDBObject();
 		switch (type) {
 			case 0:
-				taskObject.put("taskId", taskId);
+				taskObject.put("_id", taskId);
 				taskObject.put("dateCreation", dateCreation);
 				taskObject.put("dateEnd", dateEnd);
 				taskObject.put("dateDelivery", dateDelivery);
@@ -302,7 +302,7 @@ public class MongoDBUtils {
 			case 1:
 				break;
 			case 2:
-				taskObject.put("taskId", taskId);
+				taskObject.put("_id", taskId);
 				taskObject.put("dateCreation", dateCreation);
 				taskObject.put("dateEnd", dateEnd);
 				taskObject.put("dateDelivery", dateDelivery);
@@ -316,29 +316,29 @@ public class MongoDBUtils {
 	}
 
 	public static void saveTrouble(int troubleId, String dateCreation,
-			String employee, String comment, int type) {
+			String employee, String comment) {
 		DBCollection table = MongoDBUtils.db.getCollection("trouble");
 		BasicDBObject troubleObject = new BasicDBObject();
-		switch (type) {
-			case 0:
-				troubleObject.put("taskId", troubleId);
-				troubleObject.put("dateCreation", dateCreation);
-				troubleObject.put("dateEnd", employee);
-				troubleObject.put("dateDelivery", comment);
-				break;
-			case 1:
-				break;
-			case 2:
-				break;
-			case 3:
-				break;
-		}
+		troubleObject.put("taskId", troubleId);
+		troubleObject.put("dateCreation", dateCreation);
+		troubleObject.put("employee", employee);
+		troubleObject.put("comment", comment);
 		table.insert(troubleObject);
 	}
 
 	public static void updateEmployee(DBObject oldEmployee, DBObject newEmployee) {
 		setCollection("employee");
 		coll.update(oldEmployee, newEmployee);
+	}
+	
+	public static void updateTask(DBObject oldTask, DBObject newTask) {
+		setCollection("task");
+		coll.update(oldTask, newTask);
+	}
+	
+	public static void updateTrouble(DBObject oldTrouble, DBObject newTrouble) {
+		setCollection("trouble");
+		coll.update(oldTrouble, newTrouble);
 	}
 	
 	public static ArrayList<String> getAllEmployee() {

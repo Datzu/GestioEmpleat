@@ -3,9 +3,10 @@ package com.gestioempleats.components;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -21,12 +22,16 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 public class TaskNew extends JPanel {
+	
 	private JTextField txtTaskId;
 	private JTextField txtDateCreation;
 	private JTextField txtDateEnd;
 	private JTextField txtDateDelivery;
 	private JTextArea  txtComment;
+	
 	private JComboBox  ComboEmployeeAssigned;
+	
+	private String data;
 
 	/**
 	 * @author Gerard, Adrian Garcia
@@ -78,7 +83,7 @@ public class TaskNew extends JPanel {
 		JLabel lblDateCreation = new JLabel("Data Creació: ");
 		add(lblDateCreation, "2, 8, right, default");
 		
-		txtDateCreation = new JTextField();
+		txtDateCreation = new JTextField(getActualDAte());
 		add(txtDateCreation, "4, 8, fill, default");
 		txtDateCreation.setColumns(10);
 		
@@ -115,7 +120,6 @@ public class TaskNew extends JPanel {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 				MongoDBUtils.saveTask(
 						Integer.parseInt(txtTaskId.getText().toString()), 
 						txtDateCreation.getText().toString(),
@@ -123,8 +127,9 @@ public class TaskNew extends JPanel {
 						txtDateDelivery.getText().toString(),
 						txtComment.getText().toString(),
 						ComboEmployeeAssigned.getSelectedItem().toString(),
-						4
+						MainFrame.currentUser.getLevel()
 						);
+				MainFrame.loadTaskNew();
 			}
 		});
 		
@@ -137,8 +142,12 @@ public class TaskNew extends JPanel {
 		add(button, "2, 18, center, default");
 		add(btnGuardar, "4, 18, right, default");
 		
-		
-
+	}
+	
+	public String getActualDAte() {
+		Date now = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+		return format.format(now);
 	}
 
 }

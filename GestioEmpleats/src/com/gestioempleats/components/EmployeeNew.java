@@ -26,7 +26,8 @@ import java.awt.event.MouseWheelEvent;
 public class EmployeeNew extends JPanel {
 
 	/**
-	 * @author Adrian Garcia Crea una nova finestra de tipus empleat buida per
+	 * @author Adrian Garcia 
+	 * Crea una nova finestra de tipus empleat buida per
 	 *         omplir i guardar a la base de dades
 	 */
 

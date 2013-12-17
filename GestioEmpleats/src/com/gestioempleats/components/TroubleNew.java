@@ -3,6 +3,8 @@ package com.gestioempleats.components;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -25,7 +27,7 @@ public class TroubleNew extends JPanel {
 	private JTextArea  txtComment;
 
 	/**
-	 * @author Gerard
+	 * @author Gerard, Adrian Garcia
 	 * Crea una nova incidencia
 	 */
 	public TroubleNew() {
@@ -70,14 +72,14 @@ public class TroubleNew extends JPanel {
 		JLabel lblDateCreation = new JLabel("Data Creació: ");
 		add(lblDateCreation, "2, 8, right, default");
 		
-		txtDateCreation = new JTextField();
+		txtDateCreation = new JTextField(getActualDate());
 		add(txtDateCreation, "4, 8, fill, default");
 		txtDateCreation.setColumns(10);
 		
 		JLabel lblDateEnd = new JLabel("Empelat que la genera:");
 		add(lblDateEnd, "2, 10, right, default");
 		
-		txtEmployee = new JTextField();
+		txtEmployee = new JTextField(MainFrame.currentUser.getUser());
 		add(txtEmployee, "4, 10, fill, default");
 		txtEmployee.setColumns(10);
 		
@@ -94,9 +96,9 @@ public class TroubleNew extends JPanel {
 						Integer.parseInt(txtTroubleID.getText().toString()), 
 						txtDateCreation.getText().toString(),
 						txtEmployee.getText().toString(),
-						txtComment.getText().toString(),
-						4
+						txtComment.getText().toString()
 						);
+				MainFrame.loadTroubleNew();
 			}
 		});
 		
@@ -108,9 +110,13 @@ public class TroubleNew extends JPanel {
 		});
 		add(btnTornar, "2, 14, center, default");
 		add(btnGuardar, "4, 14, right, default");
-		
-		
 
+	}
+	
+	public static String getActualDate() {
+		 Date ahora = new Date();
+		 SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
+		 return formateador.format(ahora);
 	}
 
 }

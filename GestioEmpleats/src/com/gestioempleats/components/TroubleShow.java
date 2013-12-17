@@ -26,7 +26,7 @@ public class TroubleShow extends JPanel {
 	private String empleat = "";
 	private String comentari = "";
 	/**
-	 * @author Gerard
+	 * @author Gerard, Adrian Garcia
 	 * Mostra una incidencia
 	 */
 	public TroubleShow() {
@@ -96,8 +96,6 @@ public class TroubleShow extends JPanel {
 		});
 		add(button, "2, 14, center, default");
 		
-		
-
 	}
 	
 	private void getValues() {

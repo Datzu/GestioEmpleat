@@ -27,6 +27,13 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+/**
+ * 
+ * @author Adrian Garcia
+ * Clase per modificar un empleat
+ *
+ */
+
 public class EmployeeEdit extends JPanel {
 
 	private String id = "";
